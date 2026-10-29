@@ -1,0 +1,19 @@
+---
+import { projects, type Lang } from '../data/site';
+
+const { lang } = Astro.props as { lang: Lang };
+const zh = lang === 'zh';
+---
+{projects.length ? (
+  <div class="project-grid">
+    {projects.map(project => (
+      <article class="project-card">
+        <div class="project-info">
+          <h3><a href={`/${lang}/projects/${project.slug}/`}>{project.title[lang]}</a></h3>
+          <p>{project.description[lang]}</p>
+          {project.tags.length > 0 && <p class="project-tags">{project.tags.join(' · ')}</p>}
+        </div>
+      </article>
+    ))}
+  </div>
+) : <p class="empty-state">{zh ? '待补充。' : 'To be added.'}</p>}

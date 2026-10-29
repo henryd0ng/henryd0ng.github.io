@@ -1,0 +1,29 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PostList from '../../../components/PostList.astro';
+import ProjectGrid from '../../../components/ProjectGrid.astro';
+import PublicationList from '../../../components/PublicationList.astro';
+import { type Lang } from '../../../data/site';
+
+export function getStaticPaths() {
+  return ['zh', 'en'].flatMap(lang =>
+    ['blog', 'projects', 'publications'].map(section => ({ params: { lang, section } }))
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const section = Astro.params.section!;
+const zh = lang === 'zh';
+const labels: Record<string, string> = {
+  blog: zh ? '博客' : 'Blog',
+  projects: zh ? '项目' : 'Projects',
+  publications: zh ? '论文' : 'Publications',
+};
+const title = labels[section];
+---
+<Base lang={lang} title={title} section={section}>
+  <header class="page-intro"><h1>{title}</h1></header>
+  {section === 'blog' && <PostList lang={lang} />}
+  {section === 'projects' && <ProjectGrid lang={lang} />}
+  {section === 'publications' && <PublicationList lang={lang} />}
+</Base>

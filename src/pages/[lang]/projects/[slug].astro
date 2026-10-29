@@ -1,0 +1,25 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { projects, type Lang, type Project } from '../../../data/site';
+
+export function getStaticPaths() {
+  return ['zh', 'en'].flatMap(lang =>
+    projects.map(project => ({ params: { lang, slug: project.slug }, props: { project } }))
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const { project } = Astro.props as { project: Project };
+const zh = lang === 'zh';
+---
+<Base lang={lang} title={project.title[lang]} section="projects" description={project.description[lang]}>
+  <a class="back-link" href={`/${lang}/projects/`}>{zh ? '返回项目' : 'Back to projects'}</a>
+  <article class="article">
+    <header class="page-intro">
+      <h1>{project.title[lang]}</h1>
+      <p>{project.description[lang]}</p>
+    </header>
+    <div class="prose">{project.body[lang].map(paragraph => <p>{paragraph}</p>)}</div>
+    {project.tags.length > 0 && <p class="project-tags">{project.tags.join(' · ')}</p>}
+  </article>
+</Base>

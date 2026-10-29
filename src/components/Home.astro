@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PublicationList from './PublicationList.astro';
+import { profile, type Lang } from '../data/site';
+const { lang } = Astro.props as {lang: Lang};
+const zh = lang === 'zh';
+---
+<Base lang={lang} title={zh ? '个人主页' : 'Home'}>
+ <section class="biography">
+  <h1 class="sr-only">Haoyu Dong</h1>
+  <blockquote><p>{zh ? '研究兴趣与个人简介待补充。' : 'Research interests and biography to be added.'}</p></blockquote>
+  <p>{profile.intro[lang]}</p>
+  <p>{zh ? '相关链接：' : 'Links: '}<a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>{zh ? '。' : '.'}</p>
+ </section>
+ <section class="academic-section">
+  <h2>{zh ? '教育背景' : 'Education'}</h2>
+  <ul><li>{zh ? '院校、专业、学位与时间待补充。' : 'Institution, field of study, degree, and dates to be added.'}</li></ul>
+ </section>
+ <section class="academic-section">
+  <h2>{zh ? '科研经历' : 'Research Experience'}</h2>
+  <ul><li>{zh ? '科研与实习经历待补充。' : 'Research and internship experience to be added.'}</li></ul>
+ </section>
+ <section class="academic-section">
+  <h2>{zh ? '论文' : 'Publications'}</h2>
+  <PublicationList lang={lang}/>
+ </section>
+</Base>

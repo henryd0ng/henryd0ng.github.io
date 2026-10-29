@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { profile, type Lang } from '../data/site';
+interface Props { lang: Lang; title: string; section?: string; description?: string }
+const { lang, title, section = 'home', description = profile.intro[lang] } = Astro.props;
+const zh = lang === 'zh';
+const links = [['blog', zh ? '博客' : 'Blog', 'blog/'], ['projects', zh ? '项目' : 'Projects', 'projects/'], ['publications', zh ? '论文' : 'Publications', 'publications/']];
+const currentPath = Astro.url.pathname === '/' ? '/zh/' : Astro.url.pathname;
+const translated = (target: string) => /^\/(zh|en)\//.test(currentPath) ? currentPath.replace(/^\/(zh|en)(?=\/)/, `/${target}`) : `/${target}/`;
+---
+<!doctype html>
+<html lang={zh ? 'zh-CN' : 'en'} data-theme="dark">
+ <head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title} · Haoyu Dong</title><meta name="description" content={description}/>
+  <meta name="theme-color" content="#474747"/><link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+  <link rel="canonical" href={new URL(currentPath, Astro.site)}/>
+  <link rel="alternate" hreflang="zh-CN" href={new URL(translated('zh'), Astro.site)}/>
+  <link rel="alternate" hreflang="en" href={new URL(translated('en'), Astro.site)}/>
+  <meta property="og:title" content={`${title} · Haoyu Dong`}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:image" content={new URL('/images/avatar.png', Astro.site)}/>
+  <script is:inline>try { document.documentElement.dataset.theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark'; } catch {}</script>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">{zh ? '跳到正文' : 'Skip to content'}</a>
+  <header class="site-header"><div class="header-inner">
+   <a class="wordmark" href={`/${lang}/`} aria-label="Haoyu Dong" aria-current={section === 'home' ? 'page' : undefined}>Haoyu Dong</a>
+   <nav class="main-nav" aria-label={zh ? '主导航' : 'Main navigation'}>{links.map(([key,label,path]) => <a href={`/${lang}/${path}`} aria-current={section === key ? 'page' : undefined}>{label}</a>)}</nav>
+   <div class="header-tools"><div class="language-switch" aria-label={zh ? '选择语言' : 'Choose language'}><a href={translated('en')} lang="en" data-language="en" aria-current={!zh ? 'true' : undefined}>EN</a><span>/</span><a href={translated('zh')} lang="zh-CN" data-language="zh" aria-current={zh ? 'true' : undefined}>中文</a></div><button class="theme-toggle" type="button" aria-label={zh ? '切换深浅色模式' : 'Toggle color theme'} aria-pressed="true"><Icon name="moon" size={18}/></button></div>
+  </div></header>
+  <div class="site-shell">
+   <aside class="profile"><div class="profile-inner">
+    <a class="avatar-link" href={`/${lang}/`} aria-label={zh ? '回到首页' : 'Back to home'}><img class="avatar" src="/images/avatar.png" width="175" height="175" alt={zh ? 'Haoyu 的 GitHub 头像' : 'Haoyu’s GitHub avatar'}/></a>
+    <div class="profile-text"><h2>{profile.name}</h2><p class="profile-bio">@{profile.handle}</p>
+    <div class="profile-links"><span><Icon name="school" size={16}/>{profile.institution[lang]}</span><a href={profile.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={16}/>GitHub<Icon name="external" size={12}/></a></div>
+    </div>
+   </div></aside>
+   <main id="main" tabindex="-1"><slot/></main>
+  </div>
+  <footer class="site-footer"><span>© {new Date().getFullYear()} Haoyu Dong</span><a href={profile.github}>GitHub</a></footer>
+  <script>
+   const toggle = document.querySelector<HTMLButtonElement>('.theme-toggle');
+   const updateThemeButton = () => toggle?.setAttribute('aria-pressed', String(document.documentElement.dataset.theme === 'dark'));
+   updateThemeButton();
+   toggle?.addEventListener('click', () => { const dark = document.documentElement.dataset.theme !== 'dark'; document.documentElement.dataset.theme = dark ? 'dark' : 'light'; try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {} updateThemeButton(); });
+   document.querySelectorAll<HTMLAnchorElement>('[data-language]').forEach(link => link.addEventListener('click', () => { try { localStorage.setItem('language', link.dataset.language!); } catch {} }));
+  </script>
+ </body>
+</html>

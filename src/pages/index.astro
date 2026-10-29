@@ -1,0 +1,5 @@
+---
+import Home from '../components/Home.astro';
+---
+<Home lang="zh"/>
+<script is:inline>try { location.replace(localStorage.getItem('language') === 'en' ? '/en/' : '/zh/'); } catch { location.replace('/zh/'); }</script>

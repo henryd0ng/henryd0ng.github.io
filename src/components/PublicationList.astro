@@ -1,0 +1,22 @@
+---
+import { publications, type Lang } from '../data/site';
+
+const { lang } = Astro.props as { lang: Lang };
+const zh = lang === 'zh';
+---
+{publications.length ? (
+  <div class="publication-list">
+    {publications.map(publication => (
+      <article class="publication" id={publication.id}>
+        <h3>{publication.title[lang]}</h3>
+        <p>{publication.authors}</p>
+        <p class="publication-venue">{publication.venue[lang]}, {publication.year}</p>
+        <p class="publication-links">
+          {publication.pdf && <a href={publication.pdf}>[PDF]</a>}
+          {publication.code && <a href={publication.code}>[{zh ? '代码' : 'Code'}]</a>}
+          {publication.url && <a href={publication.url}>[{zh ? '项目主页' : 'Website'}]</a>}
+        </p>
+      </article>
+    ))}
+  </div>
+) : <p class="empty-state">{zh ? '待补充。' : 'To be added.'}</p>}

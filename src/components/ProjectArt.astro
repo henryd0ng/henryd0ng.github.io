@@ -1,0 +1,7 @@
+---
+const { art = 'orbit' } = Astro.props;
+---
+<div class:list={['project-art', art]} aria-hidden="true">
+ {art === 'orbit' ? <svg viewBox="0 0 420 230" fill="none"><path class="art-line" d="M0 115h420M210 0v230"/><ellipse cx="210" cy="115" rx="111" ry="49" transform="rotate(-30 210 115)"/><ellipse cx="210" cy="115" rx="111" ry="49" transform="rotate(30 210 115)"/><ellipse cx="210" cy="115" rx="111" ry="49" transform="rotate(90 210 115)"/><circle class="art-solid" cx="210" cy="115" r="8"/><circle class="art-dot" cx="307" cy="66" r="6"/></svg> : <svg viewBox="0 0 420 230" fill="none"><path class="art-line" d="M0 50h420M0 115h420M0 180h420M80 0v230M145 0v230M210 0v230M275 0v230M340 0v230"/><path d="M145 83l65-38 65 38v76l-65 37-65-37zM145 83l65 37 65-37M210 120v76"/><path d="M176 101V65M242 101V65M145 121l65 37 65-37"/><circle class="art-solid" cx="210" cy="120" r="5"/></svg>}
+ <span>{art === 'orbit' ? 'EXPLORATION / 01' : 'EXPERIMENT / 02'}</span>
+</div>
