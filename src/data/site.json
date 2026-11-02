@@ -1,0 +1,52 @@
+{
+  "profile": {
+    "name": "Haoyu Dong",
+    "handle": "henryd0ng",
+    "github": "https://github.com/henryd0ng",
+    "institution": {
+      "zh": "上海科技大学",
+      "en": "ShanghaiTech University"
+    },
+    "intro": {
+      "zh": "本网站用于整理我的学习笔记、项目与研究工作。相关内容将陆续补充。",
+      "en": "This website collects my study notes, projects, and research work. Content will be added over time."
+    }
+  },
+  "home": {
+    "lead": {
+      "zh": "研究兴趣与个人简介待补充。",
+      "en": "Research interests and biography to be added."
+    },
+    "linksLabel": {
+      "zh": "相关链接：",
+      "en": "Links: "
+    },
+    "education": {
+      "title": {
+        "zh": "教育背景",
+        "en": "Education"
+      },
+      "items": [
+        {
+          "zh": "院校、专业、学位与时间待补充。",
+          "en": "Institution, field of study, degree, and dates to be added."
+        }
+      ]
+    },
+    "experience": {
+      "title": {
+        "zh": "科研经历",
+        "en": "Research Experience"
+      },
+      "items": [
+        {
+          "zh": "科研与实习经历待补充。",
+          "en": "Research and internship experience to be added."
+        }
+      ]
+    }
+  },
+  "posts": [],
+  "projects": [],
+  "publications": []
+}

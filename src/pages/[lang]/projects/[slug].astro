@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { projects, type Lang, type Project } from '../../../data/site';
+import { renderMarkdown } from '../../../lib/markdown';
 
 export function getStaticPaths() {
   return ['zh', 'en'].flatMap(lang =>
@@ -19,7 +20,7 @@ const zh = lang === 'zh';
       <h1>{project.title[lang]}</h1>
       <p>{project.description[lang]}</p>
     </header>
-    <div class="prose">{project.body[lang].map(paragraph => <p>{paragraph}</p>)}</div>
+    <div class="prose" set:html={renderMarkdown(project.body[lang])}/>
     {project.tags.length > 0 && <p class="project-tags">{project.tags.join(' · ')}</p>}
   </article>
 </Base>

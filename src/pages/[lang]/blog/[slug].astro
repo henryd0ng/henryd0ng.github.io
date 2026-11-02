@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { posts, type Lang, type Post } from '../../../data/site';
+import { renderMarkdown } from '../../../lib/markdown';
 
 export function getStaticPaths() {
   return ['zh', 'en'].flatMap(lang =>
@@ -20,6 +21,6 @@ const zh = lang === 'zh';
       <p class="article-meta"><time datetime={post.date}>{post.date}</time> · {post.category[lang]} · {post.readTime} {zh ? '分钟阅读' : 'min read'}</p>
       <p>{post.excerpt[lang]}</p>
     </header>
-    <div class="prose">{post.body[lang].map(paragraph => <p>{paragraph}</p>)}</div>
+    <div class="prose" set:html={renderMarkdown(post.body[lang])}/>
   </article>
 </Base>

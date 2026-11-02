@@ -1,3 +1,5 @@
+import data from './site.json';
+
 export type Lang = 'zh' | 'en';
 
 export type Localized = {
@@ -7,13 +9,16 @@ export type Localized = {
 
 export type Post = {
   slug: string;
+  /** 形如 2026-11-02 */
   date: string;
   category: Localized;
   title: Localized;
   excerpt: Localized;
+  /** 单位：分钟 */
   readTime: number;
   demo: boolean;
-  body: { zh: string[]; en: string[] };
+  /** 正文使用 Markdown：段落之间空一行，支持加粗、列表、图片。 */
+  body: Localized;
 };
 
 export type Project = {
@@ -24,7 +29,8 @@ export type Project = {
   tags: string[];
   demo: boolean;
   art: 'orbit' | 'grid';
-  body: { zh: string[]; en: string[] };
+  /** 正文使用 Markdown：段落之间空一行，支持加粗、列表、图片。 */
+  body: Localized;
 };
 
 export type Publication = {
@@ -33,27 +39,45 @@ export type Publication = {
   authors: string;
   venue: Localized;
   year: number;
+  /** 可选链接，例如 /files/paper.pdf 或 https://… */
   pdf?: string;
   code?: string;
   url?: string;
 };
 
-export const profile = {
-  name: 'Haoyu Dong',
-  handle: 'henryd0ng',
-  github: 'https://github.com/henryd0ng',
-  institution: {
-    zh: '上海科技大学',
-    en: 'ShanghaiTech University',
-  },
-  intro: {
-    zh: '本网站用于整理我的学习笔记、项目与研究工作。相关内容将陆续补充。',
-    en: 'This website collects my study notes, projects, and research work. Content will be added over time.',
-  },
+export type Entry = Localized;
+
+export type Profile = {
+  name: string;
+  handle: string;
+  github: string;
+  institution: Localized;
+  intro: Localized;
 };
 
-export const posts: Post[] = [];
+export type HomeSection = {
+  title: Localized;
+  items: Entry[];
+};
 
-export const projects: Project[] = [];
+export type Home = {
+  /** 首页顶部的引导语，显示为引用块。 */
+  lead: Localized;
+  linksLabel: Localized;
+  education: HomeSection;
+  experience: HomeSection;
+};
 
-export const publications: Publication[] = [];
+/**
+ * 所有可编辑内容都在 site.json 中。此文件只做类型声明与转发，
+ * 请勿在此写内容，否则可视化编辑器看不到。
+ */
+export const profile: Profile = data.profile;
+
+export const home: Home = data.home;
+
+export const posts: Post[] = data.posts;
+
+export const projects: Project[] = data.projects;
+
+export const publications: Publication[] = data.publications;
