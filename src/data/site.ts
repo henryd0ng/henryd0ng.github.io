@@ -35,10 +35,16 @@ export type Project = {
 
 export type Publication = {
   id: string;
-  title: Localized;
-  authors: string;
+  /** 可选：文章标题，定下来之前留空即可。 */
+  title?: Localized;
+  /** 可选：作者列表，支持 **姓名** 加粗标出自己。 */
+  authors?: string;
   venue: Localized;
   year: number;
+  /** 可选状态，如「已录用 / Accepted」；留空则不显示。 */
+  status?: Localized;
+  /** 可选的额外说明，如一句话概括论文主题。 */
+  note?: Localized;
   /** 可选链接，例如 /files/paper.pdf 或 https://… */
   pdf?: string;
   code?: string;
@@ -60,12 +66,21 @@ export type HomeSection = {
   items: Entry[];
 };
 
+export type Link = {
+  label: Localized;
+  href: string;
+};
+
 export type Home = {
   /** 首页顶部的引导语，显示为引用块。 */
   lead: Localized;
   linksLabel: Localized;
+  /** GitHub 链接取自 profile.github，这里只填额外的，如小红书等。 */
+  links: Link[];
+  interests: HomeSection;
   education: HomeSection;
-  experience: HomeSection;
+  research: HomeSection;
+  internship: HomeSection;
 };
 
 /**

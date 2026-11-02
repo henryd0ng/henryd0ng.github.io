@@ -4,24 +4,25 @@ import PublicationList from './PublicationList.astro';
 import { profile, home, type Lang } from '../data/site';
 const { lang } = Astro.props as {lang: Lang};
 const zh = lang === 'zh';
-const educationItems = home.education.items.filter(item => item[lang]);
-const experienceItems = home.experience.items.filter(item => item[lang]);
+const sections = [home.interests, home.education, home.research, home.internship]
+  .map(section => ({ title: section.title[lang], items: section.items.filter(item => item[lang]).map(item => item[lang]) }))
+  .filter(section => section.items.length);
+const links = [
+  { label: 'GitHub', href: profile.github },
+  ...home.links.filter(link => link.href).map(link => ({ label: link.label[lang], href: link.href })),
+];
 ---
 <Base lang={lang} title={zh ? '个人主页' : 'Home'}>
  <section class="biography">
   <h1 class="sr-only">{profile.name}</h1>
   <blockquote><p>{home.lead[lang]}</p></blockquote>
   <p>{profile.intro[lang]}</p>
-  <p>{home.linksLabel[lang]}<a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a>{zh ? '。' : '.'}</p>
+  <p>{home.linksLabel[lang]}{links.map((link, index) => <>{index > 0 && (zh ? '、' : ', ')}<a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a></>)}{zh ? '。' : '.'}</p>
  </section>
- <section class="academic-section">
-  <h2>{home.education.title[lang]}</h2>
-  <ul>{educationItems.map(item => <li>{item[lang]}</li>)}</ul>
- </section>
- <section class="academic-section">
-  <h2>{home.experience.title[lang]}</h2>
-  <ul>{experienceItems.map(item => <li>{item[lang]}</li>)}</ul>
- </section>
+ {sections.map(section => <section class="academic-section">
+  <h2>{section.title}</h2>
+  <ul>{section.items.map(item => <li>{item}</li>)}</ul>
+ </section>)}
  <section class="academic-section">
   <h2>{zh ? '论文' : 'Publications'}</h2>
   <PublicationList lang={lang}/>

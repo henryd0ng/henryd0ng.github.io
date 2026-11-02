@@ -1,25 +1,54 @@
 {
   "profile": {
     "name": "Haoyu Dong",
-    "handle": "henryd0ng",
+    "handle": "henrydong",
     "github": "https://github.com/henryd0ng",
     "institution": {
       "zh": "上海科技大学",
       "en": "ShanghaiTech University"
     },
     "intro": {
-      "zh": "本网站用于整理我的学习笔记、项目与研究工作。相关内容将陆续补充。",
-      "en": "This website collects my study notes, projects, and research work. Content will be added over time."
+      "zh": "我是上海科技大学电子科学与技术专业硕士研究生，本科毕业于上科大电子信息工程专业。我的研究兴趣在于触觉感知与机器人操作的交叉领域。这里记录我的学习笔记、项目与研究工作。",
+      "en": "I am a master's student in Electronic Science and Technology at ShanghaiTech University, having completed my bachelor's degree in Electronic Information Engineering there. My research interests sit at the intersection of tactile sensing and robotic manipulation. This site collects my study notes, projects, and research work."
     }
   },
   "home": {
     "lead": {
-      "zh": "研究兴趣与个人简介待补充。",
-      "en": "Research interests and biography to be added."
+      "zh": "我的研究兴趣在于以触觉感知推进机器人操作。",
+      "en": "My research interests lie in pushing forward robotic manipulation with tactile sensing."
     },
     "linksLabel": {
       "zh": "相关链接：",
       "en": "Links: "
+    },
+    "links": [
+      {
+        "label": {
+          "zh": "小红书",
+          "en": "Xiaohongshu"
+        },
+        "href": "https://www.xiaohongshu.com/user/profile/6869f95c000000001b0193b7"
+      }
+    ],
+    "interests": {
+      "title": {
+        "zh": "研究兴趣",
+        "en": "Research Interests"
+      },
+      "items": [
+        {
+          "zh": "触觉表征学习",
+          "en": "Tactile representation learning"
+        },
+        {
+          "zh": "触觉后训练",
+          "en": "Tactile post-training"
+        },
+        {
+          "zh": "触觉灵巧技能",
+          "en": "Dexterous tactile skills"
+        }
+      ]
     },
     "education": {
       "title": {
@@ -28,25 +57,55 @@
       },
       "items": [
         {
-          "zh": "院校、专业、学位与时间待补充。",
-          "en": "Institution, field of study, degree, and dates to be added."
+          "zh": "上海科技大学 · 电子科学与技术 · 硕士 · 2026.9–2029.7",
+          "en": "ShanghaiTech University · Electronic Science and Technology · MSc · 2026.9–2029.7"
+        },
+        {
+          "zh": "上海科技大学 · 电子信息工程 · 本科 · 2022.9–2026.7",
+          "en": "ShanghaiTech University · Electronic Information Engineering · BEng · 2022.9–2026.7"
         }
       ]
     },
-    "experience": {
+    "research": {
       "title": {
         "zh": "科研经历",
         "en": "Research Experience"
       },
       "items": [
         {
-          "zh": "科研与实习经历待补充。",
-          "en": "Research and internship experience to be added."
+          "zh": "上海科技大学 STAR 中心 RIMLAB · 硕士研究生",
+          "en": "RIMLAB, STAR Center, ShanghaiTech University · Graduate Student"
+        }
+      ]
+    },
+    "internship": {
+      "title": {
+        "zh": "实习经历",
+        "en": "Internship Experience"
+      },
+      "items": [
+        {
+          "zh": "上海智元新创技术有限公司（AGIBOT）· 实习 · 2026 暑",
+          "en": "AGIBOT Innovation (Shanghai) Technology Co., Ltd. · Intern · Summer 2026"
         }
       ]
     }
   },
   "posts": [],
   "projects": [],
-  "publications": []
+  "publications": [
+    {
+      "id": "robio-2026-vbts",
+      "venue": {
+        "zh": "IEEE 国际机器人与仿生学会议（ROBIO 2026）",
+        "en": "IEEE International Conference on Robotics and Biomimetics (ROBIO 2026)"
+      },
+      "year": 2026,
+      "status": {
+        "zh": "已录用",
+        "en": "Accepted"
+      },
+      "code": "https://github.com/henryd0ng/lerobot_vbts_repo"
+    }
+  ]
 }
