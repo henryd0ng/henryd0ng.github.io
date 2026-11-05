@@ -26,18 +26,18 @@ npm run preview
 
 ## 内容文件与个人资料
 
-所有可编辑内容统一存放在 `src/data/site.json`，可视化编辑器也读写该文件。`src/data/site.ts` 只声明类型并转发数据，不在其中填写内容。
+个人资料、栏目配置与文章元数据存放在 `src/data/site.json`，可视化编辑器读写该文件。博客正文推荐单独写在项目根目录下的 `content/blog/`；`src/data/site.ts` 负责类型与内容加载，不在其中填写文章。
 
 - `profile`：姓名、院校、简介及 GitHub 链接。
 - `home`：首页引导语、额外链接、研究兴趣、教育背景、科研与实习经历。
 - `blogCategories`、`posts`、`projects`、`publications`：博客分类及各栏目的内容。
 - `public/images/avatar.png`：头像；可替换为个人照片。
 
-双语文本使用 `{ "zh": "中文", "en": "English" }`。博客与项目的 `body.zh`、`body.en` 均为 **Markdown 字符串**，不是段落数组。JSON 中用 `\n\n` 分隔段落，支持加粗、列表和图片，例如 `"第一段。\n\n**第二段。**"`。
+双语文本使用 `{ "zh": "中文", "en": "English" }`。博客与项目的 `body.zh`、`body.en` 仍支持 **Markdown 字符串**，不是段落数组；在 JSON 中用 `\n\n` 分隔段落。博客也可通过 `bodyFiles` 引用独立 Markdown 文件，具体方式如下。
 
 ## 博客分类与草稿
 
-博客使用以下两类内容：
+博客使用以下两类内容，默认显示“研究随想”，可切换到“知识输出”：
 
 | 稳定 ID | 中文名 | 英文名 |
 | --- | --- | --- |
@@ -46,11 +46,33 @@ npm run preview
 
 分类名称与介绍在 `blogCategories` 中以双语填写。文章的 `category` 填分类 **ID 字符串**，例如 `"knowledge"`。以后调整名称时，只需修改分类的 `name` 和 `description`，保留 `id`，既有文章的归属不变。
 
-`posts` 已预留一篇“强化学习 / Reinforcement Learning”草稿，正文、摘要和日期尚未填写。`draft: true` 的文章不出现在公开列表中，也不生成详情页；`draft: false` 或省略该字段表示发布。
+## 从强化学习草稿开始写
+
+直接编辑 [`content/blog/reinforcement-learning.zh.md`](content/blog/reinforcement-learning.zh.md)。这份中文模板已列出“问题与范围、基本概念、核心机制、一个贯穿例子、常见误区与边界、总结、参考资料”七个章节，每节的 HTML 注释是写作提示，可替换为自己的正文。注释不会显示在网页上。
+
+正文只需按普通 Markdown 编写，支持二级或三级标题、加粗、列表、链接、图片和代码块。**不要在正文重复写 `# 文章标题`**，页面会自动显示 JSON 中的标题。当前没有数学公式渲染，`$...$` 与 `$$...$$` 不会排版成公式。
+
+图片可放在 `public/images/blog/`，例如 `public/images/blog/example.png` 在正文中写为 `![图片说明](/images/blog/example.png)`。
+
+这篇草稿在 `src/data/site.json` 的 `posts` 中已有记录，标题为“强化学习 / Reinforcement Learning”，分类为 `knowledge`。标题、摘要、分类、日期、阅读时长和草稿状态都在该记录中修改。正文文件通过以下字段关联：
+
+```json
+"bodyFiles": {
+  "zh": "reinforcement-learning.zh.md"
+}
+```
+
+`bodyFiles` 的文件名相对于项目根目录下的 `content/blog/`，可分别填写 `zh`、`en`。配置的 Markdown 文件会覆盖对应语言的 `body` 字符串；没有配置文件的语言继续使用 `body.zh` 或 `body.en`，不会自动使用另一种语言的正文。
+
+可以先完成中文草稿，之后新建 `content/blog/reinforcement-learning.en.md` 并设置 `bodyFiles.en`。发布前应补齐两种语言的标题、摘要与正文，以免英文详情页为空。
+
+`draft: true` 的文章不出现在公开列表中，也不生成详情页；`draft: false` 或省略该字段表示发布。完成正文后，填写 `YYYY-MM-DD` 格式的 `date` 和以分钟计的 `readTime`，将 `draft` 改为 `false`，再本地构建和预览。强化学习文章发布后的地址为 `/zh/blog/reinforcement-learning/` 和 `/en/blog/reinforcement-learning/`。
 
 草稿状态只控制网站页面的生成；本仓库公开，提交到 GitHub 的草稿原文仍可在源码中查看。
 
-添加文章时，将以下对象加入 `posts` 数组；这是字段示例，不是已发布文章：
+## 添加另一篇博客
+
+在 `content/blog/` 新建 Markdown 文件，再将元数据对象加入 `src/data/site.json` 的 `posts` 数组。例如，下例需要先创建 `content/blog/my-note.zh.md`：
 
 ```json
 {
@@ -62,11 +84,12 @@ npm run preview
   "readTime": 0,
   "demo": false,
   "draft": true,
+  "bodyFiles": { "zh": "my-note.zh.md" },
   "body": { "zh": "", "en": "" }
 }
 ```
 
-发布前填写中英文标题、摘要与 Markdown 正文，填写 `YYYY-MM-DD` 格式的 `date` 和以分钟计的 `readTime`，然后将 `draft` 改为 `false`。`slug` 应唯一且稳定；上例发布后的地址为 `/zh/blog/my-note/` 和 `/en/blog/my-note/`。
+`slug` 应唯一且稳定，两种语言共用同一个 `slug`。研究随想类文章填写 `"category": "reflections"`；其余写作、翻译和发布步骤与强化学习草稿相同。
 
 ## 添加项目
 

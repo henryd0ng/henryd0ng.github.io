@@ -1,12 +1,11 @@
 ---
 import { blogCategories, type Lang } from '../data/site';
 
-interface Props { lang: Lang; active?: string }
+interface Props { lang: Lang; active: string }
 const { lang, active } = Astro.props;
 const zh = lang === 'zh';
 ---
 <nav class="blog-categories" aria-label={zh ? '博客分类' : 'Blog categories'}>
-  <a href={`/${lang}/blog/`} aria-current={!active ? 'page' : undefined}>{zh ? '全部' : 'All'}</a>
   {blogCategories.map(category => (
     <a href={`/${lang}/blog/category/${category.id}/`} aria-current={active === category.id ? 'page' : undefined}>{category.name[lang]}</a>
   ))}

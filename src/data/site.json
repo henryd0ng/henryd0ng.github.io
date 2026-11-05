@@ -134,6 +134,9 @@
       "body": {
         "zh": "",
         "en": ""
+      },
+      "bodyFiles": {
+        "zh": "reinforcement-learning.zh.md"
       }
     }
   ],

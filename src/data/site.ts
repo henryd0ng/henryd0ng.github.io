@@ -28,6 +28,8 @@ export type Post = {
   draft?: boolean;
   /** 正文使用 Markdown：段落之间空一行，支持加粗、列表、图片。 */
   body: Localized;
+  /** 可选 Markdown 文件名，相对于 content/blog；设置后优先读取文件正文。 */
+  bodyFiles?: Partial<Localized>;
 };
 
 export type Project = {
@@ -93,8 +95,8 @@ export type Home = {
 };
 
 /**
- * 所有可编辑内容都在 site.json 中。此文件只做类型声明与转发，
- * 请勿在此写内容，否则可视化编辑器看不到。
+ * 个人资料与文章元数据保存在 site.json；博客正文也可通过 bodyFiles
+ * 指向 content/blog 下的 Markdown 文件。此文件只做类型声明与数据读取。
  */
 export const profile: Profile = data.profile;
 
@@ -102,7 +104,25 @@ export const home: Home = data.home;
 
 export const blogCategories: BlogCategory[] = data.blogCategories;
 
-export const posts: Post[] = data.posts;
+const markdownBodies = import.meta.glob<string>('../../content/blog/**/*.md', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+});
+
+function readPostBody(post: Post, lang: Lang): string {
+  const filename = post.bodyFiles?.[lang];
+  if (!filename) return post.body[lang];
+  const body = markdownBodies[`../../content/blog/${filename}`];
+  if (body === undefined) throw new Error(`Blog post "${post.slug}": Markdown file not found: content/blog/${filename}`);
+  return body;
+}
+
+const sourcePosts: Post[] = data.posts;
+export const posts: Post[] = sourcePosts.map(post => ({
+  ...post,
+  body: { zh: readPostBody(post, 'zh'), en: readPostBody(post, 'en') },
+}));
 
 export const projects: Project[] = data.projects;
 
