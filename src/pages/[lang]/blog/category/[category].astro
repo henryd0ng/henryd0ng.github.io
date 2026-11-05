@@ -1,0 +1,20 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import BlogCategories from '../../../../components/BlogCategories.astro';
+import PostList from '../../../../components/PostList.astro';
+import { blogCategories, type BlogCategory, type Lang } from '../../../../data/site';
+
+export function getStaticPaths() {
+  return ['zh', 'en'].flatMap(lang =>
+    blogCategories.map(category => ({ params: { lang, category: category.id }, props: { category } }))
+  );
+}
+
+const lang = Astro.params.lang as Lang;
+const { category } = Astro.props as { category: BlogCategory };
+---
+<Base lang={lang} title={category.name[lang]} section="blog" description={category.description[lang]}>
+  <header class="page-intro"><h1>{category.name[lang]}</h1><p>{category.description[lang]}</p></header>
+  <BlogCategories lang={lang} active={category.id} />
+  <PostList lang={lang} categoryId={category.id} />
+</Base>

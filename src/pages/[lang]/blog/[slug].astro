@@ -1,24 +1,25 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { posts, type Lang, type Post } from '../../../data/site';
+import { posts, blogCategories, type Lang, type Post } from '../../../data/site';
 import { renderMarkdown } from '../../../lib/markdown';
 
 export function getStaticPaths() {
   return ['zh', 'en'].flatMap(lang =>
-    posts.map(post => ({ params: { lang, slug: post.slug }, props: { post } }))
+    posts.filter(post => !post.draft).map(post => ({ params: { lang, slug: post.slug }, props: { post } }))
   );
 }
 
 const lang = Astro.params.lang as Lang;
 const { post } = Astro.props as { post: Post };
 const zh = lang === 'zh';
+const category = blogCategories.find(category => category.id === post.category);
 ---
 <Base lang={lang} title={post.title[lang]} section="blog" description={post.excerpt[lang]}>
   <a class="back-link" href={`/${lang}/blog/`}>{zh ? '返回博客' : 'Back to blog'}</a>
   <article class="article">
     <header class="page-intro">
       <h1>{post.title[lang]}</h1>
-      <p class="article-meta"><time datetime={post.date}>{post.date}</time> · {post.category[lang]} · {post.readTime} {zh ? '分钟阅读' : 'min read'}</p>
+      <p class="article-meta"><time datetime={post.date}>{post.date}</time>{category && <><span>·</span><a href={`/${lang}/blog/category/${category.id}/`}>{category.name[lang]}</a></>}<span>·</span>{post.readTime} {zh ? '分钟阅读' : 'min read'}</p>
       <p>{post.excerpt[lang]}</p>
     </header>
     <div class="prose" set:html={renderMarkdown(post.body[lang])}/>

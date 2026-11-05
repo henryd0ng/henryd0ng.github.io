@@ -7,16 +7,25 @@ export type Localized = {
   en: string;
 };
 
+export type BlogCategory = {
+  id: string;
+  name: Localized;
+  description: Localized;
+};
+
 export type Post = {
   slug: string;
-  /** 形如 2026-11-02 */
+  /** 已发布内容填写 YYYY-MM-DD；草稿可留空。 */
   date: string;
-  category: Localized;
+  /** 对应 blogCategories 中的稳定 id。 */
+  category: string;
   title: Localized;
   excerpt: Localized;
   /** 单位：分钟 */
   readTime: number;
   demo: boolean;
+  /** true 表示草稿；false 或省略时发布。 */
+  draft?: boolean;
   /** 正文使用 Markdown：段落之间空一行，支持加粗、列表、图片。 */
   body: Localized;
 };
@@ -90,6 +99,8 @@ export type Home = {
 export const profile: Profile = data.profile;
 
 export const home: Home = data.home;
+
+export const blogCategories: BlogCategory[] = data.blogCategories;
 
 export const posts: Post[] = data.posts;
 

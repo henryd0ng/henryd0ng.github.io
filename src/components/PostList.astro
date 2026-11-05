@@ -1,21 +1,25 @@
 ---
-import { type Lang, posts } from '../data/site';
+import { type Lang, posts, blogCategories } from '../data/site';
 
-const { lang, limit } = Astro.props as { lang: Lang; limit?: number };
-const items = limit === undefined ? posts : posts.slice(0, limit);
+const { lang, limit, categoryId } = Astro.props as { lang: Lang; limit?: number; categoryId?: string };
+const published = posts.filter(post => !post.draft && (!categoryId || post.category === categoryId));
+const items = limit === undefined ? published : published.slice(0, limit);
 const zh = lang === 'zh';
 ---
 {items.length ? (
   <div class="post-list">
-    {items.map(post => (
+    {items.map(post => {
+      const category = blogCategories.find(category => category.id === post.category);
+      return (
       <article class="post-row">
         <time datetime={post.date}>{post.date}</time>
         <div class="post-text">
           <h3 class="post-title"><a href={`/${lang}/blog/${post.slug}/`}>{post.title[lang]}</a></h3>
           <p>{post.excerpt[lang]}</p>
-          <p class="post-category">{post.category[lang]} · {post.readTime} {zh ? '分钟阅读' : 'min read'}</p>
+          <p class="post-category">{category && <a href={`/${lang}/blog/category/${category.id}/`}>{category.name[lang]}</a>}<span>·</span>{post.readTime} {zh ? '分钟阅读' : 'min read'}</p>
         </div>
       </article>
-    ))}
+      );
+    })}
   </div>
-) : <p class="empty-state">{zh ? '暂无。' : 'None yet.'}</p>}
+) : <p class="empty-state">{zh ? '暂无已发布文章。' : 'No published posts yet.'}</p>}

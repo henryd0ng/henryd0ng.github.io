@@ -189,6 +189,9 @@ main { min-width: 0; outline: none; }
 .section-heading h2 > span { display: none; }
 .text-link { display: inline-flex; align-items: center; gap: 6px; }
 
+.blog-categories { display: flex; flex-wrap: wrap; gap: 8px 26px; margin-bottom: 28px; padding-bottom: 10px; border-bottom: 1px solid var(--line); font-size: 16px; }
+.blog-categories a { padding: 4px 0; color: var(--muted); }
+.blog-categories a[aria-current='page'] { color: var(--ink); font-weight: 600; text-decoration: underline; text-underline-offset: 8px; text-decoration-color: var(--blue); }
 .post-list, .project-grid, .publication-list { display: block; }
 .post-row {
   display: flex;

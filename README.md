@@ -24,58 +24,86 @@ npm run preview
 
 构建结果位于 `dist/`，无需提交；`package-lock.json` 应随源码提交。
 
-## 更新个人资料
+## 内容文件与个人资料
 
-- `src/data/site.ts` 的 `profile`：姓名、院校、简短介绍及 GitHub 链接。
-- `src/components/Home.astro`：详细简介、研究兴趣、教育背景和科研经历。目前使用明确的待补充提示，请同时填写中文和英文。
-- `public/images/avatar.png`：头像，当前来自 [henryd0ng 的公开 GitHub 资料](https://github.com/henryd0ng)，可替换为个人照片。
-- `src/layouts/Base.astro`：站点导航、侧栏及页脚；姓名如需更改，也应同步这里的标题和文字。
+所有可编辑内容统一存放在 `src/data/site.json`，可视化编辑器也读写该文件。`src/data/site.ts` 只声明类型并转发数据，不在其中填写内容。
 
-博客、项目和论文的数据数组目前为空。以下仅为字段填写示例，不代表已发布内容或真实经历；替换为真实资料后，将对象加入 `src/data/site.ts` 对应数组。
+- `profile`：姓名、院校、简介及 GitHub 链接。
+- `home`：首页引导语、额外链接、研究兴趣、教育背景、科研与实习经历。
+- `blogCategories`、`posts`、`projects`、`publications`：博客分类及各栏目的内容。
+- `public/images/avatar.png`：头像；可替换为个人照片。
 
-## 添加博客
+双语文本使用 `{ "zh": "中文", "en": "English" }`。博客与项目的 `body.zh`、`body.en` 均为 **Markdown 字符串**，不是段落数组。JSON 中用 `\n\n` 分隔段落，支持加粗、列表和图片，例如 `"第一段。\n\n**第二段。**"`。
 
-```ts
-export const posts: Post[] = [{
-  slug: 'my-note', date: '2026-10-30', readTime: 3, demo: false,
-  category: { zh: '学习笔记', en: 'Study Notes' },
-  title: { zh: '笔记标题', en: 'Note title' },
-  excerpt: { zh: '填写文章摘要。', en: 'Add an article summary.' },
-  body: { zh: ['填写第一段正文。'], en: ['Add the first paragraph.'] },
-}];
+## 博客分类与草稿
+
+博客使用以下两类内容：
+
+| 稳定 ID | 中文名 | 英文名 |
+| --- | --- | --- |
+| `reflections` | 研究随想 | Research Reflections |
+| `knowledge` | 知识输出 | Knowledge Sharing |
+
+分类名称与介绍在 `blogCategories` 中以双语填写。文章的 `category` 填分类 **ID 字符串**，例如 `"knowledge"`。以后调整名称时，只需修改分类的 `name` 和 `description`，保留 `id`，既有文章的归属不变。
+
+`posts` 已预留一篇“强化学习 / Reinforcement Learning”草稿，正文、摘要和日期尚未填写。`draft: true` 的文章不出现在公开列表中，也不生成详情页；`draft: false` 或省略该字段表示发布。
+
+草稿状态只控制网站页面的生成；本仓库公开，提交到 GitHub 的草稿原文仍可在源码中查看。
+
+添加文章时，将以下对象加入 `posts` 数组；这是字段示例，不是已发布文章：
+
+```json
+{
+  "slug": "my-note",
+  "date": "",
+  "category": "knowledge",
+  "title": { "zh": "笔记标题", "en": "Note title" },
+  "excerpt": { "zh": "", "en": "" },
+  "readTime": 0,
+  "demo": false,
+  "draft": true,
+  "body": { "zh": "", "en": "" }
+}
 ```
 
-`date` 使用 `YYYY-MM-DD`，`readTime` 单位为分钟。文章地址为 `/zh/blog/my-note/` 和 `/en/blog/my-note/`。
+发布前填写中英文标题、摘要与 Markdown 正文，填写 `YYYY-MM-DD` 格式的 `date` 和以分钟计的 `readTime`，然后将 `draft` 改为 `false`。`slug` 应唯一且稳定；上例发布后的地址为 `/zh/blog/my-note/` 和 `/en/blog/my-note/`。
 
 ## 添加项目
 
-```ts
-export const projects: Project[] = [{
-  slug: 'my-project', demo: false, art: 'orbit',
-  title: { zh: '项目标题', en: 'Project title' },
-  category: { zh: '研究项目', en: 'Research Project' },
-  description: { zh: '填写项目简介。', en: 'Add a project summary.' },
-  tags: ['Python'],
-  body: { zh: ['填写工作内容与成果。'], en: ['Describe the work and results.'] },
-}];
+将以下对象加入 `projects` 数组，并将占位文字替换为真实内容：
+
+```json
+{
+  "slug": "my-project",
+  "demo": false,
+  "art": "orbit",
+  "title": { "zh": "项目标题", "en": "Project title" },
+  "category": { "zh": "研究项目", "en": "Research Project" },
+  "description": { "zh": "填写项目简介。", "en": "Add a project summary." },
+  "tags": ["Python"],
+  "body": { "zh": "填写工作内容与成果。", "en": "Describe the work and results." }
+}
 ```
 
-项目地址为 `/zh/projects/my-project/` 和 `/en/projects/my-project/`。当前类型要求 `demo` 和 `art`；真实条目填写 `demo: false`，`art: 'orbit'` 保留即可，当前页面不展示该插画字段。
+项目地址为 `/zh/projects/my-project/` 和 `/en/projects/my-project/`。项目的 `category` 仍是双语文本；`demo` 和 `art` 是当前类型要求的字段，真实项目填写 `demo: false`，`art: "orbit"` 保留即可，页面不展示该插画字段。
 
 ## 添加论文
 
-```ts
-export const publications: Publication[] = [{
-  id: 'my-paper-2026', year: 2026,
-  title: { zh: '论文标题', en: 'Paper title' },
-  authors: '填写作者名单 / Add author names',
-  venue: { zh: '填写会议或期刊', en: 'Add conference or journal' },
-}];
+保留 `publications` 中已有条目，按需追加对象：
+
+```json
+{
+  "id": "my-paper-2026",
+  "year": 2026,
+  "title": { "zh": "论文标题", "en": "Paper title" },
+  "authors": "填写作者名单 / Add author names",
+  "venue": { "zh": "填写会议或期刊", "en": "Add conference or journal" }
+}
 ```
 
-`id` 保持唯一；可按需添加 `pdf`、`code`、`url` 链接，尚无链接时省略。文件放入 `public/`，例如 `public/files/paper.pdf` 在数据中写为 `pdf: '/files/paper.pdf'`。
+`id` 保持唯一。`title`、`authors` 可暂时省略；可按需添加双语 `status`、`note`，以及 `pdf`、`code`、`url` 链接。作者字符串支持用 `**姓名**` 加粗。文件放入 `public/`，例如 `public/files/paper.pdf` 对应 `"pdf": "/files/paper.pdf"`。
 
-所有双语文本采用 `{ zh: '中文', en: 'English' }`；正文是中英文段落数组。博客和项目的 `slug` 应唯一且稳定。修改后运行 `npm run build`，列表与详情页会一起生成。
+修改后运行 `npm run build` 并预览，确认中英文页面和链接；发布后的博客与项目会自动生成对应详情页。
 
 ## GitHub Pages 发布
 

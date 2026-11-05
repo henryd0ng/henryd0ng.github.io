@@ -91,7 +91,52 @@
       ]
     }
   },
-  "posts": [],
+  "blogCategories": [
+    {
+      "id": "reflections",
+      "name": {
+        "zh": "研究随想",
+        "en": "Research Reflections"
+      },
+      "description": {
+        "zh": "对研究问题、方法与方向的思考。",
+        "en": "Reflections on research questions, methods, and directions."
+      }
+    },
+    {
+      "id": "knowledge",
+      "name": {
+        "zh": "知识输出",
+        "en": "Knowledge Sharing"
+      },
+      "description": {
+        "zh": "围绕具体主题整理与分享概念、方法及学习笔记。",
+        "en": "Concepts, methods, and study notes organized and shared by topic."
+      }
+    }
+  ],
+  "posts": [
+    {
+      "slug": "reinforcement-learning",
+      "date": "",
+      "category": "knowledge",
+      "title": {
+        "zh": "强化学习",
+        "en": "Reinforcement Learning"
+      },
+      "excerpt": {
+        "zh": "",
+        "en": ""
+      },
+      "readTime": 0,
+      "demo": false,
+      "draft": true,
+      "body": {
+        "zh": "",
+        "en": ""
+      }
+    }
+  ],
   "projects": [],
   "publications": [
     {

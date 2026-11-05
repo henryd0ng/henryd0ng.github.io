@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import PostList from '../../../components/PostList.astro';
+import BlogCategories from '../../../components/BlogCategories.astro';
 import ProjectGrid from '../../../components/ProjectGrid.astro';
 import PublicationList from '../../../components/PublicationList.astro';
 import { type Lang } from '../../../data/site';
@@ -23,7 +24,7 @@ const title = labels[section];
 ---
 <Base lang={lang} title={title} section={section}>
   <header class="page-intro"><h1>{title}</h1></header>
-  {section === 'blog' && <PostList lang={lang} />}
+  {section === 'blog' && <><BlogCategories lang={lang} /><PostList lang={lang} /></>}
   {section === 'projects' && <ProjectGrid lang={lang} />}
   {section === 'publications' && <PublicationList lang={lang} />}
 </Base>
