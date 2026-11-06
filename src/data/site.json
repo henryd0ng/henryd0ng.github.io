@@ -117,18 +117,18 @@
   ],
   "posts": [
     {
-      "slug": "reinforcement-learning",
+      "slug": "rl-probability",
       "date": "2026-11-06",
       "category": "knowledge",
       "title": {
-        "zh": "强化学习前两讲：从不确定性到采样与生成",
-        "en": "RL Notes: From Uncertainty to Sampling and Generation"
+        "zh": "RL-probability：概率、集中与马尔可夫动力学",
+        "en": "RL-probability: Probability, Concentration, and Markov Dynamics"
       },
       "excerpt": {
-        "zh": "用机器人抓取串起不确定性、采样与生成模型。以 TL;DR 抓主线，用 Recall 检查迁移，再用短证明与路标补上“为什么”，而不铺满公式推导。",
-        "en": "A guide to the Chinese notes on uncertainty, sampling, and generation, with a TL;DR, active recall, and optional reasoning roadmaps."
+        "zh": "第一讲完整笔记：从概率与条件期望、LLSE/MMSE 投影，到集中不等式、马尔可夫链、统计推断与贝叶斯学习。按章保留定义、定理条件、计算例子和共轭模型，连接价值估计、探索与 belief 更新。",
+        "en": "An English reading guide to the full Chinese Lecture 1 notes: conditional expectation, projection, concentration, Markov chains, statistical inference, and Bayesian learning."
       },
-      "readTime": 35,
+      "readTime": 80,
       "demo": false,
       "draft": false,
       "body": {
@@ -136,8 +136,8 @@
         "en": ""
       },
       "bodyFiles": {
-        "zh": "reinforcement-learning.zh.md",
-        "en": "reinforcement-learning.en.md"
+        "zh": "RL-probability.zh.md",
+        "en": "RL-probability.en.md"
       }
     }
   ],

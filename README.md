@@ -48,32 +48,44 @@ npm run preview
 
 ## 编辑强化学习笔记
 
-直接编辑 [`content/blog/reinforcement-learning.zh.md`](content/blog/reinforcement-learning.zh.md)。当前正文已整理为“强化学习前两讲：从不确定性到采样与生成”，用机器人抓取串联两讲概念，侧重直觉、适用条件与联系，不展开长篇公式推导。英文页的 [`content/blog/reinforcement-learning.en.md`](content/blog/reinforcement-learning.en.md) 是明确标注的英文导读，并链接中文全文，不是完整译文。
+按主题命名为 **RL-xxx**，例如 `RL-probability`、`RL-sampling`，URL 使用小写 `rl-xxx`。当前只完成第一讲 **RL-probability：概率、集中与马尔可夫动力学**，中文正文在 [RL-probability.zh.md](content/blog/RL-probability.zh.md)。按原讲章节覆盖定义、定理假设、核心公式、计算例子和知识联系；不以概览替代正文。集中不等式可以省略证明，但必须保留条件与结论，并明确哪些只是证明思路。
 
-笔记采用三层阅读结构：开头的 **TL;DR** 压缩主线，正文旁的原生 `<details>` 提供可选的短证明、反例与证明路标，节末 **Recall** 及文末迁移题用于先自答再核对。题目在折叠外可见，答案默认收起；不要用 `open` 把答案预先展开，也不要把“只给证明方向”写成“已完成证明”。这些区块无需额外 JavaScript，样式在 `src/styles/global.css` 中的 study-note 相关规则维护。
+[英文页](content/blog/RL-probability.en.md) 是明确标注的阅读导览，链接中文各章，不是完整译文。第二讲另行整理，不继续把旧版两讲概览当成完成稿。旧 `/zh/blog/reinforcement-learning/` 与 `/en/blog/reinforcement-learning/` 入口通过 [Astro 配置](astro.config.mjs) 跳转至新主题文章。
 
-**资料分享边界：**原始课件与手写笔记仅作为阅读依据，不得复制进仓库、`public/` 或部署产物，也不提供下载链接或页面截图。阅读过程的临时提取文本与核查图片仅放在已忽略的 `.astro/lecture-notes/` 本地目录，不属于博客内容。
+开头保留简短 **TL;DR** 与可点击目录；八个正文章节各有两道 Recall，文末另有五组综合练习。题目始终可见，答案使用原生 `<details>` 默认收起，不加 `open`。在 HTML 容器、`summary` 和其中的 Markdown 之间留空行，确保公式与列表被解析。内容样式在 [global.css](src/styles/global.css) 中维护，无需客户端公式解析脚本。
 
-正文只需按普通 Markdown 编写，支持二级或三级标题、加粗、列表、链接、图片和代码块。**不要在正文重复写 `# 文章标题`**，页面会自动显示 JSON 中的标题。当前没有数学公式渲染，`$...$` 与 `$$...$$` 不会排版成公式。
+**资料分享边界：**原始课件与手写笔记仅作为阅读依据，不得复制进仓库、`public/` 或部署产物，也不提供下载链接或页面截图。阅读过程的临时提取文本与核查图片仅放在已忽略的 `.astro/lecture-notes/` 本地目录，不属于博客内容。源材料中的笔误应核实并在正文相应位置说明，不机械照抄。
 
-图片可放在 `public/images/blog/`，例如 `public/images/blog/example.png` 在正文中写为 `![图片说明](/images/blog/example.png)`。
+正文按普通 Markdown 编写，支持标题、列表、表格、链接、图片、代码和数学公式。**不要重复写 `# 文章标题`**，页面会显示元数据中的标题。编号标题自动生成稳定锚点，例如 `## 4. 集中` 对应 `#section-4`，`### 4.10 Hoeffding` 对应 `#section-4-10`。
 
-这篇文章在 `src/data/site.json` 的 `posts` 中已有记录，分类为 `knowledge`，当前设为 `draft: false`，构建时会生成页面。标题、摘要、分类、日期、阅读时长和草稿状态都在该记录中修改。正文文件通过以下字段关联：
+### 数学公式
+
+[Markdown 渲染器](src/lib/markdown.ts) 在构建时使用 KaTeX 生成 HTML 与无障碍 MathML，样式和字体随站点本地部署，不依赖 CDN。
+
+- 行内公式：`$V^\pi(s)$`，中文与美元符号之间不强制要求空格。
+- 展示公式：将开始与结束的 `$$` 分别放在独立一行；长式子可用 `aligned` 主动分行。
+- Markdown 表格中的条件符号使用 `\mid` 或 `\vert`，避免未转义的 `|` 被识别为列分隔符。
+- 真正的美元金额用 `\$` 转义；代码块与行内代码里的美元符号不会被当作数学。
+- 不支持的公式语法会使构建失败，而不是静默发布坏公式。宽表格与展示公式在自己的容器内横向滚动，不应撑宽整页。
+
+发布前执行 `npm test` 和 `npm run build`，并检查桌面、手机与两种主题下的公式、表格、目录和折叠答案。
+
+### 元数据与发布状态
+
+文章在 [site.json](src/data/site.json) 的 `posts` 中注册，分类为 `knowledge`。标题、摘要、日期、阅读时长与草稿状态都在此修改，正文通过以下字段关联：
 
 ```json
 "bodyFiles": {
-  "zh": "reinforcement-learning.zh.md",
-  "en": "reinforcement-learning.en.md"
+  "zh": "RL-probability.zh.md",
+  "en": "RL-probability.en.md"
 }
 ```
 
-`bodyFiles` 的文件名相对于项目根目录下的 `content/blog/`，可分别填写 `zh`、`en`。配置的 Markdown 文件会覆盖对应语言的 `body` 字符串；没有配置文件的语言继续使用 `body.zh` 或 `body.en`，不会自动使用另一种语言的正文。
+`bodyFiles` 的文件名相对于 `content/blog/`，可分别填写 `zh`、`en`。配置的文件覆盖对应语言的 `body`；未配置时使用原有 `body.zh` 或 `body.en`，不会自动复制另一种语言。
 
-其他文章可以先完成中文草稿，再补充英文正文或明确标注的英文导读，并设置 `bodyFiles.en`。发布前应补齐两种语言的标题、摘要与页面内容，以免英文详情页为空；导读须清楚说明不是完整译文，并指向全文。
+可以先完成中文，再补英文正文或明确标注的英文导读；发布前应补齐两种语言的标题、摘要与页面内容。`draft: true` 的文章不出现在公开列表中，也不生成详情页；设为 `false` 或省略表示发布。第一讲地址为 `/zh/blog/rl-probability/` 与 `/en/blog/rl-probability/`。
 
-`draft: true` 的文章不出现在公开列表中，也不生成详情页；`draft: false` 或省略该字段表示发布。完成正文后，填写 `YYYY-MM-DD` 格式的 `date` 和以分钟计的 `readTime`，将 `draft` 改为 `false`，再本地构建和预览。强化学习文章发布后的地址为 `/zh/blog/reinforcement-learning/` 和 `/en/blog/reinforcement-learning/`。
-
-草稿状态只控制网站页面的生成；本仓库公开，提交到 GitHub 的草稿原文仍可在源码中查看。
+草稿状态只控制网站生成；本仓库公开，提交到 GitHub 的草稿原文仍可在源码中查看。
 
 ## 添加另一篇博客
 

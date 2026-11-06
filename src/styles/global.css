@@ -252,6 +252,51 @@ a.post-row:hover, a.project-card:hover { text-decoration: none; }
 .prose code { font-size: 0.9em; overflow-wrap: anywhere; }
 .prose li + li { margin-top: 8px; }
 
+/* Long-form mathematics stays local, readable, and contained on small screens. */
+.prose .katex { font-size: 1.03em; }
+.prose .katex-display {
+  max-width: 100%;
+  margin: 24px 0;
+  padding: 6px 2px 10px;
+}
+/*
+ * 外层容器取 max-content，滚动宽度才跟得上公式的真实宽度：
+ * 只在内层 .katex 上设 max-content 时，Chrome 仍按容器宽度计算滚动区，
+ * 公式会被裁掉且无法滚动。
+ */
+.prose .math-block { width: fit-content; min-width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.prose .katex-display > .katex { text-align: center; }
+/*
+ * 宽公式改为左对齐：手机上公式横向滚动时，居中的公式会在初始状态下把首项藏在视口之外。
+ * 短公式保留 KaTeX 的居中排版。
+ */
+.prose .math-block-wide > .katex-display > .katex { text-align: left; }
+.prose .math-block > .katex-display, .prose .katex-display { overflow: visible; }
+.prose .katex, .prose .katex * { overflow-wrap: normal; }
+.prose .table-scroll {
+  max-width: 100%;
+  margin: 24px 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.prose .table-scroll:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.94em; }
+.prose th, .prose td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th { background: var(--soft); font-weight: 600; }
+.prose tr:last-child td { border-bottom: 0; }
+.prose .article-toc { margin: 28px 0 36px; padding: 20px 24px; border: 1px solid var(--line); }
+.prose .article-toc h2 { margin: 0 0 12px; padding: 0; border: 0; font-size: 21px; }
+.prose .article-toc ol { margin: 0; }
+.prose .article-toc a { display: inline-block; padding: 4px 0; }
+.prose .article-toc li + li { margin-top: 2px; }
+.prose .chapter-note { margin-bottom: 20px; color: var(--muted); font-size: 0.9em; }
+
 /* Layered study notes: visible questions, optional reasoning, native disclosures. */
 .prose .study-tldr {
   margin: 0 0 32px;
