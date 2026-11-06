@@ -126,7 +126,7 @@
       },
       "excerpt": {
         "zh": "第一讲完整笔记：从概率与条件期望、LLSE/MMSE 投影，到集中不等式、马尔可夫链、统计推断与贝叶斯学习。按章保留定义、定理条件、计算例子和共轭模型，连接价值估计、探索与 belief 更新。",
-        "en": "An English reading guide to the full Chinese Lecture 1 notes: conditional expectation, projection, concentration, Markov chains, statistical inference, and Bayesian learning."
+        "en": "A standalone English write-up of the whole lecture: conditional expectation as the object of value, projection and LLSE/MMSE, Monte Carlo, LLN/CLT and concentration, Markov chains with stationarity and mixing, statistical inference with conjugate models, and Bayesian learning up to Thompson Sampling and POMDP beliefs."
       },
       "readTime": 80,
       "demo": false,
