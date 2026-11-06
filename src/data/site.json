@@ -118,25 +118,26 @@
   "posts": [
     {
       "slug": "reinforcement-learning",
-      "date": "",
+      "date": "2026-11-06",
       "category": "knowledge",
       "title": {
-        "zh": "强化学习",
-        "en": "Reinforcement Learning"
+        "zh": "强化学习前两讲：从不确定性到采样与生成",
+        "en": "RL Notes: From Uncertainty to Sampling and Generation"
       },
       "excerpt": {
-        "zh": "",
-        "en": ""
+        "zh": "用机器人抓取串起不确定性、采样与生成模型。以 TL;DR 抓主线，用 Recall 检查迁移，再用短证明与路标补上“为什么”，而不铺满公式推导。",
+        "en": "A guide to the Chinese notes on uncertainty, sampling, and generation, with a TL;DR, active recall, and optional reasoning roadmaps."
       },
-      "readTime": 0,
+      "readTime": 35,
       "demo": false,
-      "draft": true,
+      "draft": false,
       "body": {
         "zh": "",
         "en": ""
       },
       "bodyFiles": {
-        "zh": "reinforcement-learning.zh.md"
+        "zh": "reinforcement-learning.zh.md",
+        "en": "reinforcement-learning.en.md"
       }
     }
   ],

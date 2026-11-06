@@ -46,25 +46,30 @@ npm run preview
 
 分类名称与介绍在 `blogCategories` 中以双语填写。文章的 `category` 填分类 **ID 字符串**，例如 `"knowledge"`。以后调整名称时，只需修改分类的 `name` 和 `description`，保留 `id`，既有文章的归属不变。
 
-## 从强化学习草稿开始写
+## 编辑强化学习笔记
 
-直接编辑 [`content/blog/reinforcement-learning.zh.md`](content/blog/reinforcement-learning.zh.md)。这份中文模板已列出“问题与范围、基本概念、核心机制、一个贯穿例子、常见误区与边界、总结、参考资料”七个章节，每节的 HTML 注释是写作提示，可替换为自己的正文。注释不会显示在网页上。
+直接编辑 [`content/blog/reinforcement-learning.zh.md`](content/blog/reinforcement-learning.zh.md)。当前正文已整理为“强化学习前两讲：从不确定性到采样与生成”，用机器人抓取串联两讲概念，侧重直觉、适用条件与联系，不展开长篇公式推导。英文页的 [`content/blog/reinforcement-learning.en.md`](content/blog/reinforcement-learning.en.md) 是明确标注的英文导读，并链接中文全文，不是完整译文。
+
+笔记采用三层阅读结构：开头的 **TL;DR** 压缩主线，正文旁的原生 `<details>` 提供可选的短证明、反例与证明路标，节末 **Recall** 及文末迁移题用于先自答再核对。题目在折叠外可见，答案默认收起；不要用 `open` 把答案预先展开，也不要把“只给证明方向”写成“已完成证明”。这些区块无需额外 JavaScript，样式在 `src/styles/global.css` 中的 study-note 相关规则维护。
+
+**资料分享边界：**原始课件与手写笔记仅作为阅读依据，不得复制进仓库、`public/` 或部署产物，也不提供下载链接或页面截图。阅读过程的临时提取文本与核查图片仅放在已忽略的 `.astro/lecture-notes/` 本地目录，不属于博客内容。
 
 正文只需按普通 Markdown 编写，支持二级或三级标题、加粗、列表、链接、图片和代码块。**不要在正文重复写 `# 文章标题`**，页面会自动显示 JSON 中的标题。当前没有数学公式渲染，`$...$` 与 `$$...$$` 不会排版成公式。
 
 图片可放在 `public/images/blog/`，例如 `public/images/blog/example.png` 在正文中写为 `![图片说明](/images/blog/example.png)`。
 
-这篇草稿在 `src/data/site.json` 的 `posts` 中已有记录，标题为“强化学习 / Reinforcement Learning”，分类为 `knowledge`。标题、摘要、分类、日期、阅读时长和草稿状态都在该记录中修改。正文文件通过以下字段关联：
+这篇文章在 `src/data/site.json` 的 `posts` 中已有记录，分类为 `knowledge`，当前设为 `draft: false`，构建时会生成页面。标题、摘要、分类、日期、阅读时长和草稿状态都在该记录中修改。正文文件通过以下字段关联：
 
 ```json
 "bodyFiles": {
-  "zh": "reinforcement-learning.zh.md"
+  "zh": "reinforcement-learning.zh.md",
+  "en": "reinforcement-learning.en.md"
 }
 ```
 
 `bodyFiles` 的文件名相对于项目根目录下的 `content/blog/`，可分别填写 `zh`、`en`。配置的 Markdown 文件会覆盖对应语言的 `body` 字符串；没有配置文件的语言继续使用 `body.zh` 或 `body.en`，不会自动使用另一种语言的正文。
 
-可以先完成中文草稿，之后新建 `content/blog/reinforcement-learning.en.md` 并设置 `bodyFiles.en`。发布前应补齐两种语言的标题、摘要与正文，以免英文详情页为空。
+其他文章可以先完成中文草稿，再补充英文正文或明确标注的英文导读，并设置 `bodyFiles.en`。发布前应补齐两种语言的标题、摘要与页面内容，以免英文详情页为空；导读须清楚说明不是完整译文，并指向全文。
 
 `draft: true` 的文章不出现在公开列表中，也不生成详情页；`draft: false` 或省略该字段表示发布。完成正文后，填写 `YYYY-MM-DD` 格式的 `date` 和以分钟计的 `readTime`，将 `draft` 改为 `false`，再本地构建和预览。强化学习文章发布后的地址为 `/zh/blog/reinforcement-learning/` 和 `/en/blog/reinforcement-learning/`。
 

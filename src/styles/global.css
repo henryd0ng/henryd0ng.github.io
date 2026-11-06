@@ -5,6 +5,7 @@
   --muted: #d5d5d5;
   --line: #6c6c6c;
   --blue: #52adc8;
+  --prose-link: #8ac9df;
   --blue-light: #505b5e;
   --soft: #4c4c4c;
   color-scheme: dark;
@@ -17,6 +18,7 @@
   --muted: #62686d;
   --line: #e6e6e6;
   --blue: #247b96;
+  --prose-link: #1f6b83;
   --blue-light: #edf5f7;
   --soft: #f5f5f5;
   color-scheme: light;
@@ -241,11 +243,73 @@ a.post-row:hover, a.project-card:hover { text-decoration: none; }
 .article .page-intro h1 { margin: 12px 0 20px; font-size: 29px; line-height: 1.35; }
 .article-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; color: var(--muted); font-size: 14px; }
 .prose { font-size: 18px; line-height: 1.65; overflow-wrap: break-word; }
+.prose a { color: var(--prose-link); }
 .prose > p + p { margin-top: 25px; }
 .prose h2 { margin-top: 42px; margin-bottom: 18px; padding-bottom: 8px; border-bottom: 1px solid var(--line); font-size: 24px; }
 .prose h3 { margin-top: 30px; margin-bottom: 14px; font-size: 21px; }
 .prose pre { overflow-x: auto; padding: 16px; background: var(--soft); font-size: 14px; }
 .prose img { height: auto; }
+.prose code { font-size: 0.9em; overflow-wrap: anywhere; }
+.prose li + li { margin-top: 8px; }
+
+/* Layered study notes: visible questions, optional reasoning, native disclosures. */
+.prose .study-tldr {
+  margin: 0 0 32px;
+  padding: 24px;
+  border-left: 3px solid var(--blue);
+  background: var(--soft);
+}
+.prose .study-tldr h2 {
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  font-size: 22px;
+}
+.prose .study-tldr ol { margin: 0 0 16px; }
+.prose .study-tldr li + li { margin-top: 12px; }
+.prose .recall-block {
+  margin: 28px 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+}
+.prose .recall-label {
+  margin-bottom: 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.prose .proof-note {
+  margin: 24px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--soft);
+}
+.prose :is(.proof-note, .recall-answer) > summary {
+  min-height: 44px;
+  padding: 12px 16px;
+  cursor: pointer;
+  line-height: 1.5;
+}
+.prose :is(.proof-note, .recall-answer) > summary::marker { color: var(--blue); }
+.prose :is(.proof-note, .recall-answer) > summary:hover { text-decoration: underline; }
+.prose :is(.proof-note, .recall-answer) > summary:active { background: var(--blue-light); }
+.prose :is(.proof-note, .recall-answer) > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+.prose .proof-note[open] > summary { border-bottom: 1px solid var(--line); }
+.prose .recall-answer { margin-top: 12px; }
+.prose .recall-answer > summary { padding-right: 0; padding-left: 0; font-size: 16px; }
+.prose .disclosure-body { padding: 16px; }
+.prose .recall-answer > .disclosure-body { padding: 8px 0 0; }
+.prose :is(.study-tldr, .recall-block, .disclosure-body) p + p { margin-top: 16px; }
+.prose .disclosure-body > :last-child { margin-bottom: 0; }
+.prose .proof-boundary {
+  padding-left: 12px;
+  border-left: 2px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9em;
+}
 .page-end { margin-top: 50px; color: var(--muted); font-size: 15px; }
 .site-footer {
   display: flex;
@@ -314,6 +378,8 @@ a.post-row:hover, a.project-card:hover { text-decoration: none; }
   .profile-links { gap: 7px; font-size: 13px; }
   .handle { margin-bottom: 8px; font-size: 13px; }
   .biography, .prose, .page-intro > p { font-size: 16px; line-height: 1.65; }
+  .prose :is(.study-tldr, .recall-block) { padding: 16px; }
+  .prose .study-tldr h2 { font-size: 21px; }
   .academic-section, .home-section { margin-top: 40px; }
   .academic-section h2, .section-heading h2 { font-size: 22px; }
   .academic-section > h2, .section-heading { margin-bottom: 18px; }
