@@ -117,6 +117,29 @@
   ],
   "posts": [
     {
+      "slug": "sampling",
+      "date": "2026-11-11",
+      "category": "knowledge",
+      "title": {
+        "zh": "Sampling（采样）：从蒙特卡洛到生成模型",
+        "en": "Sampling: From Monte Carlo to Generative Models"
+      },
+      "excerpt": {
+        "zh": "从逆变换与接受-拒绝采样出发，串联蒙特卡洛积分、重要性采样、MCMC、Diffusion 与 Flow Matching，整理核心公式及它们之间的联系。",
+        "en": "A Chinese study note connecting classical sampling, Monte Carlo integration, importance sampling, MCMC, diffusion, and flow matching. This English page is a brief reading guide."
+      },
+      "readTime": 30,
+      "demo": false,
+      "draft": false,
+      "body": {
+        "zh": "",
+        "en": "This Chinese study note follows a path from inverse-transform and acceptance-rejection sampling to Monte Carlo integration, importance sampling, MCMC, diffusion, and flow matching. It emphasizes the reasoning behind each method and the connections between their probability and sampling views."
+      },
+      "bodyFiles": {
+        "zh": "sampling.md"
+      }
+    },
+    {
       "slug": "rl-probability",
       "date": "2026-11-06",
       "category": "knowledge",
