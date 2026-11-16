@@ -1,0 +1,21 @@
+---
+const zh = '/zh/projects/robodojo-contact/';
+const en = '/en/projects/robodojo-contact/';
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>robodojo-contact</title>
+  <link rel="canonical" href={new URL(zh, Astro.site)} />
+  <script is:inline>
+    let lang = 'zh';
+    try { if (localStorage.getItem('language') === 'en') lang = 'en'; } catch {}
+    location.replace('/' + lang + '/projects/robodojo-contact/' + location.hash);
+  </script>
+</head>
+<body>
+  <p><a href={zh}>robodojo-contact（中文）</a> · <a href={en}>robodojo-contact (English)</a></p>
+</body>
+</html>

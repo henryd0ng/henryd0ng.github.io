@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="720" viewBox="0 0 960 720" role="img" aria-label="Original schematic of opposing gripper contacts around a geometric object"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 H 0 V 40" fill="none" stroke="#dce7ee" stroke-width="1"/></pattern><linearGradient id="bg" x2="1" y2="1"><stop stop-color="#f8fbfd"/><stop offset="1" stop-color="#eaf3f7"/></linearGradient><linearGradient id="teal" x2="0" y2="1"><stop stop-color="#b8eee0"/><stop offset="1" stop-color="#65bcae"/></linearGradient><linearGradient id="steel" x2="0" y2="1"><stop stop-color="#718dad"/><stop offset="1" stop-color="#294864"/></linearGradient><filter id="shadow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="15"/></filter><marker id="arrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#2967b9" stroke-width="1.2"/></marker></defs><rect width="960" height="720" fill="url(#bg)"/><rect x="28" y="28" width="904" height="664" rx="24" fill="none" stroke="#c5d7e3"/><rect x="45" y="128" width="870" height="468" fill="url(#grid)"/><path d="M52 108H908M52 612H908" stroke="#c5d7e3"/><rect x="54" y="56" width="11" height="11" rx="2" fill="#2c9f91"/><text x="80" y="68" fill="#294764" font-family="Arial,sans-serif" font-size="14" font-weight="700" letter-spacing="2">SCHEMATIC STUDY</text><text x="908" y="68" text-anchor="end" fill="#728a9f" font-family="monospace" font-size="12">ROBODOJO / CONTACT</text><ellipse cx="480" cy="512" rx="177" ry="29" fill="#99b9c7" opacity=".25" filter="url(#shadow)"/>
+<path d="M480 159V562M227 372H733" stroke="#a7bdcd" stroke-width="1.5" stroke-dasharray="6 9"/>
+<path d="M400 314L480 278L560 314V432L480 473L400 432Z" fill="url(#teal)" stroke="#3e9a91" stroke-width="2"/>
+<path d="M400 314L480 356L560 314M480 356V473" fill="none" stroke="#5dac9f" stroke-width="2"/>
+<path d="M400 314L480 278L560 314L480 356Z" fill="#c9f4e6" stroke="#5dac9f" stroke-width="2"/>
+<path d="M435 298L515 337M446 338L524 298" stroke="#94d8c5"/>
+<rect x="464" y="159" width="32" height="45" rx="8" fill="#c1d4e6" stroke="#6584a4" stroke-width="2"/>
+<rect x="322" y="204" width="316" height="46" rx="12" fill="url(#steel)"/>
+<path d="M342 246L326 291V385L374 406M618 246L634 291V385L586 406" fill="none" stroke="#547595" stroke-width="29" stroke-linejoin="round"/>
+<path d="M339 249L323 292V381M621 249L637 292V381" fill="none" stroke="#a8c5de" stroke-width="4" stroke-linecap="round"/>
+<rect x="371" y="372" width="30" height="51" rx="7" fill="#416786"/>
+<rect x="559" y="372" width="30" height="51" rx="7" fill="#416786"/>
+<path d="M400 380V414M560 380V414" stroke="#249e8e" stroke-width="6" stroke-linecap="round"/>
+<g fill="none" stroke="#45b3a1"><circle cx="400" cy="396" r="28" opacity=".5"/><circle cx="560" cy="396" r="28" opacity=".5"/><circle cx="400" cy="396" r="17"/><circle cx="560" cy="396" r="17"/></g>
+<g fill="#249e8e"><circle cx="400" cy="396" r="5"/><circle cx="560" cy="396" r="5"/></g>
+<path d="M306 396H369M654 396H591" stroke="#2967b9" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M350 279L260 303H91M559 453L647 489H842" fill="none" stroke="#93acbf" stroke-width="1.5"/>
+<text x="91" y="286" fill="#375a78" font-family="monospace" font-size="13">OPPOSED FINGERS</text><text x="654" y="476" fill="#375a78" font-family="monospace" font-size="13">CONTACT PAIR</text>
+<text x="57" y="571" fill="#244762" font-family="Arial,sans-serif" font-size="26" font-weight="600">Contact geometry</text><text x="908" y="571" text-anchor="end" fill="#708b9f" font-family="monospace" font-size="13">01 / TWO-SIDED</text><text x="54" y="653" fill="#728a9f" font-family="monospace" font-size="12">ORIGINAL DIAGRAM / NO SIMULATION DATA</text><path d="M854 643h35m-8-5 8 5-8 5" fill="none" stroke="#4d718f" stroke-width="1.5"/></svg>

@@ -1,0 +1,150 @@
+---
+import RobodojoLayout from '../../../../../layouts/RobodojoLayout.astro';
+import { projectMeta, tasks, taskBatches, taskCategories, type TaskBatch } from '../../../../../data/robodojo-contact';
+import type { Lang } from '../../../../../data/site';
+
+export function getStaticPaths() {
+  return ['zh', 'en'].flatMap(lang => taskBatches.map(batch => ({ params: { lang, batch: batch.id }, props: { batch } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const { batch } = Astro.props as { batch: TaskBatch };
+const zh = lang === 'zh';
+const tr = (cn: string, en: string) => zh ? cn : en;
+const link = '/' + lang + '/projects/robodojo-contact/';
+const items = tasks.filter(task => task.batch === batch.id);
+const categoryNames = Object.fromEntries(taskCategories.map(entry => [entry.id, entry.label[lang]]));
+const noveltyNames = { base: tr('基础任务', 'Base task'), variant: tr('变体任务', 'Task variant') };
+const format = tr('{count} 项规格', '{count} specifications');
+---
+<RobodojoLayout lang={lang} title={batch.label[lang] + ' · ' + projectMeta.title} description={batch.description[lang]}>
+  <main id="top" class="rb-wrap rb-spec" data-rb-spec>
+    <a class="rb-link" href={link + '#batch=' + batch.id}>← {tr('返回此批次的任务集', 'Back to this batch in the catalog')}</a>
+    <header class="rb-section-head">
+      <div><p class="rb-eyebrow">BENCHMARK SPECIFICATION</p><h1>{batch.label[lang]}</h1><p>{batch.description[lang]}</p></div>
+    </header>
+    <p class="rb-demo-tag">{projectMeta.notice[lang]}</p>
+    <details>
+      <summary>{tr('通用验收说明', 'Shared acceptance notes')}</summary>
+      <p>{tr('每项任务的验收条件以其规格为准。页面中的条件属于示例定义；未实际执行或登记的轨迹不应计为通过。', 'Use each task’s own criteria. These are example definitions; untested or unregistered trajectories do not count as accepted results.')}</p>
+    </details>
+    <details>
+      <summary>{tr('跳到任务', 'Jump to a task')}</summary>
+      <ul class="rb-spec-jump">
+        {items.map(task => <li><a class="rb-link" href={'#' + task.id}>{task.title[lang]}</a></li>)}
+      </ul>
+    </details>
+    <div class="rb-controls rb-spec-tools">
+      <select class="rb-select" data-rb-spec-category aria-label={tr('任务类别', 'Task category')}>
+        <option value="">{tr('全部类别', 'All categories')}</option>
+        {taskCategories.filter(category => items.some(task => category.id === task.category)).map(category => <option value={category.id}>{category.label[lang]}</option>)}
+      </select>
+      <select class="rb-select" data-rb-spec-novelty aria-label={tr('规格类型', 'Specification type')}>
+        <option value="">{tr('全部规格类型', 'All specification types')}</option>
+        <option value="base">{noveltyNames.base}</option>
+        <option value="variant">{noveltyNames.variant}</option>
+      </select>
+      <label class="rb-search">
+        <span aria-hidden="true">⌕</span>
+        <input type="search" data-rb-spec-query placeholder={tr('搜索任务规格或道具', 'Search tasks or assets')} aria-label={tr('搜索任务规格', 'Search specifications')} />
+      </label>
+    </div>
+    <p class="rb-spec-filter-count" role="status" data-rb-spec-count data-format={format}>{format.replace('{count}', String(items.length))}</p>
+    <div class="rb-spec-grid">
+      {items.map(task => {
+        const image = task.media?.image ?? task.media?.videos?.[0]?.poster;
+        return <article class="rb-spec-card" id={task.id} data-rb-spec-card data-category={task.category} data-novelty={task.novelty} data-search={JSON.stringify(task) + ' ' + categoryNames[task.category]}>
+          <div data-rb-spec-text>
+            <p class="rb-kicker">{categoryNames[task.category]} · {task.id}{task.novelty && ' · ' + noveltyNames[task.novelty]}{task.demo && ' · ' + tr('示例', 'Example')}</p>
+            <h2>{task.title[lang]}</h2>
+            <p>{task.description[lang]}</p>
+            {image && <img src={image} alt={task.media?.alt[lang] ?? task.title[lang]} loading="lazy" width="960" height="540" />}
+            <section class="rb-spec-block"><h3>{tr('任务目标', 'Objective')}</h3><p>{task.objective[lang]}</p></section>
+            {task.assets?.length && <details class="rb-spec-block" data-rb-spec-assets>
+              <summary>{tr('道具与资产路径', 'Props & asset paths')}</summary>
+              <ul>{task.assets.map(asset => <li>{asset.name[lang]}{asset.path && <> · <a class="rb-link" href={asset.path}><code>{asset.path}</code></a></>}</li>)}</ul>
+            </details>}
+            {task.setup && <section class="rb-spec-block"><h3>{tr('初始摆放', 'Initial setup')}</h3><p>{task.setup[lang]}</p></section>}
+            {task.steps?.length && <section class="rb-spec-block"><h3>{tr('执行步骤', 'Steps')}</h3><ol>{task.steps.map(step => <li>{step[lang]}</li>)}</ol></section>}
+            <section class="rb-spec-block"><h3>{tr('验收条件', 'Acceptance criteria')}</h3><ul>{task.successCriteria.map(item => <li>{item[lang]}</li>)}</ul></section>
+            {task.preflight?.length && <section class="rb-spec-block"><h3>{tr('接入前检查', 'Preflight checks')}</h3><ul>{task.preflight.map(item => <li>{item[lang]}</li>)}</ul></section>}
+          </div>
+          <div class="rb-spec-actions">
+            <a class="rb-link" href={link + '#task=' + task.id}>{tr('场景与视频', 'Scene & video')} ↗</a>
+            <button class="rb-link" type="button" data-rb-spec-share data-copied={tr('链接已复制', 'Link copied')} data-error={tr('复制失败，请复制地址栏链接', 'Copy failed. Use the address bar.')}>{tr('复制任务链接', 'Copy task link')}</button>
+            <button class="rb-link" type="button" data-rb-spec-copy data-copied={tr('规格已复制', 'Spec copied')} data-error={tr('复制失败，请手动选中文本', 'Copy failed. Select the text manually.')}>{tr('复制任务规格', 'Copy specification')}</button>
+            <p class="rb-sr-only" role="status" data-rb-spec-copy-status></p>
+          </div>
+        </article>;
+      })}
+    </div>
+    <p class="rb-empty" data-rb-spec-empty hidden>{tr('没有符合条件的规格。', 'No matching specifications.')}</p>
+    <div class="rb-downloads">
+      <a class="rb-link" href="/robodojo-contact/downloads/guide.md" download>{tr('规格指南', 'Specification guide')} ↓</a>
+      <a class="rb-link" href="/robodojo-contact/downloads/tasks.json" download>{tr('任务数据', 'Task data')} ↓</a>
+      <a class="rb-link" href="/robodojo-contact/downloads/assets.zip" download>{tr('资产包', 'Asset pack')} ↓</a>
+      <a class="rb-link" href="#top">{tr('回到顶部', 'Back to top')} ↑</a>
+    </div>
+  </main>
+</RobodojoLayout>
+
+<script>
+  import { copyText } from '../../../../../scripts/robodojo-copy';
+
+  const spec = document.querySelector<HTMLElement>('[data-rb-spec]');
+  if (spec) {
+    const selectCategory = spec.querySelector<HTMLSelectElement>('[data-rb-spec-category]')!;
+    const novelty = spec.querySelector<HTMLSelectElement>('[data-rb-spec-novelty]')!;
+    const query = spec.querySelector<HTMLInputElement>('[data-rb-spec-query]')!;
+    const count = spec.querySelector<HTMLElement>('[data-rb-spec-count]')!;
+    const empty = spec.querySelector<HTMLElement>('[data-rb-spec-empty]')!;
+    const cards = [...spec.querySelectorAll<HTMLElement>('[data-rb-spec-card]')];
+
+    function render() {
+      const terms = query.value.toLowerCase().trim().split(/\s+/).filter(Boolean);
+      let visible = 0;
+      for (const card of cards) {
+        const haystack = card.dataset.search?.toLowerCase() ?? '';
+        card.hidden = (!!selectCategory.value && selectCategory.value !== card.dataset.category) ||
+          (!!novelty.value && novelty.value !== card.dataset.novelty) ||
+          !terms.every(term => haystack.includes(term));
+        if (!card.hidden) visible++;
+      }
+      count.textContent = count.dataset.format!.replace('{count}', String(visible));
+      empty.hidden = visible !== 0;
+    }
+
+    query.addEventListener('input', render);
+    for (const select of [selectCategory, novelty]) select.addEventListener('change', render);
+
+    spec.addEventListener('click', async event => {
+      if (!(event.target instanceof Element)) return;
+      const jump = event.target.closest<HTMLAnchorElement>('.rb-spec-jump a');
+      const target = jump && cards.find(card => '#' + card.id === jump.hash);
+      if (target?.hidden) {
+        selectCategory.value = novelty.value = query.value = '';
+        render();
+      }
+      const button = event.target.closest<HTMLButtonElement>('[data-rb-spec-share], [data-rb-spec-copy]');
+      const card = button?.closest<HTMLElement>('[data-rb-spec-card]');
+      if (!button || !card) return;
+      const direct = new URL(location.href);
+      direct.hash = card.id;
+      const section = card.querySelector<HTMLElement>('[data-rb-spec-text]');
+      let text = direct.href;
+      if (button.hasAttribute('data-rb-spec-copy') && section) {
+        const disclosures = [...section.querySelectorAll('details:not([open])')] as HTMLDetailsElement[];
+        disclosures.forEach(item => { item.open = true; });
+        text = section.innerText.trim();
+        disclosures.forEach(item => { item.open = false; });
+      }
+      const ok = await copyText(text);
+      const message = ok ? button.dataset.copied : button.dataset.error;
+      if (message) {
+        button.textContent = message;
+        const announcement = card.querySelector('[data-rb-spec-copy-status]');
+        if (announcement) announcement.textContent = message;
+      }
+    });
+  }
+</script>

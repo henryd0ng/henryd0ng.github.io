@@ -1,11 +1,17 @@
 ---
 import { projects, type Lang } from '../data/site';
+import { projectMeta } from '../data/robodojo-contact';
 
 const { lang } = Astro.props as { lang: Lang };
-const zh = lang === 'zh';
 ---
-{projects.length ? (
-  <div class="project-grid">
+<div class="project-grid">
+    <article class="project-card">
+      <div class="project-info">
+        <h3><a href={`/${lang}/projects/robodojo-contact/`}>{projectMeta.title}</a></h3>
+        <p>{projectMeta.description[lang]}</p>
+        <p class="project-tags">{lang === 'zh' ? '机器人操作 · 基准测试' : 'Robot manipulation · Benchmark'}</p>
+      </div>
+    </article>
     {projects.map(project => (
       <article class="project-card">
         <div class="project-info">
@@ -15,5 +21,4 @@ const zh = lang === 'zh';
         </div>
       </article>
     ))}
-  </div>
-) : <p class="empty-state">{zh ? '暂无。' : 'None yet.'}</p>}
+</div>

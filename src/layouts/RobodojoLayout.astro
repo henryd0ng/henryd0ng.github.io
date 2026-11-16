@@ -1,0 +1,53 @@
+---
+import '../styles/robodojo-contact.css';
+import type { Lang } from '../data/site';
+
+interface Props { lang: Lang; title: string; description: string; pending?: number }
+const { lang, title, description, pending } = Astro.props;
+const zh = lang === 'zh';
+const prefix = `/${lang}/projects/robodojo-contact/`;
+const counterpart = Astro.url.pathname.replace(/^\/(zh|en)\//, zh ? '/en/' : '/zh/');
+---
+<!doctype html>
+<html lang={zh ? 'zh-CN' : 'en'} class="rb-page">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#f8faff" />
+  <title>{title} · Haoyu Dong</title>
+  <link rel="icon" href="/favicon.svg" />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+  <link rel="alternate" hreflang={zh ? 'en' : 'zh-CN'} href={new URL(counterpart, Astro.site)} />
+</head>
+<body>
+  <a class="rb-sr-only" href="#top">{zh ? '跳到正文' : 'Skip to content'}</a>
+  <header class="rb-nav-shell">
+    <nav class="rb-nav" aria-label={zh ? '项目导航' : 'Project navigation'}>
+      <a class="rb-brand" href={prefix}><span class="rb-brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V8h8a4 4 0 0 1 0 8H9M16 12l4 5M8 4h3M8 20h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>robodojo-contact</a>
+      <div class="rb-nav-links">
+        <a href={prefix + '#about'}>{zh ? '项目介绍' : 'Overview'}</a>
+        <a href={prefix + '#not-started'}>{zh ? '未开始' : 'Not started'}{pending !== undefined ? ` · ${pending}` : ''}</a>
+      </div>
+      <div class="rb-nav-actions">
+        <a class="rb-lang" href={counterpart} data-rb-language lang={zh ? 'en' : 'zh-CN'} aria-label={zh ? '切换到英文' : 'Switch to Chinese'}>{zh ? 'EN' : '中文'}</a>
+        <a class="rb-cta" href={prefix + '#tasks'}>{zh ? '场景任务集' : 'Task catalog'} <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+  <slot />
+  <footer class="rb-wrap rb-footer">
+    <a class="rb-brand" href={prefix}>robodojo-contact<span aria-hidden="true">.</span></a>
+    <span>{zh ? '接触操作基准 · Haoyu Dong' : 'Contact manipulation benchmark · Haoyu Dong'}</span>
+    <a class="rb-link" href={`/${lang}/projects/`}>{zh ? '返回个人网站' : 'Personal website'} ↗</a>
+  </footer>
+  <script>
+    document.querySelector<HTMLAnchorElement>('[data-rb-language]')?.addEventListener('click', event => {
+      const link = event.currentTarget as HTMLAnchorElement;
+      const next = new URL(link.href);
+      next.hash = location.hash;
+      link.href = next.href;
+    });
+  </script>
+</body>
+</html>

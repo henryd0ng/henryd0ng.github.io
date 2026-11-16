@@ -110,6 +110,8 @@ npm run preview
 
 ## 添加项目
 
+独立基准项目 [robodojo-contact](https://henryd0ng.github.io/robodojo-contact/) 的任务、视频和批次配置请见 [项目维护指南](docs/robodojo-contact.md)。
+
 将以下对象加入 `projects` 数组，并将占位文字替换为真实内容：
 
 ```json
