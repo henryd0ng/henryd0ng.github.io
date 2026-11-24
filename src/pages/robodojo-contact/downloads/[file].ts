@@ -1,7 +1,6 @@
-/// <reference types="vite/client" />
 import type { APIRoute } from 'astro';
-import contactDiagram from '../../../../public/robodojo-contact/contact-board.svg?raw';
-import objectDiagram from '../../../../public/robodojo-contact/object-board.svg?raw';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import {
   projectMeta,
   taskBatches,
@@ -20,10 +19,10 @@ export function getStaticPaths() {
 
 function catalog() {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     project: projectMeta,
-    dataScope: 'interface-demonstration',
-    containsRobotExperimentResults: false,
+    dataScope: 'RoboDojo contact manipulation scenes and recorded simulation demonstrations',
+    benchmarkScoresReported: false,
     statuses: taskStatuses,
     categories: taskCategories,
     batches: taskBatches,
@@ -46,16 +45,31 @@ function metadataValidation() {
   const incompleteText = tasks.filter(task =>
     !task.title.zh.trim() || !task.title.en.trim() ||
     !task.description.zh.trim() || !task.description.en.trim() ||
-    !task.objective.zh.trim() || !task.objective.en.trim()
+    !task.objective.zh.trim() || !task.objective.en.trim() ||
+    !task.statusNote.zh.trim() || !task.statusNote.en.trim()
   ).map(task => task.id);
-  const missingDemoFlag = tasks.filter(task => task.demo !== true).map(task => task.id);
+  const missingMedia = tasks.filter(task => {
+    const files = [task.media?.image, task.media?.detail, ...(task.media?.videos ?? []).flatMap(clip => [clip.src, clip.poster])];
+    const imageExpected = task.evidenceLevel !== 'awaiting-integration';
+    return (imageExpected && !task.media?.image) || files.some(file => file && !existsSync(publicFile(file)));
+  }).map(task => task.id);
+  const wrongVideoState = tasks.filter(task =>
+    (task.status === 'accepted') !== Boolean(task.media?.videos?.length)
+  ).map(task => task.id);
+  const heroUrls = [projectMeta.heroPoster, projectMeta.heroVideo?.src, projectMeta.heroVideo?.poster];
+  const heroValid = !projectMeta.heroVideo || (
+    tasks.some(task => task.id === projectMeta.heroTaskId && task.status === 'accepted') &&
+    heroUrls.every(url => !url || existsSync(publicFile(url)))
+  );
   const checks = [
     { id: 'unique-task-ids', passed: duplicateIds.length === 0, affectedTaskIds: duplicateIds },
     { id: 'known-category-ids', passed: unknownCategories.length === 0, affectedTaskIds: unknownCategories },
     { id: 'known-batch-ids', passed: unknownBatches.length === 0, affectedTaskIds: unknownBatches },
     { id: 'known-status-ids', passed: unknownStatuses.length === 0, affectedTaskIds: unknownStatuses },
     { id: 'bilingual-core-text', passed: incompleteText.length === 0, affectedTaskIds: incompleteText },
-    { id: 'current-demo-entries-marked', passed: missingDemoFlag.length === 0, affectedTaskIds: missingDemoFlag },
+    { id: 'featured-demonstration', passed: heroValid, affectedTaskIds: heroValid ? [] : [projectMeta.heroTaskId] },
+    { id: 'media-files-present', passed: !missingMedia.length, affectedTaskIds: missingMedia },
+    { id: 'completed-demonstrations-have-video', passed: !wrongVideoState.length, affectedTaskIds: wrongVideoState },
   ];
 
   return {
@@ -67,9 +81,9 @@ function metadataValidation() {
     },
     roboticsValidationPerformed: false,
     metadataChecksPassed: checks.every(check => check.passed),
-    illustrativeCounts: {
+    counts: {
       taskEntries: tasks.length,
-      demoEntries: tasks.filter(task => task.demo).length,
+      sceneImages: tasks.filter(task => task.media?.image).length,
       statuses: Object.fromEntries(taskStatuses.map(status => [status.id, tasks.filter(task => task.status === status.id).length])),
       videoReferences: tasks.reduce((count, task) => count + (task.media?.videos?.length ?? 0), 0),
     },
@@ -77,72 +91,48 @@ function metadataValidation() {
   };
 }
 
+function publicFile(url: string) {
+  if (!/^\/robodojo-contact\/tasks\/[A-Za-z0-9_.-]+$/.test(url))
+    throw new Error('Unexpected catalog media path: ' + url);
+  return join(process.cwd(), 'public', url);
+}
+
 function guide() {
   const lines = [
-    '# robodojo-contact · 演示目录说明 / Demo catalog guide',
+    '# robodojo-contact',
     '',
-    projectMeta.notice.zh,
+    projectMeta.description.zh, '', projectMeta.description.en, '',
+    projectMeta.notice.zh, '', projectMeta.notice.en, '',
+    '## 场景目录 / Scene catalog',
     '',
-    projectMeta.notice.en,
-    '',
-    '## 下载内容 / Download contents',
-    '',
-    '- `tasks.json`：任务定义、双语文字、分类、批次及示例状态。 / Task definitions, bilingual text, categories, batches, and example statuses.',
-    '- `validation.json`：仅检查目录元数据，不是机器人实验验证。 / Catalog metadata checks only, not robotics validation.',
-    '- `assets.zip`：本说明、目录、元数据报告与两张原创概念 SVG；不包含机器人模型、场景或轨迹。 / This guide, the catalog, the metadata report, and two original conceptual SVGs; no robot models, scenes, or trajectories.',
-    '',
-    '## 状态 / Statuses',
-    '',
-    ...taskStatuses.map(status => `- \`${status.id}\` — ${status.label.zh} / ${status.label.en}。${status.description.zh} ${status.description.en}`),
-    '',
-    '## 批次 / Batches',
-    '',
-    ...taskBatches.map(batch => `- \`${batch.id}\` — ${batch.label.zh} / ${batch.label.en}。${batch.description.zh} ${batch.description.en}`),
-    '',
-    '## 任务示例 / Example tasks',
+    ...taskStatuses.map(status => `- ${status.label.zh} / ${status.label.en} — ${status.description.zh} ${status.description.en}`),
     '',
   ];
-
-  for (const task of tasks) {
-    lines.push(
-      `### ${task.title.zh} / ${task.title.en}`,
-      '',
-      `ID: \`${task.id}\` · Demo: \`${task.demo}\` · Example status: \`${task.status}\` · Batch: \`${task.batch}\``,
-      '',
-      task.description.zh,
-      '',
-      task.description.en,
-      '',
-      `**示例目标 / Example objective:** ${task.objective.zh} ${task.objective.en}`,
-      '',
-    );
-    if (task.setup) lines.push(`**示例布置 / Example setup:** ${task.setup.zh} ${task.setup.en}`, '');
-    if (task.steps?.length) {
-      lines.push('**示例步骤 / Example steps:**', '', ...task.steps.map((step, index) => `${index + 1}. ${step.zh} ${step.en}`), '');
-    }
-    lines.push('**示例检查项 / Example checks:**', '', ...task.successCriteria.map(check => `- ${check.zh} ${check.en}`), '');
-    if (task.preflight?.length) {
-      lines.push('**示例预检 / Example preflight:**', '', ...task.preflight.map(check => `- ${check.zh} ${check.en}`), '');
-    }
-    if (task.assets?.length) {
-      lines.push('**概念素材 / Concept assets:**', '', ...task.assets.map(asset => `- ${asset.name.zh} / ${asset.name.en}${asset.path ? ` — \`${asset.path}\`` : ''}`), '');
+  for (const batch of taskBatches) {
+    lines.push(`## ${batch.label.zh} / ${batch.label.en}`, '');
+    for (const task of tasks.filter(task => task.batch === batch.id)) {
+      const url = 'https://henryd0ng.github.io/robodojo-contact/#task=' + task.id;
+      lines.push(`### [${task.title.zh} / ${task.title.en}](${url})`, '',
+        `\`${task.id}\` · ${taskStatuses.find(status => status.id === task.status)?.label.zh}`, '',
+        task.objective.zh, '', task.objective.en, '', task.statusNote.zh, '', task.statusNote.en, '');
+      for (const observation of task.successCriteria) lines.push('- ' + observation.zh + ' ' + observation.en);
+      if (task.successCriteria.length) lines.push('');
     }
   }
-
   lines.push(
-    '## 维护 / Maintenance',
-    '',
-    '目录源文件为 `src/data/robodojo-contact.ts`。替换示例时，应同时更新任务定义、状态说明和媒体标签；只有存在可核实记录时才填写轨迹数量。',
-    '',
-    'The catalog source is `src/data/robodojo-contact.ts`. When replacing examples, update task definitions, status descriptions, and media labels together. Add trajectory counts only when backed by verifiable records.',
-    '',
+    '## 媒体来源 / Media credits', '',
+    '场景图与视频取自 RoboDojo 的任务资产、初始布局与仿真记录。图集中含适配后的 NVIDIA SimReady 资产视图。', '',
+    'Scene images and videos are derived from RoboDojo assets, initial layouts and simulation recordings. Selected scenes include adapted NVIDIA SimReady assets.', '',
+    '[NVIDIA SimReady Assets](https://huggingface.co/datasets/nvidia/simready-assets/tree/7879e0e50423290300ac20ecd6e727325f680b60) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)', '',
+    'assets.zip 内含本指南、tasks.json、validation.json 和公开场景图。任务视频可从目录中的媒体地址单独下载。', '',
+    'The archive contains this guide, tasks.json, validation.json and the published scene images. Video URLs are listed in the catalog.', '',
   );
   return lines.join('\n');
 }
 
 const json = (value: unknown) => `${JSON.stringify(value, null, 2)}\n`;
 
-/** Store-only ZIP writer for this small, original asset package; no extra dependency. */
+/** Store WebP images without recompressing them. */
 function zip(files: { name: string; bytes: Uint8Array }[]): Uint8Array {
   const encode = (text: string) => new TextEncoder().encode(text);
   const concat = (parts: Uint8Array[]) => {
@@ -219,7 +209,9 @@ export const GET: APIRoute = ({ params }) => {
     body = json(catalog());
     contentType = 'application/json; charset=utf-8';
   } else if (file === 'validation.json') {
-    body = json(metadataValidation());
+    const report = metadataValidation();
+    if (!report.metadataChecksPassed) throw new Error('Catalog validation failed: ' + json(report.checks.filter(check => !check.passed)));
+    body = json(report);
     contentType = 'application/json; charset=utf-8';
   } else if (file === 'guide.md') {
     body = guide();
@@ -230,8 +222,12 @@ export const GET: APIRoute = ({ params }) => {
       { name: 'tasks.json', bytes: encode(json(catalog())) },
       { name: 'guide.md', bytes: encode(guide()) },
       { name: 'validation.json', bytes: encode(json(metadataValidation())) },
-      { name: 'robodojo-contact/contact-board.svg', bytes: encode(contactDiagram) },
-      { name: 'robodojo-contact/object-board.svg', bytes: encode(objectDiagram) },
+      ...['ATTRIBUTION.txt', 'native-captures-provenance.json', 'layout-renders-provenance.json', 'video-provenance.json'].map(name => ({
+        name: 'sources/' + name, bytes: readFileSync(publicFile('/robodojo-contact/tasks/' + name)),
+      })),
+      ...[...new Set(tasks.flatMap(task => [task.media?.image, task.media?.detail]).filter((url): url is string => Boolean(url)))].map(url => ({
+        name: url.slice(1), bytes: readFileSync(publicFile(url)),
+      })),
     ]);
     body = new Uint8Array(archive).buffer;
     contentType = 'application/zip';

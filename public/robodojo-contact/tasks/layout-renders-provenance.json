@@ -1,0 +1,159 @@
+{
+  "source_project": "RoboDojo",
+  "render": "Static object views use the saved scene poses and USD visual meshes with a studio camera, neutral tabletop and lighting. The HDMI still is a native head-camera capture.",
+  "entries": [
+    {
+      "id": "carry_tray",
+      "file": "carry_tray.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_carry_tray_0.json",
+      "layout_sha256": "b59281c1c05736ba451ffaffad9811a08ad2babe3fce6e01b7f3f268ff050b7b",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_tray_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/p0_payload_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_target_zone_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "extract_mouse_receiver",
+      "file": "extract_mouse_receiver.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_extract_mouse_receiver_0.json",
+      "layout_sha256": "06800daeed0f0f20d06b5f863ad923e43159d28667bc43beffa88a25b60f1dae",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/contact_mouse_teleop/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/mouse_bottom_cover_teleop/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/mouse_usb_receiver_teleop/00000/object.usd"
+      ]
+    },
+    {
+      "id": "hammer_handover_regrasp",
+      "file": "hammer_handover_regrasp.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_hammer_handover_regrasp_0.json",
+      "layout_sha256": "3b305a88a1b21d62b20d32218a6d5e37425affa73a8cffece96ae6192f80e2b0",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_hammer_teleop_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "hang_mug",
+      "file": "hang_mug.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_hang_mug_0.json",
+      "layout_sha256": "396d627d4edb1b081f03c5e71c13682ffb87183b69cf2312b80bb5e1b3ab9fb6",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_mug_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_hook_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "lift_block",
+      "file": "lift_block.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_lift_block_0.json",
+      "layout_sha256": "a726d3b91b2f4582e6e7fa729a9b170118d5f0540009a01b0e240fa638e027ea",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_wood_block_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/simready_spatula_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_support_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "push_block",
+      "file": "push_block.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_push_block_0.json",
+      "layout_sha256": "d7276035971a0f6171f44bb9801ea01a8c41db6a4ad87730c64199da8e8af59f",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_spatula_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/simready_wood_block_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_target_zone_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "roll_pin",
+      "file": "roll_pin.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_roll_pin_0.json",
+      "layout_sha256": "32937cde3d8d815f705fcbe67dd3bf0a236c3ce42706e001ff89a5ff434209f6",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_rolling_pin_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_rolling_mat_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "scoop_beads",
+      "file": "scoop_beads.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_scoop_beads_0.json",
+      "layout_sha256": "5783fe0595e0501fe4162af695db15d3dcf73d338441803e2c782b1ad0ab27b6",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_spoon_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/p0_bead_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_bowl_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_catch_bin_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "seat_socket",
+      "file": "seat_socket.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_seat_socket_0.json",
+      "layout_sha256": "b6da41f9b65e42f649ab1ea8c1622102ca788e0515bc6cd0784f38ea931fa31c",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_socket_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_peg_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "tape_ring_threading",
+      "file": "tape_ring_threading.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_0.json",
+      "layout_sha256": "3fc79c19fec246e53ec1c0340304272c107c5d97edc2fbff82443d4da0af76ec",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_tape_ring_teleop_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/simready_ring_rod_coarse_teleop_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "tape_ring_threading_fine",
+      "file": "tape_ring_threading_fine.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_fine_0.json",
+      "layout_sha256": "08de75eea5f30c8dff64eaaf758b5e0da596254962f186f1d81ecd614452a916",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_tape_ring_teleop_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/simready_ring_rod_fine_teleop_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "tilt_tray",
+      "file": "tilt_tray.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tilt_tray_0.json",
+      "layout_sha256": "ae6bc3e27e1c5325bdaa846015b07eb5e2200f8fc30da0f084566a8db279c9ce",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_tray_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/p0_payload_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Geometry/p0_catch_bin_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "trace_hdmi_cable",
+      "file": "trace_hdmi_cable.webp",
+      "source": ".cache/tactile/contact_rich_20261022/hdmi_startup04/native/RoboDojo/trace_hdmi_cable/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/hdmi_startup04/episode_0000000_cam_head_fail.mp4",
+      "source_sha256": "5236e44fb0c5022af5d84fae4dac2a262bea6380cd225613fee9ce42418bf5b0",
+      "capture": "First frame of the head camera from the native startup check."
+    },
+    {
+      "id": "turn_screwdriver",
+      "file": "turn_screwdriver.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_turn_screwdriver_0.json",
+      "layout_sha256": "a439c9ab5ca9b2b173d6bb02f47b1ba681b88e58e85a9865cd8e67b9738d9d91",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_screwdriver_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/p0_slotted_rotor_v1/00000/object.usd"
+      ]
+    },
+    {
+      "id": "turn_wrench",
+      "file": "turn_wrench.webp",
+      "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_turn_wrench_0.json",
+      "layout_sha256": "b5001ec9cb1748c6717d1c15892112cf8251b1e4d0d196bed875fb94c1ccee4b",
+      "assets": [
+        "Assets/Object/DojoTouch/Rigid/simready_wrench_task_v1/00000/object.usd",
+        "Assets/Object/DojoTouch/Rigid/p0_hex_rotor_v1/00000/object.usd"
+      ]
+    }
+  ]
+}

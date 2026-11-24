@@ -1,0 +1,3805 @@
+{
+  "projectMeta": {
+    "title": "robodojo-contact",
+    "snapshotDate": "2026-11-24",
+    "heroPoster": "/robodojo-contact/tasks/open_laptop-head.webp",
+    "subtitle": {
+      "zh": "接触操作 · 场景与演示",
+      "en": "Contact manipulation · scenes and demonstrations"
+    },
+    "description": {
+      "zh": "从双臂打开笔记本到持杯接水，记录机器人与日常物体接触时的操作目标、初始场景和仿真演示。",
+      "en": "From opening a laptop with two arms to filling a cup, explore how robots make contact with everyday objects through task goals, starting scenes, and simulation recordings."
+    },
+    "notice": {
+      "zh": "“演示已完成”表示这次操作已有完整录像和机械动作复核记录。各任务的进展说明列出了已验证的环节。当前目录未发布基准分数或成功率。",
+      "en": "A completed demonstration has a full recording and a mechanical review for that run. Each task lists what has been checked. Benchmark scores and success rates are currently unreported."
+    },
+    "heroTaskId": "open_laptop",
+    "heroVideo": {
+      "src": "/robodojo-contact/tasks/open_laptop-head.mp4",
+      "poster": "/robodojo-contact/tasks/open_laptop-head.webp",
+      "kind": "accepted",
+      "label": {
+        "zh": "头部相机 · 完整演示",
+        "en": "Head camera · full demonstration"
+      }
+    }
+  },
+  "taskStatuses": [
+    {
+      "id": "accepted",
+      "label": {
+        "zh": "演示已完成",
+        "en": "Demonstration complete"
+      },
+      "description": {
+        "zh": "已有完整机械演示及复核证据；不等于统一 benchmark 验收。",
+        "en": "A complete mechanical demonstration has review evidence; this is not unified benchmark acceptance."
+      }
+    },
+    {
+      "id": "in_progress",
+      "label": {
+        "zh": "开发中",
+        "en": "In progress"
+      },
+      "description": {
+        "zh": "已有运行入口、局部验证或开发录像，完整操作仍有待完成。",
+        "en": "A runtime entry, local validation, or development recording exists; complete operation remains under development."
+      }
+    },
+    {
+      "id": "not_started",
+      "label": {
+        "zh": "未开始",
+        "en": "Not started"
+      },
+      "description": {
+        "zh": "完整动作尚待开发。已有初态图的条目可查看场景，候选模型仍待接入的条目会单独标明。",
+        "en": "Work on the full action is pending. Entries show available initial scenes and identify any models awaiting integration."
+      }
+    }
+  ],
+  "taskCategories": [
+    {
+      "id": "contact-rich",
+      "label": {
+        "zh": "接触操作",
+        "en": "Contact-rich manipulation"
+      }
+    },
+    {
+      "id": "tactile",
+      "label": {
+        "zh": "触觉接触记录",
+        "en": "Tactile contact recordings"
+      }
+    },
+    {
+      "id": "hand-tools",
+      "label": {
+        "zh": "手持工具",
+        "en": "Hand tools"
+      }
+    },
+    {
+      "id": "kitchen",
+      "label": {
+        "zh": "厨房操作",
+        "en": "Kitchen operations"
+      }
+    },
+    {
+      "id": "daily-living",
+      "label": {
+        "zh": "日常物体",
+        "en": "Daily objects"
+      }
+    },
+    {
+      "id": "tabletop",
+      "label": {
+        "zh": "桌面交互",
+        "en": "Tabletop interaction"
+      }
+    }
+  ],
+  "taskBatches": [
+    {
+      "id": "contact-demonstrations",
+      "label": {
+        "zh": "接触任务与触觉演示",
+        "en": "Contact tasks & tactile demonstrations"
+      },
+      "description": {
+        "zh": "基础 DojoTouch 任务、几何配合变体及三项相关触觉接触记录。",
+        "en": "Base DojoTouch tasks, geometric-fit variants, and three relevant tactile-contact recordings."
+      }
+    },
+    {
+      "id": "tool-interaction",
+      "label": {
+        "zh": "工具交互",
+        "en": "Tool interactions"
+      },
+      "description": {
+        "zh": "19 项工具任务及折叠刀 B 变体；原生资产与局部动力学证据单独记录。",
+        "en": "19 tool tasks plus folding-knife B; native assets and local dynamics evidence are tracked separately."
+      }
+    },
+    {
+      "id": "simready-tabletop",
+      "label": {
+        "zh": "SimReady 桌面任务",
+        "en": "SimReady tabletop tasks"
+      },
+      "description": {
+        "zh": "十项组合任务；无机器人短探针不作为完整操作成功。",
+        "en": "Ten composed tasks; robot-free short probes are not complete-operation successes."
+      }
+    },
+    {
+      "id": "daily-scenes",
+      "label": {
+        "zh": "日常场景预览",
+        "en": "Daily scene previews"
+      },
+      "description": {
+        "zh": "当前场景目录中其余的日常任务预览，包括初始场景待接入的灯泡任务。",
+        "en": "The remaining daily-task previews in the current catalog, including the lightbulb task awaiting scene integration."
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "open_laptop",
+      "title": {
+        "zh": "双臂打开笔记本",
+        "en": "Open a laptop with both arms"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "accepted",
+      "description": {
+        "zh": "笔记本底座、上盖、双臂",
+        "en": "Laptop base, lid, and two arms"
+      },
+      "objective": {
+        "zh": "双臂打开笔记本",
+        "en": "Open a laptop with both arms"
+      },
+      "successCriteria": [
+        {
+          "zh": "从合盖状态开始，支撑底座并将上盖打开到 105°–115°。",
+          "en": "Start with the lid closed, support the base, and open the lid to 105°–115°."
+        },
+        {
+          "zh": "撤手后检查上盖保持。该次记录的最终角度为 109.6°，保持了 3 秒。",
+          "en": "Check that the lid stays open after the arms withdraw. The recorded final angle was 109.6° with a three-second hold."
+        }
+      ],
+      "objects": {
+        "zh": "笔记本底座、上盖、双臂",
+        "en": "Laptop base, lid, and two arms"
+      },
+      "statusNote": {
+        "zh": "已完成闭合初态开盖、撤手与保持的机械演示。固定布局参考记录，benchmark 评分仍待定义。",
+        "en": "A closed-start opening, hand withdrawal, and passive hold passed mechanical review. This is a fixed-layout reference, with benchmark scoring pending."
+      },
+      "evidenceLevel": "mechanical-demo",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "open_laptop",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/open_laptop.webp",
+        "alt": {
+          "zh": "双臂打开笔记本的机械演示录制画面",
+          "en": "Recorded mechanical demonstration of open a laptop with both arms"
+        },
+        "videos": [
+          {
+            "label": {
+              "zh": "机械演示记录",
+              "en": "Mechanical demonstration"
+            },
+            "src": "/robodojo-contact/tasks/open_laptop.mp4",
+            "poster": "/robodojo-contact/tasks/open_laptop.webp",
+            "kind": "accepted",
+            "durationSeconds": 59.08
+          }
+        ]
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "open_bottle_with_opener",
+      "title": {
+        "zh": "开瓶器开盖",
+        "en": "Open a bottle with an opener"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "accepted",
+      "description": {
+        "zh": "瓶身、瓶盖、开瓶器",
+        "en": "Bottle, cap, and opener"
+      },
+      "objective": {
+        "zh": "开瓶器开盖",
+        "en": "Open a bottle with an opener"
+      },
+      "successCriteria": [
+        {
+          "zh": "检查瓶盖脱离瓶口，瓶身在工作面上稳定至少 1 秒。",
+          "en": "Check that the cap clears the bottle and the supported bottle stays stable for at least one second."
+        }
+      ],
+      "objects": {
+        "zh": "瓶身、瓶盖、开瓶器",
+        "en": "Bottle, cap, and opener"
+      },
+      "statusNote": {
+        "zh": "工程演示记录 complete_task_validated=true。task_accepted=false，数值收敛及完整 benchmark 验收尚未完成。",
+        "en": "The engineering record has complete_task_validated=true and task_accepted=false. Numerical convergence and full benchmark acceptance are incomplete."
+      },
+      "evidenceLevel": "mechanical-demo",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "open_bottle_with_opener",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/open_bottle_with_opener.webp",
+        "alt": {
+          "zh": "开瓶器开盖的机械演示录制画面",
+          "en": "Recorded mechanical demonstration of open a bottle with an opener"
+        },
+        "videos": [
+          {
+            "label": {
+              "zh": "机械演示记录",
+              "en": "Mechanical demonstration"
+            },
+            "src": "/robodojo-contact/tasks/open_bottle_with_opener.mp4",
+            "poster": "/robodojo-contact/tasks/open_bottle_with_opener.webp",
+            "kind": "accepted",
+            "durationSeconds": 14.72
+          }
+        ]
+      },
+      "controlModes": [
+        "experimental-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "insert_three_pin_plug",
+      "title": {
+        "zh": "三脚插头插接",
+        "en": "Insert a three-pin plug"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "accepted",
+      "description": {
+        "zh": "三脚插头、固定插排",
+        "en": "Three-pin plug and fixed power strip"
+      },
+      "objective": {
+        "zh": "三脚插头插接",
+        "en": "Insert a three-pin plug"
+      },
+      "successCriteria": [
+        {
+          "zh": "抬起插头并插入指定插座。就位检查允许的端面间隙为 1.5 mm。",
+          "en": "Lift the plug and insert it into the designated socket. The seating check allows a face gap of 1.5 mm."
+        },
+        {
+          "zh": "检查夹爪打开后的保持阶段。该次记录含 2.92 秒无右夹爪接触的就位画面。",
+          "en": "Check the hold after the gripper opens. The recording shows 2.92 seconds of seating without contact from the right gripper pads."
+        }
+      ],
+      "objects": {
+        "zh": "三脚插头、固定插排",
+        "en": "Three-pin plug and fixed power strip"
+      },
+      "statusNote": {
+        "zh": "固定布局机械演示已检查抓取、插入、释放与稳定就位。记录为 review_ready，不是 benchmark 分数。",
+        "en": "A fixed-layout mechanical demonstration checks grasp, insertion, release, and stable seating. Its review_ready status is not a benchmark score."
+      },
+      "evidenceLevel": "mechanical-demo",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "insert_three_pin_plug",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/insert_three_pin_plug.webp",
+        "alt": {
+          "zh": "三脚插头插接的机械演示录制画面",
+          "en": "Recorded mechanical demonstration of insert a three-pin plug"
+        },
+        "videos": [
+          {
+            "label": {
+              "zh": "机械演示记录",
+              "en": "Mechanical demonstration"
+            },
+            "src": "/robodojo-contact/tasks/insert_three_pin_plug.mp4",
+            "poster": "/robodojo-contact/tasks/insert_three_pin_plug.webp",
+            "kind": "accepted",
+            "durationSeconds": 30.04
+          }
+        ]
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "retrieve_last_touched_object",
+      "title": {
+        "zh": "取回最后接触的物体",
+        "en": "Retrieve the last-touched object"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "accepted",
+      "description": {
+        "zh": "遮挡盒、橡皮、木块、小瓶",
+        "en": "Occlusion box, eraser, wooden block, and bottle"
+      },
+      "objective": {
+        "zh": "取回最后接触的物体",
+        "en": "Retrieve the last-touched object"
+      },
+      "successCriteria": [
+        {
+          "zh": "核对接触顺序，前一物体需放回到距原位 10 mm 以内。",
+          "en": "Check the touch sequence and return the preceding object to within 10 mm of its starting position."
+        },
+        {
+          "zh": "取出的物体应是最后接触的物体，出盒后稳定保持至少 1 秒。",
+          "en": "Extract the object touched last and hold it steady outside the box for at least one second."
+        }
+      ],
+      "objects": {
+        "zh": "遮挡盒、橡皮、木块、小瓶",
+        "en": "Occlusion box, eraser, wooden block, and bottle"
+      },
+      "statusNote": {
+        "zh": "接触顺序、放回和取出保持的机械演示已复核。使用特权位姿反馈，不代表盲操作或学得的触觉识别能力。",
+        "en": "Mechanical contact order, replacement, extraction, and hold were reviewed. Privileged pose feedback is used; this does not establish blind manipulation or learned tactile recognition."
+      },
+      "evidenceLevel": "mechanical-demo",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "retrieve_last_touched_object",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/retrieve_last_touched_object.webp",
+        "alt": {
+          "zh": "取回最后接触的物体的机械演示录制画面",
+          "en": "Recorded mechanical demonstration of retrieve the last-touched object"
+        },
+        "videos": [
+          {
+            "label": {
+              "zh": "机械演示记录",
+              "en": "Mechanical demonstration"
+            },
+            "src": "/robodojo-contact/tasks/retrieve_last_touched_object.mp4",
+            "poster": "/robodojo-contact/tasks/retrieve_last_touched_object.webp",
+            "kind": "accepted",
+            "durationSeconds": 42.84
+          }
+        ]
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "fill_cup_from_faucet",
+      "title": {
+        "zh": "持杯接水",
+        "en": "Fill a held cup from a faucet"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "accepted",
+      "description": {
+        "zh": "水龙头、阀门、杯",
+        "en": "Faucet, valve, and cup"
+      },
+      "objective": {
+        "zh": "持杯接水",
+        "en": "Fill a held cup from a faucet"
+      },
+      "successCriteria": [
+        {
+          "zh": "打开阀门接水，再关闭阀门。解析水载荷模型记录的最大杯内体积为 327 mL。",
+          "en": "Open and close the valve to fill the cup. The analytical water-load model recorded a peak cup volume of 327 mL."
+        },
+        {
+          "zh": "检查闭阀后的持杯稳定性。该次记录的最终保持阶段持续 3 秒。",
+          "en": "Check the cup after the valve closes. The final recorded hold lasted three seconds."
+        }
+      ],
+      "objects": {
+        "zh": "水龙头、阀门、杯",
+        "en": "Faucet, valve, and cup"
+      },
+      "statusNote": {
+        "zh": "原生持杯、开关阀与最终保持的机械演示已复核。采用解析水载荷模型，不是流体仿真或 benchmark 成功率结果。",
+        "en": "The native held-cup, valve, and final-hold demonstration passed mechanical review. It uses an analytic water-load model, not fluid simulation or benchmark success-rate evaluation."
+      },
+      "evidenceLevel": "mechanical-demo",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "fill_cup_from_faucet",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/fill_cup_from_faucet.webp",
+        "alt": {
+          "zh": "持杯接水的机械演示录制画面",
+          "en": "Recorded mechanical demonstration of fill a held cup from a faucet"
+        },
+        "videos": [
+          {
+            "label": {
+              "zh": "机械演示记录",
+              "en": "Mechanical demonstration"
+            },
+            "src": "/robodojo-contact/tasks/fill_cup_from_faucet.mp4",
+            "poster": "/robodojo-contact/tasks/fill_cup_from_faucet.webp",
+            "kind": "accepted",
+            "durationSeconds": 51.24
+          }
+        ]
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "deposit_coin",
+      "title": {
+        "zh": "硬币接触演示",
+        "en": "Coin contact demonstration"
+      },
+      "category": "tactile",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "硬币、存钱罐",
+        "en": "Coin and coin bank"
+      },
+      "objective": {
+        "zh": "硬币接触演示",
+        "en": "Coin contact demonstration"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "硬币、存钱罐",
+        "en": "Coin and coin bank"
+      },
+      "statusNote": {
+        "zh": "已有 Franka GS Mini 触觉接触录像。记录明确不声称投币任务成功。",
+        "en": "A Franka GS Mini tactile-contact recording is available; its record explicitly makes no coin-deposit task-success claim."
+      },
+      "evidenceLevel": "contact-recording",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "deposit_coin",
+        "tactile"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/deposit_coin.webp",
+        "alt": {
+          "zh": "硬币接触演示的任务场景预览",
+          "en": "Task-scene preview of coin contact demonstration"
+        }
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "insert_tubes",
+      "title": {
+        "zh": "试管接触演示",
+        "en": "Test-tube contact demonstration"
+      },
+      "category": "tactile",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "试管、试管架",
+        "en": "Test tubes and rack"
+      },
+      "objective": {
+        "zh": "试管接触演示",
+        "en": "Test-tube contact demonstration"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "试管、试管架",
+        "en": "Test tubes and rack"
+      },
+      "statusNote": {
+        "zh": "已有 Franka 和双臂接触录像。双臂记录为 bimanual_contact_verified，native_task_success=false。",
+        "en": "Franka and bimanual contact recordings are available. The bimanual record is bimanual_contact_verified with native_task_success=false."
+      },
+      "evidenceLevel": "contact-recording",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "insert_tubes",
+        "tactile"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/insert_tubes.webp",
+        "alt": {
+          "zh": "试管接触演示的任务场景预览",
+          "en": "Task-scene preview of test-tube contact demonstration"
+        }
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "plug_in_charger",
+      "title": {
+        "zh": "充电器接触演示",
+        "en": "Charger contact demonstration"
+      },
+      "category": "tactile",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "充电器、插排",
+        "en": "Charger and power strip"
+      },
+      "objective": {
+        "zh": "充电器接触演示",
+        "en": "Charger contact demonstration"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "充电器、插排",
+        "en": "Charger and power strip"
+      },
+      "statusNote": {
+        "zh": "已有 Franka GS Mini 触觉接触录像。原始记录不声称完成插接任务。",
+        "en": "A Franka GS Mini tactile-contact recording is available; its source record does not claim completed insertion."
+      },
+      "evidenceLevel": "contact-recording",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "plug_in_charger",
+        "tactile"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/plug_in_charger.webp",
+        "alt": {
+          "zh": "充电器接触演示的任务场景预览",
+          "en": "Task-scene preview of charger contact demonstration"
+        }
+      },
+      "controlModes": [
+        "reference-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "extract_mouse_receiver",
+      "title": {
+        "zh": "取出鼠标接收器",
+        "en": "Extract a mouse receiver"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "鼠标、底盖、USB 接收器",
+        "en": "Mouse, bottom cover, and USB receiver"
+      },
+      "objective": {
+        "zh": "取出鼠标接收器",
+        "en": "Extract a mouse receiver"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "鼠标、底盖、USB 接收器",
+        "en": "Mouse, bottom cover, and USB receiver"
+      },
+      "statusNote": {
+        "zh": "独立 PhysX 遥操适配存在。原自动任务的保持模型与完整交接尚未验收。",
+        "en": "An independent PhysX teleoperation adapter exists; retention dynamics and full automatic handover remain unvalidated."
+      },
+      "evidenceLevel": "experimental",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "extract_mouse_receiver",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/extract_mouse_receiver.webp",
+        "alt": {
+          "zh": "取出鼠标接收器的任务场景预览",
+          "en": "Task-scene preview of extract a mouse receiver"
+        }
+      },
+      "controlModes": [
+        "experimental-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "trace_hdmi_cable",
+      "title": {
+        "zh": "沿线寻找 HDMI 插头",
+        "en": "Trace an HDMI cable"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "HDMI 线缆、插头、盒与接口",
+        "en": "HDMI cable, plugs, box, and port"
+      },
+      "objective": {
+        "zh": "沿线寻找 HDMI 插头",
+        "en": "Trace an HDMI cable"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "HDMI 线缆、插头、盒与接口",
+        "en": "HDMI cable, plugs, box, and port"
+      },
+      "statusNote": {
+        "zh": "已有局部抓线证据及独立 PhysX 分段线缆遥操。不等于连续 FEM 的完整找线与插接验证。",
+        "en": "Local cable-grasp evidence and an independent segmented PhysX teleoperation adapter exist; these do not validate complete continuous-FEM tracing and insertion."
+      },
+      "evidenceLevel": "experimental",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/tactile/integration_history.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "trace_hdmi_cable",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/trace_hdmi_cable.webp",
+        "alt": {
+          "zh": "沿线寻找 HDMI 插头的任务场景预览",
+          "en": "Task-scene preview of trace an hdmi cable"
+        }
+      },
+      "controlModes": [
+        "experimental-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "hammer_handover_regrasp",
+      "title": {
+        "zh": "锤子交接与重抓",
+        "en": "Hammer handover and regrasp"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "SimReady 锤子、双臂",
+        "en": "SimReady hammer and two arms"
+      },
+      "objective": {
+        "zh": "锤子交接与重抓",
+        "en": "Hammer handover and regrasp"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "SimReady 锤子、双臂",
+        "en": "SimReady hammer and two arms"
+      },
+      "statusNote": {
+        "zh": "v18 nominal 包仍标记 experimental。局部抓持与规划证据不代表双臂端到端成功。",
+        "en": "The v18 nominal package remains experimental. Local grasping and planning evidence does not establish bimanual end-to-end success."
+      },
+      "evidenceLevel": "experimental",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/task-assets/README.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "hammer_handover_regrasp",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/hammer_handover_regrasp.webp",
+        "alt": {
+          "zh": "锤子交接与重抓的任务场景预览",
+          "en": "Task-scene preview of hammer handover and regrasp"
+        }
+      },
+      "controlModes": [
+        "experimental-policy",
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "tape_ring_threading",
+      "title": {
+        "zh": "胶带环穿杆 · coarse",
+        "en": "Tape-ring threading · coarse"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "胶带环、coarse 杆",
+        "en": "Tape ring and coarse rod"
+      },
+      "objective": {
+        "zh": "胶带环穿杆 · coarse",
+        "en": "Tape-ring threading · coarse"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "胶带环、coarse 杆",
+        "en": "Tape ring and coarse rod"
+      },
+      "statusNote": {
+        "zh": "v18 coarse 包仍为 experimental。coarse 指几何配合变体，完整任务验收尚待完成。",
+        "en": "The v18 coarse package remains experimental. Coarse identifies the geometric-fit variant; full task acceptance is pending."
+      },
+      "evidenceLevel": "experimental",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/task-assets/README.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "tape_ring_threading",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/tape_ring_threading.webp",
+        "alt": {
+          "zh": "胶带环穿杆 · coarse的任务场景预览",
+          "en": "Task-scene preview of tape-ring threading · coarse"
+        }
+      },
+      "controlModes": [
+        "experimental-policy",
+        "teleoperation"
+      ],
+      "novelty": "base"
+    },
+    {
+      "id": "tape_ring_threading_fine",
+      "title": {
+        "zh": "胶带环穿杆 · fine",
+        "en": "Tape-ring threading · fine"
+      },
+      "category": "contact-rich",
+      "batch": "contact-demonstrations",
+      "status": "in_progress",
+      "description": {
+        "zh": "胶带环、fine 杆",
+        "en": "Tape ring and fine rod"
+      },
+      "objective": {
+        "zh": "胶带环穿杆 · fine",
+        "en": "Tape-ring threading · fine"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "胶带环、fine 杆",
+        "en": "Tape ring and fine rod"
+      },
+      "statusNote": {
+        "zh": "v18 fine 为更小几何余量的变体，仍标记 experimental。不是触觉网格精度选项。",
+        "en": "The v18 fine variant has smaller geometric clearance and remains experimental; it is not a tactile-mesh resolution option."
+      },
+      "evidenceLevel": "experimental",
+      "sourcePaths": [
+        "docs/user/tasks/catalog.md",
+        "docs/agents/task-assets/README.md"
+      ],
+      "catalogOrigin": "base",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "tape_ring_threading_fine",
+        "contact-rich"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/tape_ring_threading_fine.webp",
+        "alt": {
+          "zh": "胶带环穿杆 · fine的任务场景预览",
+          "en": "Task-scene preview of tape-ring threading · fine"
+        }
+      },
+      "controlModes": [
+        "experimental-policy",
+        "teleoperation"
+      ],
+      "novelty": "variant",
+      "variantOf": "tape_ring_threading"
+    },
+    {
+      "id": "cut_steak",
+      "title": {
+        "zh": "刀叉切牛排",
+        "en": "Cut steak with a knife and fork"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "餐刀、叉、牛排、餐盘",
+        "en": "Table knife, fork, steak, and plate"
+      },
+      "objective": {
+        "zh": "刀叉切牛排",
+        "en": "Cut steak with a knife and fork"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "餐刀、叉、牛排、餐盘",
+        "en": "Table knife, fork, steak, and plate"
+      },
+      "statusNote": {
+        "zh": "局部分离检查中，切下的肉块保持独立碰撞，切后相对移动 84 mm。完整机器人刀叉操作尚未验收。",
+        "en": "In a local separation check, the cut pieces retained independent collision and moved 84 mm relative to one another. Complete robot knife-and-fork operation is not accepted."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/cut_steak/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "cut_steak",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/cut_steak.webp",
+        "alt": {
+          "zh": "刀叉切牛排的任务场景预览",
+          "en": "Task-scene preview of cut steak with a knife and fork"
+        },
+        "detail": "/robodojo-contact/tasks/cut_steak-detail.webp"
+      },
+      "sourceScene": "cut_steak",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/cut_steak.webp"
+        }
+      ]
+    },
+    {
+      "id": "pour_tea",
+      "title": {
+        "zh": "倒茶",
+        "en": "Pour tea"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "茶壶、茶杯",
+        "en": "Teapot and teacup"
+      },
+      "objective": {
+        "zh": "倒茶",
+        "en": "Pour tea"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "茶壶、茶杯",
+        "en": "Teapot and teacup"
+      },
+      "statusNote": {
+        "zh": "局部倒水检查中，对准杯口时记录接收 46.0 mL。容器负载与接收量已有记录，完整机器人倒茶流程仍待完成。",
+        "en": "A local pouring check recorded 46.0 mL received when aligned with the cup. Container loading and received volume are recorded; a complete robot pouring sequence remains pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/pour_tea/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "pour_tea",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/pour_tea.webp",
+        "alt": {
+          "zh": "倒茶的任务场景预览",
+          "en": "Task-scene preview of pour tea"
+        },
+        "detail": "/robodojo-contact/tasks/pour_tea-detail.webp"
+      },
+      "sourceScene": "pour_tea",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/pour_tea.webp"
+        }
+      ]
+    },
+    {
+      "id": "slice_cucumber",
+      "title": {
+        "zh": "黄瓜切片",
+        "en": "Slice a cucumber"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "刀、黄瓜、砧板",
+        "en": "Knife, cucumber, and cutting board"
+      },
+      "objective": {
+        "zh": "黄瓜切片",
+        "en": "Slice a cucumber"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "刀、黄瓜、砧板",
+        "en": "Knife, cucumber, and cutting board"
+      },
+      "statusNote": {
+        "zh": "局部分离检查中，瓜片可独立运动，切后相对移动 229 mm。它验证预设分割模型的响应，不是完整机器人切片演示。",
+        "en": "A local separation check produced independently moving slices with 229 mm relative movement. It validates the predefined separation model, not complete robot slicing."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/slice_cucumber/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "slice_cucumber",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/slice_cucumber.webp",
+        "alt": {
+          "zh": "黄瓜切片的任务场景预览",
+          "en": "Task-scene preview of slice a cucumber"
+        },
+        "detail": "/robodojo-contact/tasks/slice_cucumber-detail.webp"
+      },
+      "sourceScene": "slice_cucumber",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/slice_cucumber.webp"
+        }
+      ]
+    },
+    {
+      "id": "flip_fish_in_pan",
+      "title": {
+        "zh": "颠锅翻鱼",
+        "en": "Flip fish with a pan"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "平底锅、鱼",
+        "en": "Frying pan and fish"
+      },
+      "objective": {
+        "zh": "颠锅翻鱼",
+        "en": "Flip fish with a pan"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "平底锅、鱼",
+        "en": "Frying pan and fish"
+      },
+      "statusNote": {
+        "zh": "局部颠锅工况中，鱼离锅最高约 200 mm 后落回。该记录不等于机器人完成持锅、翻面与装盘。",
+        "en": "In a local pan-motion check, the fish rose about 200 mm above the pan and returned. This does not establish robot pan handling, flipping, and plating."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/flip_fish_in_pan/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "flip_fish_in_pan",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/flip_fish_in_pan.webp",
+        "alt": {
+          "zh": "颠锅翻鱼的任务场景预览",
+          "en": "Task-scene preview of flip fish with a pan"
+        },
+        "detail": "/robodojo-contact/tasks/flip_fish_in_pan-detail.webp"
+      },
+      "sourceScene": "flip_fish_in_pan",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/flip_fish_in_pan.webp"
+        }
+      ]
+    },
+    {
+      "id": "flip_fish_with_spatula",
+      "title": {
+        "zh": "锅铲翻鱼",
+        "en": "Flip fish with a spatula"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "锅铲、平底锅、鱼",
+        "en": "Spatula, frying pan, and fish"
+      },
+      "objective": {
+        "zh": "锅铲翻鱼",
+        "en": "Flip fish with a spatula"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "锅铲、平底锅、鱼",
+        "en": "Spatula, frying pan, and fish"
+      },
+      "statusNote": {
+        "zh": "局部接触检查中，铲缘承托将鱼抬高 7.9 mm。已有落稳与接触画面，完整机器人翻面仍待完成。",
+        "en": "In a local contact check, the spatula edge lifted the fish 7.9 mm. Settling and contact images exist; complete robot flipping remains pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/flip_fish_with_spatula/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "flip_fish_with_spatula",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/flip_fish_with_spatula.webp",
+        "alt": {
+          "zh": "锅铲翻鱼的任务场景预览",
+          "en": "Task-scene preview of flip fish with a spatula"
+        },
+        "detail": "/robodojo-contact/tasks/flip_fish_with_spatula-detail.webp"
+      },
+      "sourceScene": "flip_fish_with_spatula",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/flip_fish_with_spatula.webp"
+        }
+      ]
+    },
+    {
+      "id": "season_food",
+      "title": {
+        "zh": "撒调料",
+        "en": "Season food"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "调料瓶、食物",
+        "en": "Seasoning shaker and food"
+      },
+      "objective": {
+        "zh": "撒调料",
+        "en": "Season food"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "调料瓶、食物",
+        "en": "Seasoning shaker and food"
+      },
+      "statusNote": {
+        "zh": "局部撒料检查记录食物接到 1.0 mL。在途、接收与洒落量分别记录，完整机器人持瓶撒料仍待完成。",
+        "en": "A local seasoning check recorded 1.0 mL reaching the food, with in-flight, received, and spilled amounts tracked separately. Complete robot seasoning remains pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/season_food/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "season_food",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/season_food.webp",
+        "alt": {
+          "zh": "撒调料的任务场景预览",
+          "en": "Task-scene preview of season food"
+        },
+        "detail": "/robodojo-contact/tasks/season_food-detail.webp"
+      },
+      "sourceScene": "season_food",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/season_food.webp"
+        }
+      ]
+    },
+    {
+      "id": "ladle_soup",
+      "title": {
+        "zh": "舀汤",
+        "en": "Ladle soup"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "汤勺、源碗、接收碗",
+        "en": "Ladle, source bowl, and receiving bowl"
+      },
+      "objective": {
+        "zh": "舀汤",
+        "en": "Ladle soup"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "汤勺、源碗、接收碗",
+        "en": "Ladle, source bowl, and receiving bowl"
+      },
+      "statusNote": {
+        "zh": "局部舀取与转移检查中，接收碗得到 9.0 mL。该量测不等于机器人完成持勺、舀取和搬运。",
+        "en": "A local scooping-and-transfer check recorded 9.0 mL in the receiving bowl. This measurement is not a completed robot spoon-handling and transfer task."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/ladle_soup/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "ladle_soup",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/ladle_soup.webp",
+        "alt": {
+          "zh": "舀汤的任务场景预览",
+          "en": "Task-scene preview of ladle soup"
+        },
+        "detail": "/robodojo-contact/tasks/ladle_soup-detail.webp"
+      },
+      "sourceScene": "ladle_soup",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/ladle_soup.webp"
+        }
+      ]
+    },
+    {
+      "id": "carry_glass_tray",
+      "title": {
+        "zh": "搬运酒杯托盘",
+        "en": "Carry a tray of glasses"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "托盘、三只空酒杯",
+        "en": "Tray and three empty glasses"
+      },
+      "objective": {
+        "zh": "搬运酒杯托盘",
+        "en": "Carry a tray of glasses"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "托盘、三只空酒杯",
+        "en": "Tray and three empty glasses"
+      },
+      "statusNote": {
+        "zh": "局部抬升检查中，三只空杯随托盘升高约 54 mm。完整双臂搬运与放置仍待完成。",
+        "en": "In a local lift check, three empty glasses rose about 54 mm with the tray. Complete bimanual transport and placement remain pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/carry_glass_tray/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "carry_glass_tray",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/carry_glass_tray.webp",
+        "alt": {
+          "zh": "搬运酒杯托盘的任务场景预览",
+          "en": "Task-scene preview of carry a tray of glasses"
+        },
+        "detail": "/robodojo-contact/tasks/carry_glass_tray-detail.webp"
+      },
+      "sourceScene": "carry_glass_tray",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/carry_glass_tray.webp"
+        }
+      ]
+    },
+    {
+      "id": "roll_pin_trial",
+      "title": {
+        "zh": "擀面杖滚动工况",
+        "en": "Rolling-pin interaction trial"
+      },
+      "category": "kitchen",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "木质擀面杖、桌面",
+        "en": "Wooden rolling pin and tabletop"
+      },
+      "objective": {
+        "zh": "擀面杖滚动工况",
+        "en": "Rolling-pin interaction trial"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "木质擀面杖、桌面",
+        "en": "Wooden rolling pin and tabletop"
+      },
+      "statusNote": {
+        "zh": "桌面滚动试验中，木杖轴心前移 50.6 mm。它与垫板上滚动 8 cm 的 roll_pin 任务分开记录，尚无完整机器人演示。",
+        "en": "The pin center moved forward 50.6 mm in a tabletop rolling trial. This is separate from the 8 cm mat-based roll_pin task; a complete robot demonstration is pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/roll_pin_trial/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "roll_pin_trial",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/roll_pin_trial.webp",
+        "alt": {
+          "zh": "擀面杖滚动工况的任务场景预览",
+          "en": "Task-scene preview of rolling-pin interaction trial"
+        },
+        "detail": "/robodojo-contact/tasks/roll_pin_trial-detail.webp"
+      },
+      "sourceScene": "roll_pin",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/roll_pin_trial.webp"
+        }
+      ]
+    },
+    {
+      "id": "unfold_knife",
+      "title": {
+        "zh": "折叠刀 A 开合",
+        "en": "Open and close folding knife A"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "V006 折叠刀 A、左侧单钩架",
+        "en": "V006 folding knife A and left-side single-hook rack"
+      },
+      "objective": {
+        "zh": "折叠刀 A 开合",
+        "en": "Open and close folding knife A"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "V006 折叠刀 A、左侧单钩架",
+        "en": "V006 folding knife A and left-side single-hook rack"
+      },
+      "statusNote": {
+        "zh": "当前 V006 A 与左侧单钩架已有原生场景和刚体参数记录。较早的抓取、交接与开合片段属于局部开发，完整操作仍待复核。",
+        "en": "The current V006 A and left-side single-hook rack have native scenes and rigid-body records. Earlier grasping, handover, and opening clips are partial development records; complete operation still needs review."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/unfold_knife/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "unfold_knife",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/unfold_knife.webp",
+        "alt": {
+          "zh": "折叠刀 A 开合的任务场景预览",
+          "en": "Task-scene preview of open and close folding knife a"
+        },
+        "detail": "/robodojo-contact/tasks/unfold_knife-detail.webp"
+      },
+      "sourceScene": "unfold_knife",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/unfold_knife.webp"
+        }
+      ]
+    },
+    {
+      "id": "extend_knife",
+      "title": {
+        "zh": "伸缩刀片",
+        "en": "Extend and retract a utility blade"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "ArtVIP 3 号伸缩刀、左侧单钩架",
+        "en": "ArtVIP No. 3 utility knife and left-side single-hook rack"
+      },
+      "objective": {
+        "zh": "伸缩刀片",
+        "en": "Extend and retract a utility blade"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "ArtVIP 3 号伸缩刀、左侧单钩架",
+        "en": "ArtVIP No. 3 utility knife and left-side single-hook rack"
+      },
+      "statusNote": {
+        "zh": "当前使用 ArtVIP 3 号与左侧单钩架，已有初始场景和原生参数记录。完整机器人操作演示待完成。",
+        "en": "The current scene uses ArtVIP No. 3 and a left-side single-hook rack, with starting scenes and native parameter records; complete robot operation remains pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/extend_knife/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "extend_knife",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/extend_knife.webp",
+        "alt": {
+          "zh": "伸缩刀片的任务场景预览",
+          "en": "Task-scene preview of extend and retract a utility blade"
+        },
+        "detail": "/robodojo-contact/tasks/extend_knife-detail.webp"
+      },
+      "sourceScene": "extend_knife",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/extend_knife.webp"
+        }
+      ]
+    },
+    {
+      "id": "tighten_hex_bolt",
+      "title": {
+        "zh": "内六角紧固",
+        "en": "Tighten a hex-socket bolt"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "T 柄内六角工具、螺栓、工件",
+        "en": "T-handle hex driver, bolt, and workpiece"
+      },
+      "objective": {
+        "zh": "内六角紧固",
+        "en": "Tighten a hex-socket bolt"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "T 柄内六角工具、螺栓、工件",
+        "en": "T-handle hex driver, bolt, and workpiece"
+      },
+      "statusNote": {
+        "zh": "局部工况中，工件转动 106.9°，进给 0.297 mm。记录证明该工况的配合响应，不等于机器人完成整项紧固操作。",
+        "en": "The workpiece rotated 106.9° with 0.297 mm advance in a local check. This demonstrates the tested interaction, not a complete robot fastening task."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/tighten_hex_bolt/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "tighten_hex_bolt",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/tighten_hex_bolt.webp",
+        "alt": {
+          "zh": "内六角紧固的任务场景预览",
+          "en": "Task-scene preview of tighten a hex-socket bolt"
+        },
+        "detail": "/robodojo-contact/tasks/tighten_hex_bolt-detail.webp"
+      },
+      "sourceScene": "tighten_hex_bolt",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/tighten_hex_bolt.webp"
+        }
+      ]
+    },
+    {
+      "id": "use_cutters",
+      "title": {
+        "zh": "斜口钳开合",
+        "en": "Open and close diagonal cutters"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "斜口钳",
+        "en": "Diagonal cutters"
+      },
+      "objective": {
+        "zh": "斜口钳开合",
+        "en": "Open and close diagonal cutters"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "斜口钳",
+        "en": "Diagonal cutters"
+      },
+      "statusNote": {
+        "zh": "局部动作检查中，斜口钳工作端间距变化 7.1 mm。这里只验证开合响应，不声称已完成材料切断。",
+        "en": "A local motion check measured a 7.1 mm change in the diagonal cutters’ working-end gap. It checks opening response, not completed material cutting."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/use_cutters/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "use_cutters",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/use_cutters.webp",
+        "alt": {
+          "zh": "斜口钳开合的任务场景预览",
+          "en": "Task-scene preview of open and close diagonal cutters"
+        },
+        "detail": "/robodojo-contact/tasks/use_cutters-detail.webp"
+      },
+      "sourceScene": "use_cutters",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/use_cutters.webp"
+        }
+      ]
+    },
+    {
+      "id": "use_long_nose_pliers",
+      "title": {
+        "zh": "尖嘴钳开合",
+        "en": "Open and close long-nose pliers"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "尖嘴钳",
+        "en": "Long-nose pliers"
+      },
+      "objective": {
+        "zh": "尖嘴钳开合",
+        "en": "Open and close long-nose pliers"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "尖嘴钳",
+        "en": "Long-nose pliers"
+      },
+      "statusNote": {
+        "zh": "局部动作检查中，尖嘴钳工作端间距变化 21.2 mm。已有场景与参数回读，完整夹爪操作仍待完成。",
+        "en": "A local motion check measured a 21.2 mm change in the long-nose pliers’ working-end gap. Scene and parameter records exist; complete gripper operation remains pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/use_long_nose_pliers/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "use_long_nose_pliers",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/use_long_nose_pliers.webp",
+        "alt": {
+          "zh": "尖嘴钳开合的任务场景预览",
+          "en": "Task-scene preview of open and close long-nose pliers"
+        },
+        "detail": "/robodojo-contact/tasks/use_long_nose_pliers-detail.webp"
+      },
+      "sourceScene": "use_long_nose_pliers",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/use_long_nose_pliers.webp"
+        }
+      ]
+    },
+    {
+      "id": "tighten_screw",
+      "title": {
+        "zh": "十字螺钉紧固",
+        "en": "Tighten a Phillips screw"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "十字螺丝刀、螺钉、工件",
+        "en": "Phillips screwdriver, screw, and workpiece"
+      },
+      "objective": {
+        "zh": "十字螺钉紧固",
+        "en": "Tighten a Phillips screw"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "十字螺丝刀、螺钉、工件",
+        "en": "Phillips screwdriver, screw, and workpiece"
+      },
+      "statusNote": {
+        "zh": "局部工况中，工件转动 108.0°，进给 0.300 mm。完整机器人持工具、接合与紧固流程仍待完成。",
+        "en": "The workpiece rotated 108.0° with 0.300 mm advance in a local check. Complete robot tool holding, engagement, and fastening remain pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/tighten_screw/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "tighten_screw",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/tighten_screw.webp",
+        "alt": {
+          "zh": "十字螺钉紧固的任务场景预览",
+          "en": "Task-scene preview of tighten a phillips screw"
+        },
+        "detail": "/robodojo-contact/tasks/tighten_screw-detail.webp"
+      },
+      "sourceScene": "tighten_screw",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/tighten_screw.webp"
+        }
+      ]
+    },
+    {
+      "id": "torque_bolt",
+      "title": {
+        "zh": "限扭扳手紧固",
+        "en": "Tighten with a torque wrench"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "限扭扳手、套筒、螺栓",
+        "en": "Torque wrench, socket, and bolt"
+      },
+      "objective": {
+        "zh": "限扭扳手紧固",
+        "en": "Tighten with a torque wrench"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "限扭扳手、套筒、螺栓",
+        "en": "Torque wrench, socket, and bolt"
+      },
+      "statusNote": {
+        "zh": "局部工况记录转动 108.1°、进给 0.376 mm，并在到座后脱扣。它是工具与紧固件检查，不是完整机器人操作验收。",
+        "en": "A local check recorded 108.1° rotation, 0.376 mm advance, and release after seating. It validates the tested tool–fastener interaction, not complete robot operation."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/torque_bolt/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "torque_bolt",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/torque_bolt.webp",
+        "alt": {
+          "zh": "限扭扳手紧固的任务场景预览",
+          "en": "Task-scene preview of tighten with a torque wrench"
+        },
+        "detail": "/robodojo-contact/tasks/torque_bolt-detail.webp"
+      },
+      "sourceScene": "torque_bolt",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/torque_bolt.webp"
+        }
+      ]
+    },
+    {
+      "id": "use_scissors",
+      "title": {
+        "zh": "剪刀开合",
+        "en": "Open and close scissors"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "剪刀、单钩架",
+        "en": "Scissors and single-hook rack"
+      },
+      "objective": {
+        "zh": "剪刀开合",
+        "en": "Open and close scissors"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "剪刀、单钩架",
+        "en": "Scissors and single-hook rack"
+      },
+      "statusNote": {
+        "zh": "局部动作检查中，剪刀工作端间距变化 28.4 mm。已记录原生场景与参数。这不代表机器人完成了剪切任务。",
+        "en": "A local motion check measured a 28.4 mm change in the scissors’ working-end gap. Native scenes and parameters are recorded; this is not a completed robot cutting task."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/use_scissors/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "use_scissors",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/use_scissors.webp",
+        "alt": {
+          "zh": "剪刀开合的任务场景预览",
+          "en": "Task-scene preview of open and close scissors"
+        },
+        "detail": "/robodojo-contact/tasks/use_scissors-detail.webp"
+      },
+      "sourceScene": "use_scissors",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/use_scissors.webp"
+        }
+      ]
+    },
+    {
+      "id": "squeeze_sprayer",
+      "title": {
+        "zh": "喷壶扳机操作",
+        "en": "Operate a spray trigger"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "喷壶、扳机",
+        "en": "Spray bottle and trigger"
+      },
+      "objective": {
+        "zh": "喷壶扳机操作",
+        "en": "Operate a spray trigger"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "喷壶、扳机",
+        "en": "Spray bottle and trigger"
+      },
+      "statusNote": {
+        "zh": "局部接触检查记录了一次 1 mL 排量，撤离后扳机回弹。持壶并连续操作的完整机器人演示仍待完成。",
+        "en": "A local contact check recorded a 1 mL discharge and trigger return after release. A complete robot demonstration of holding and repeatedly operating the bottle remains pending."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/squeeze_sprayer/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "squeeze_sprayer",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/squeeze_sprayer.webp",
+        "alt": {
+          "zh": "喷壶扳机操作的任务场景预览",
+          "en": "Task-scene preview of operate a spray trigger"
+        },
+        "detail": "/robodojo-contact/tasks/squeeze_sprayer-detail.webp"
+      },
+      "sourceScene": "squeeze_sprayer",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/squeeze_sprayer.webp"
+        }
+      ]
+    },
+    {
+      "id": "move_syringe_plunger",
+      "title": {
+        "zh": "抽推注射器柱塞",
+        "en": "Move a syringe plunger"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "针筒、柱塞",
+        "en": "Syringe barrel and plunger"
+      },
+      "objective": {
+        "zh": "抽推注射器柱塞",
+        "en": "Move a syringe plunger"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "针筒、柱塞",
+        "en": "Syringe barrel and plunger"
+      },
+      "statusNote": {
+        "zh": "局部动作检查中，柱塞实际移动 51.1 mm。当前证据覆盖机构响应，不代表完整机器人操作或定量液体转移。",
+        "en": "The plunger moved 51.1 mm in a local motion check. This evidence covers mechanism response, not complete robot operation or metered liquid transfer."
+      },
+      "evidenceLevel": "physical-probe",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/tool_asset_check.md",
+        "outputs/tool_assets_20261119/move_syringe_plunger/native.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "move_syringe_plunger",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/move_syringe_plunger.webp",
+        "alt": {
+          "zh": "抽推注射器柱塞的任务场景预览",
+          "en": "Task-scene preview of move a syringe plunger"
+        },
+        "detail": "/robodojo-contact/tasks/move_syringe_plunger-detail.webp"
+      },
+      "sourceScene": "move_syringe_plunger",
+      "controlModes": [
+        "teleoperation"
+      ],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/move_syringe_plunger.webp"
+        }
+      ]
+    },
+    {
+      "id": "unfold_knife_compact_flipper",
+      "title": {
+        "zh": "折叠刀 B 开合",
+        "en": "Open and close folding knife B"
+      },
+      "category": "hand-tools",
+      "batch": "tool-interaction",
+      "status": "in_progress",
+      "description": {
+        "zh": "V006 compact-flipper 折叠刀 B、左侧单钩架",
+        "en": "V006 compact-flipper knife B and left-side single-hook rack"
+      },
+      "objective": {
+        "zh": "折叠刀 B 开合",
+        "en": "Open and close folding knife B"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "V006 compact-flipper 折叠刀 B、左侧单钩架",
+        "en": "V006 compact-flipper knife B and left-side single-hook rack"
+      },
+      "statusNote": {
+        "zh": "V006 B 是独立的 compact-flipper 变体，已有挂架初态与原生参数记录。尚无完整机器人开合演示。",
+        "en": "V006 B is a separate compact-flipper variant with a rack starting scene and native parameter records; no complete robot opening-and-closing demonstration is available."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/tool_trials_prepare.py",
+        "outputs/tool_assets_20261119/unfold_knife_compact_flipper/native.json"
+      ],
+      "catalogOrigin": "variant",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "unfold_knife_compact_flipper",
+        "hand-tools"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/unfold_knife_compact_flipper.webp",
+        "alt": {
+          "zh": "折叠刀 B 开合的任务场景预览",
+          "en": "Task-scene preview of open and close folding knife b"
+        },
+        "detail": "/robodojo-contact/tasks/unfold_knife_compact_flipper-detail.webp"
+      },
+      "novelty": "variant",
+      "variantOf": "unfold_knife",
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "turn_wrench",
+      "title": {
+        "zh": "扳手转动六角轴",
+        "en": "Turn a hex shaft with a wrench"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "扳手、六角轴、被动转轴",
+        "en": "Wrench, hex shaft, and passive hinge"
+      },
+      "objective": {
+        "zh": "用扳手与六角轴接合，将轴转动 60°。",
+        "en": "Engage a wrench with the hex shaft and turn the shaft 60 degrees."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "扳手、六角轴、被动转轴",
+        "en": "Wrench, hex shaft, and passive hinge"
+      },
+      "statusNote": {
+        "zh": "资产与无机器人短探针已检查。打开三视口后曾出现第 9 步停顿，尚未通过完整遥操短运行。",
+        "en": "Assets and a short robot-free probe were checked. A recorded step-9 stall after opening three viewports means complete short teleoperation remains unverified."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "turn_wrench",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/turn_wrench.webp",
+        "alt": {
+          "zh": "扳手转动六角轴的任务场景预览",
+          "en": "Task-scene preview of turn a hex shaft with a wrench"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "turn_screwdriver",
+      "title": {
+        "zh": "螺丝刀转动槽轴",
+        "en": "Turn a slotted shaft with a screwdriver"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "一字螺丝刀、开槽轴",
+        "en": "Slotted screwdriver and slotted shaft"
+      },
+      "objective": {
+        "zh": "将螺丝刀与槽轴接合，将轴转动 60°。",
+        "en": "Engage the screwdriver with the slotted shaft and turn the shaft 60 degrees."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "一字螺丝刀、开槽轴",
+        "en": "Slotted screwdriver and slotted shaft"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "turn_screwdriver",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/turn_screwdriver.webp",
+        "alt": {
+          "zh": "螺丝刀转动槽轴的任务场景预览",
+          "en": "Task-scene preview of turn a slotted shaft with a screwdriver"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "seat_socket",
+      "title": {
+        "zh": "套筒入座",
+        "en": "Seat a socket"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "套筒、六角柱",
+        "en": "Socket and hex peg"
+      },
+      "objective": {
+        "zh": "对齐套筒与六角柱，完成规定的入座。有效插入长度为 8 mm。",
+        "en": "Align the socket with the hex peg and seat it, with an effective insertion length of 8 mm."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "套筒、六角柱",
+        "en": "Socket and hex peg"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "seat_socket",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/seat_socket.webp",
+        "alt": {
+          "zh": "套筒入座的任务场景预览",
+          "en": "Task-scene preview of seat a socket"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "lift_block",
+      "title": {
+        "zh": "锅铲抬起木块",
+        "en": "Lift a block with a spatula"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "锅铲、木块、支撑条",
+        "en": "Spatula, block, and support strips"
+      },
+      "objective": {
+        "zh": "从支撑间隙插入锅铲并抬起木块。",
+        "en": "Insert the spatula into the support gap and lift the wooden block."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "锅铲、木块、支撑条",
+        "en": "Spatula, block, and support strips"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "lift_block",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/lift_block.webp",
+        "alt": {
+          "zh": "锅铲抬起木块的任务场景预览",
+          "en": "Task-scene preview of lift a block with a spatula"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "scoop_beads",
+      "title": {
+        "zh": "勺取珠子",
+        "en": "Scoop beads"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "勺、刚体珠、两个容器",
+        "en": "Spoon, rigid beads, and two containers"
+      },
+      "objective": {
+        "zh": "用勺从源盒舀取至少三颗珠子并转移至接收盒。",
+        "en": "Scoop at least three beads from the source container into the receiving container."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "勺、刚体珠、两个容器",
+        "en": "Spoon, rigid beads, and two containers"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "scoop_beads",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/scoop_beads.webp",
+        "alt": {
+          "zh": "勺取珠子的任务场景预览",
+          "en": "Task-scene preview of scoop beads"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "roll_pin",
+      "title": {
+        "zh": "垫板滚动擀面杖",
+        "en": "Roll a pin across a mat"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "SimReady 擀面杖、固定垫板",
+        "en": "SimReady rolling pin and fixed mat"
+      },
+      "objective": {
+        "zh": "让擀面杖在固定垫板上滚动 8 cm。",
+        "en": "Roll the pin across the fixed mat by 8 cm."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "SimReady 擀面杖、固定垫板",
+        "en": "SimReady rolling pin and fixed mat"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "roll_pin",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/roll_pin.webp",
+        "alt": {
+          "zh": "垫板滚动擀面杖的任务场景预览",
+          "en": "Task-scene preview of roll a pin across a mat"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "hang_mug",
+      "title": {
+        "zh": "挂放马克杯",
+        "en": "Hang a mug"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "马克杯、细挂钩",
+        "en": "Mug and narrow hook"
+      },
+      "objective": {
+        "zh": "将杯把挂上细挂钩，松手后保持悬挂。",
+        "en": "Place the mug handle on the narrow hook and leave the mug hanging after release."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "马克杯、细挂钩",
+        "en": "Mug and narrow hook"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "hang_mug",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/hang_mug.webp",
+        "alt": {
+          "zh": "挂放马克杯的任务场景预览",
+          "en": "Task-scene preview of hang a mug"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "carry_tray",
+      "title": {
+        "zh": "搬运带载托盘",
+        "en": "Carry a loaded tray"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "托盘、松放方块、目标区",
+        "en": "Tray, loose block, and target region"
+      },
+      "objective": {
+        "zh": "抬起带载托盘并搬到标记区域，同时保留托盘内的载荷。",
+        "en": "Lift the loaded tray and carry it to the marked area without losing its load."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "托盘、松放方块、目标区",
+        "en": "Tray, loose block, and target region"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "carry_tray",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/carry_tray.webp",
+        "alt": {
+          "zh": "搬运带载托盘的任务场景预览",
+          "en": "Task-scene preview of carry a loaded tray"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "tilt_tray",
+      "title": {
+        "zh": "倾盘卸载",
+        "en": "Unload a tilted tray"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "托盘、方块、接收盒",
+        "en": "Tray, block, and receiving bin"
+      },
+      "objective": {
+        "zh": "倾斜托盘，使松放的方块滑入接收盒。",
+        "en": "Tilt the tray so that its loose block slides into the receiving bin."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "托盘、方块、接收盒",
+        "en": "Tray, block, and receiving bin"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "tilt_tray",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/tilt_tray.webp",
+        "alt": {
+          "zh": "倾盘卸载的任务场景预览",
+          "en": "Task-scene preview of unload a tilted tray"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "push_block",
+      "title": {
+        "zh": "锅铲推移木块",
+        "en": "Push a block with a spatula"
+      },
+      "category": "tabletop",
+      "batch": "simready-tabletop",
+      "status": "in_progress",
+      "description": {
+        "zh": "锅铲、木块、目标区",
+        "en": "Spatula, block, and target region"
+      },
+      "objective": {
+        "zh": "用锅铲将木块推入标记区域。",
+        "en": "Push the wooden block into the marked area using the spatula."
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "锅铲、木块、目标区",
+        "en": "Spatula, block, and target region"
+      },
+      "statusNote": {
+        "zh": "已完成资产引用、初态检查与无机器人短 PhysX 探针。完整机器人操作及动作录像尚待完成。",
+        "en": "Asset references, initial-state checks, and a short robot-free PhysX probe are available. Complete robot operation and motion recordings remain pending."
+      },
+      "evidenceLevel": "runtime-ready",
+      "sourcePaths": [
+        "src/teleop/p0_tasks.py",
+        "docs/user/teleoperation/simready_tasks.md",
+        "docs/agents/task-assets/simready_tasks_20261108.md"
+      ],
+      "catalogOrigin": "tabletop",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "push_block",
+        "tabletop"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/push_block.webp",
+        "alt": {
+          "zh": "锅铲推移木块的任务场景预览",
+          "en": "Task-scene preview of push a block with a spatula"
+        }
+      },
+      "controlModes": [
+        "teleoperation"
+      ]
+    },
+    {
+      "id": "load_toaster",
+      "title": {
+        "zh": "装填烤面包机",
+        "en": "Load a toaster"
+      },
+      "category": "kitchen",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "烤面包机、面包片",
+        "en": "Toaster and bread slices"
+      },
+      "objective": {
+        "zh": "装填烤面包机",
+        "en": "Load a toaster"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "烤面包机、面包片",
+        "en": "Toaster and bread slices"
+      },
+      "statusNote": {
+        "zh": "已有烤面包机与面包的初始场景。检查重点是独立面包片和真实开放槽口的配合，装填动作仍待开发。",
+        "en": "A starting scene with the toaster and bread is available. Review focuses on independent slices and genuinely open slots; loading motion remains to be developed."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "load_toaster",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/load_toaster.webp",
+        "alt": {
+          "zh": "装填烤面包机的任务场景预览",
+          "en": "Task-scene preview of load a toaster"
+        },
+        "detail": "/robodojo-contact/tasks/load_toaster-detail.webp"
+      },
+      "sourceScene": "load_toaster",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/load_toaster.webp"
+        }
+      ]
+    },
+    {
+      "id": "separate_cup",
+      "title": {
+        "zh": "分离嵌套纸杯",
+        "en": "Separate nested cups"
+      },
+      "category": "kitchen",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "纸杯堆、单只纸杯",
+        "en": "Nested paper cups and a single cup"
+      },
+      "objective": {
+        "zh": "分离嵌套纸杯",
+        "en": "Separate nested cups"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "纸杯堆、单只纸杯",
+        "en": "Nested paper cups and a single cup"
+      },
+      "statusNote": {
+        "zh": "已有杯堆和参考单杯的预览。需确认杯体能够独立取出、尺寸与套叠配合一致，不能把整堆位移当作分杯。",
+        "en": "The cup stack and reference cup are previewed. Individual cups, matching dimensions, and nesting fit need checking; moving the whole stack is not cup separation."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "separate_cup",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/separate_cup.webp",
+        "alt": {
+          "zh": "分离嵌套纸杯的任务场景预览",
+          "en": "Task-scene preview of separate nested cups"
+        },
+        "detail": "/robodojo-contact/tasks/separate_cup-detail.webp"
+      },
+      "sourceScene": "separate_cup",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/separate_cup.webp"
+        }
+      ]
+    },
+    {
+      "id": "pull_can_tab",
+      "title": {
+        "zh": "拉开易拉罐盖",
+        "en": "Open a pull-tab can"
+      },
+      "category": "kitchen",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "易拉罐、拉环",
+        "en": "Can and pull tab"
+      },
+      "objective": {
+        "zh": "拉开易拉罐盖",
+        "en": "Open a pull-tab can"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "易拉罐、拉环",
+        "en": "Can and pull tab"
+      },
+      "statusNote": {
+        "zh": "已有罐体与拉环场景。检查重点是拉环、盖片的独立结构和实际打开空间。完整开盖动作尚未记录。",
+        "en": "A can-and-tab scene is available. Review concerns independent tab and lid structures and opening clearance; no complete opening action is recorded."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "pull_can_tab",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/pull_can_tab.webp",
+        "alt": {
+          "zh": "拉开易拉罐盖的任务场景预览",
+          "en": "Task-scene preview of open a pull-tab can"
+        },
+        "detail": "/robodojo-contact/tasks/pull_can_tab-detail.webp"
+      },
+      "sourceScene": "pull_can_tab",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/pull_can_tab.webp"
+        }
+      ]
+    },
+    {
+      "id": "screw_lightbulb",
+      "title": {
+        "zh": "旋入灯泡",
+        "en": "Screw in a lightbulb"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "螺口灯泡与竖直灯座候选模型",
+        "en": "Candidate screw-base bulb and upright-socket models"
+      },
+      "objective": {
+        "zh": "旋入灯泡",
+        "en": "Screw in a lightbulb"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "螺口灯泡与竖直灯座候选模型",
+        "en": "Candidate screw-base bulb and upright-socket models"
+      },
+      "statusNote": {
+        "zh": "灯泡与灯座模型已有 Blender 候选版本，初始场景待接入。runtime_integrated 与 physics_validated 均为 false。",
+        "en": "Blender candidate bulb and socket models exist, but the initial scene awaits integration. Both runtime_integrated and physics_validated are false."
+      },
+      "evidenceLevel": "awaiting-integration",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md",
+        "Assets/Object/DojoTouch/Authoring/lightbulb_socket/v001/asset_manifest.json"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "screw_lightbulb",
+        "daily-living"
+      ],
+      "sourceScene": "screw_lightbulb",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": []
+    },
+    {
+      "id": "flatten_towel",
+      "title": {
+        "zh": "铺平毛巾",
+        "en": "Flatten a towel"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "褶皱毛巾",
+        "en": "Wrinkled towel"
+      },
+      "objective": {
+        "zh": "铺平毛巾",
+        "en": "Flatten a towel"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "褶皱毛巾",
+        "en": "Wrinkled towel"
+      },
+      "statusNote": {
+        "zh": "已有褶皱毛巾初始场景。后续需要验证实际展开与铺平过程，而非仅改变整体位置。当前没有完整动作录像。",
+        "en": "An initial wrinkled-towel scene is available. Actual unfolding and flattening, rather than whole-object repositioning, remain to be demonstrated."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "flatten_towel",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/flatten_towel.webp",
+        "alt": {
+          "zh": "铺平毛巾的任务场景预览",
+          "en": "Task-scene preview of flatten a towel"
+        },
+        "detail": "/robodojo-contact/tasks/flatten_towel-detail.webp"
+      },
+      "sourceScene": "flatten_towel",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/flatten_towel.webp"
+        }
+      ]
+    },
+    {
+      "id": "assemble_bracket",
+      "title": {
+        "zh": "组装支架",
+        "en": "Assemble a bracket"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "支架、螺栓、垫圈、螺母",
+        "en": "Bracket, bolt, washer, and nut"
+      },
+      "objective": {
+        "zh": "组装支架",
+        "en": "Assemble a bracket"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "支架、螺栓、垫圈、螺母",
+        "en": "Bracket, bolt, washer, and nut"
+      },
+      "statusNote": {
+        "zh": "已有支架与紧固件预览。检查重点是孔位、螺栓与螺母的实际配合，以及分件是否支持装配。完整装配尚待开发。",
+        "en": "A bracket-and-fastener preview is available. Hole alignment, bolt–nut fit, and separable assembly parts are review priorities; complete assembly remains to be developed."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "assemble_bracket",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/assemble_bracket.webp",
+        "alt": {
+          "zh": "组装支架的任务场景预览",
+          "en": "Task-scene preview of assemble a bracket"
+        },
+        "detail": "/robodojo-contact/tasks/assemble_bracket-detail.webp"
+      },
+      "sourceScene": "assemble_bracket",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/assemble_bracket.webp"
+        }
+      ]
+    },
+    {
+      "id": "apply_tape",
+      "title": {
+        "zh": "胶带封盒",
+        "en": "Seal a box with tape"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "胶带、胶带座、小纸盒",
+        "en": "Tape, dispenser, and small box"
+      },
+      "objective": {
+        "zh": "胶带封盒",
+        "en": "Seal a box with tape"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "胶带、胶带座、小纸盒",
+        "en": "Tape, dispenser, and small box"
+      },
+      "statusNote": {
+        "zh": "已有胶带与胶带座的预览。任务需要匹配的自由胶带段与真实纸盒封合缝，完整封盒动作尚未记录。",
+        "en": "Tape and dispenser previews are available. The task requires a compatible free tape segment and a real box seam; no complete sealing action is recorded."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "apply_tape",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/apply_tape.webp",
+        "alt": {
+          "zh": "胶带封盒的任务场景预览",
+          "en": "Task-scene preview of seal a box with tape"
+        },
+        "detail": "/robodojo-contact/tasks/apply_tape-detail.webp"
+      },
+      "sourceScene": "apply_tape",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/apply_tape.webp"
+        }
+      ]
+    },
+    {
+      "id": "hang_glasses",
+      "title": {
+        "zh": "悬挂眼镜",
+        "en": "Hang glasses"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "眼镜、眼镜挂架",
+        "en": "Glasses and glasses rack"
+      },
+      "objective": {
+        "zh": "悬挂眼镜",
+        "en": "Hang glasses"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "眼镜、眼镜挂架",
+        "en": "Glasses and glasses rack"
+      },
+      "statusNote": {
+        "zh": "已有眼镜场景预览。挂架需与镜腿和镜框的实际尺寸配合，并保留可释放的悬挂结构。动作开发尚未开始。",
+        "en": "A glasses scene is previewed. The rack must fit the actual temple and frame dimensions and permit release; motion development has not started."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "hang_glasses",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/hang_glasses.webp",
+        "alt": {
+          "zh": "悬挂眼镜的任务场景预览",
+          "en": "Task-scene preview of hang glasses"
+        },
+        "detail": "/robodojo-contact/tasks/hang_glasses-detail.webp"
+      },
+      "sourceScene": "hang_glasses",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/hang_glasses.webp"
+        }
+      ]
+    },
+    {
+      "id": "replace_mouse_battery",
+      "title": {
+        "zh": "更换鼠标电池",
+        "en": "Replace a mouse battery"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "鼠标、电池盖、电池",
+        "en": "Mouse, battery cover, and battery"
+      },
+      "objective": {
+        "zh": "更换鼠标电池",
+        "en": "Replace a mouse battery"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "鼠标、电池盖、电池",
+        "en": "Mouse, battery cover, and battery"
+      },
+      "statusNote": {
+        "zh": "已有鼠标场景预览。需核对独立底盖、真实电池仓与匹配电池，不能仅用外观代替可更换结构。",
+        "en": "A mouse scene is previewed. Independent cover, real battery compartment, and compatible battery need review; appearance alone does not establish replaceability."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "replace_mouse_battery",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/replace_mouse_battery.webp",
+        "alt": {
+          "zh": "更换鼠标电池的任务场景预览",
+          "en": "Task-scene preview of replace a mouse battery"
+        },
+        "detail": "/robodojo-contact/tasks/replace_mouse_battery-detail.webp"
+      },
+      "sourceScene": "replace_mouse_battery",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/replace_mouse_battery.webp"
+        }
+      ]
+    },
+    {
+      "id": "connect_keyboard",
+      "title": {
+        "zh": "连接键盘",
+        "en": "Connect a keyboard"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "键盘、连接线、接口",
+        "en": "Keyboard, cable, and port"
+      },
+      "objective": {
+        "zh": "连接键盘",
+        "en": "Connect a keyboard"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "键盘、连接线、接口",
+        "en": "Keyboard, cable, and port"
+      },
+      "statusNote": {
+        "zh": "已有键盘与连接场景预览。检查重点是键盘端口、线缆端头与主机接口的匹配。完整插接仍待开发。",
+        "en": "A keyboard-connection scene is previewed. Review focuses on compatible keyboard ports, cable ends, and host connectors; complete insertion remains to be developed."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "connect_keyboard",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/connect_keyboard.webp",
+        "alt": {
+          "zh": "连接键盘的任务场景预览",
+          "en": "Task-scene preview of connect a keyboard"
+        },
+        "detail": "/robodojo-contact/tasks/connect_keyboard-detail.webp"
+      },
+      "sourceScene": "connect_keyboard",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/connect_keyboard.webp"
+        }
+      ]
+    },
+    {
+      "id": "mount_monitor",
+      "title": {
+        "zh": "安装显示器支架",
+        "en": "Mount a monitor stand"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "显示器、支架",
+        "en": "Monitor and stand"
+      },
+      "objective": {
+        "zh": "安装显示器支架",
+        "en": "Mount a monitor stand"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "显示器、支架",
+        "en": "Monitor and stand"
+      },
+      "statusNote": {
+        "zh": "已有显示器场景预览。需检查显示器、立柱、底座的独立结构及锁止接口，不能将整机外观当作已能装配。",
+        "en": "A monitor scene is previewed. Separate monitor, stand, base, and locking interfaces need review; a complete-looking model is not proof of assembly."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "mount_monitor",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/mount_monitor.webp",
+        "alt": {
+          "zh": "安装显示器支架的任务场景预览",
+          "en": "Task-scene preview of mount a monitor stand"
+        },
+        "detail": "/robodojo-contact/tasks/mount_monitor-detail.webp"
+      },
+      "sourceScene": "mount_monitor",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/mount_monitor.webp"
+        }
+      ]
+    },
+    {
+      "id": "pull_cork",
+      "title": {
+        "zh": "拔出软木塞",
+        "en": "Pull a cork"
+      },
+      "category": "kitchen",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "瓶、软木塞",
+        "en": "Bottle and cork"
+      },
+      "objective": {
+        "zh": "拔出软木塞",
+        "en": "Pull a cork"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "瓶、软木塞",
+        "en": "Bottle and cork"
+      },
+      "statusNote": {
+        "zh": "已有瓶与软木塞的场景预览。检查重点是独立塞体、瓶颈内腔与真实嵌入关系。拔塞动作尚未完成。",
+        "en": "A bottle-and-cork scene is previewed. Review focuses on a separate cork, bottle-neck cavity, and actual insertion relationship; extraction remains incomplete."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "pull_cork",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/pull_cork.webp",
+        "alt": {
+          "zh": "拔出软木塞的任务场景预览",
+          "en": "Task-scene preview of pull a cork"
+        },
+        "detail": "/robodojo-contact/tasks/pull_cork-detail.webp"
+      },
+      "sourceScene": "pull_cork",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/pull_cork.webp"
+        }
+      ]
+    },
+    {
+      "id": "extract_magazine",
+      "title": {
+        "zh": "抽取杂志",
+        "en": "Extract a magazine"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "杂志堆",
+        "en": "Stack of magazines"
+      },
+      "objective": {
+        "zh": "抽取杂志",
+        "en": "Extract a magazine"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "杂志堆",
+        "en": "Stack of magazines"
+      },
+      "statusNote": {
+        "zh": "已有杂志堆预览。任务要求逐本独立、保留上下承载关系，不预留额外抽取缝隙。尚无完整抽取演示。",
+        "en": "A magazine-stack preview is available. Books must be independent while preserving stacking support, without artificial extraction gaps; no complete extraction demonstration is recorded."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "extract_magazine",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/extract_magazine.webp",
+        "alt": {
+          "zh": "抽取杂志的任务场景预览",
+          "en": "Task-scene preview of extract a magazine"
+        },
+        "detail": "/robodojo-contact/tasks/extract_magazine-detail.webp"
+      },
+      "sourceScene": "extract_magazine",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/extract_magazine.webp"
+        }
+      ]
+    },
+    {
+      "id": "load_printer",
+      "title": {
+        "zh": "装填打印纸",
+        "en": "Load printer paper"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "打印机、纸张",
+        "en": "Printer and paper"
+      },
+      "objective": {
+        "zh": "装填打印纸",
+        "en": "Load printer paper"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "打印机、纸张",
+        "en": "Printer and paper"
+      },
+      "statusNote": {
+        "zh": "已有打印机场景预览。检查重点是独立纸页、可进入的纸盘与连续进纸空间。不能将整包纸的外形当作纸页。",
+        "en": "A printer scene is previewed. Review concerns individual paper, accessible tray space, and a continuous feed path; a wrapped paper pack is not an individual sheet."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "load_printer",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/load_printer.webp",
+        "alt": {
+          "zh": "装填打印纸的任务场景预览",
+          "en": "Task-scene preview of load printer paper"
+        },
+        "detail": "/robodojo-contact/tasks/load_printer-detail.webp"
+      },
+      "sourceScene": "load_printer",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/load_printer.webp"
+        }
+      ]
+    },
+    {
+      "id": "load_tape_dispenser",
+      "title": {
+        "zh": "装填胶带座",
+        "en": "Load a tape dispenser"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "胶带座、替换胶带卷",
+        "en": "Tape dispenser and refill roll"
+      },
+      "objective": {
+        "zh": "装填胶带座",
+        "en": "Load a tape dispenser"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "胶带座、替换胶带卷",
+        "en": "Tape dispenser and refill roll"
+      },
+      "statusNote": {
+        "zh": "已有胶带座与替换卷预览。需检查座体、内置卷和芯轴能否分离，以及卷芯与安装路径是否匹配。",
+        "en": "The dispenser and refill roll are previewed. Separate body, existing roll, and spindle, along with core fit and an installation path, need review."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "load_tape_dispenser",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/load_tape_dispenser.webp",
+        "alt": {
+          "zh": "装填胶带座的任务场景预览",
+          "en": "Task-scene preview of load a tape dispenser"
+        },
+        "detail": "/robodojo-contact/tasks/load_tape_dispenser-detail.webp"
+      },
+      "sourceScene": "load_tape_dispenser",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/load_tape_dispenser.webp"
+        }
+      ]
+    },
+    {
+      "id": "replace_paper_roll",
+      "title": {
+        "zh": "更换卷纸",
+        "en": "Replace a paper roll"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "卷纸架、匹配纸卷",
+        "en": "Paper-roll holder and matching roll"
+      },
+      "objective": {
+        "zh": "更换卷纸",
+        "en": "Replace a paper roll"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "卷纸架、匹配纸卷",
+        "en": "Paper-roll holder and matching roll"
+      },
+      "statusNote": {
+        "zh": "已有卷纸架场景预览。检查重点是匹配的卷宽、通孔与真实取放路径，不通过缩小不匹配的大卷来完成装配。",
+        "en": "A paper-roll holder scene is previewed. Roll width, core opening, and a real installation path must match; shrinking an incompatible large roll is not a valid assembly."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "replace_paper_roll",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/replace_paper_roll.webp",
+        "alt": {
+          "zh": "更换卷纸的任务场景预览",
+          "en": "Task-scene preview of replace a paper roll"
+        },
+        "detail": "/robodojo-contact/tasks/replace_paper_roll-detail.webp"
+      },
+      "sourceScene": "replace_paper_roll",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/replace_paper_roll.webp"
+        }
+      ]
+    },
+    {
+      "id": "turn_cube_face",
+      "title": {
+        "zh": "转动魔方一层",
+        "en": "Turn a Rubik’s Cube layer"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "魔方",
+        "en": "Rubik’s Cube"
+      },
+      "objective": {
+        "zh": "转动魔方一层",
+        "en": "Turn a Rubik’s Cube layer"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "魔方",
+        "en": "Rubik’s Cube"
+      },
+      "statusNote": {
+        "zh": "已有魔方场景预览。任务需要独立块体与可转层结构，不能将整个立方体旋转计为转动指定层。",
+        "en": "A Rubik’s Cube scene is previewed. Independent pieces and layer rotation are required; rotating the whole cube does not count as turning a layer."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "turn_cube_face",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/turn_cube_face.webp",
+        "alt": {
+          "zh": "转动魔方一层的任务场景预览",
+          "en": "Task-scene preview of turn a rubik’s cube layer"
+        },
+        "detail": "/robodojo-contact/tasks/turn_cube_face-detail.webp"
+      },
+      "sourceScene": "turn_cube_face",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/turn_cube_face.webp"
+        }
+      ]
+    },
+    {
+      "id": "pack_food_basket",
+      "title": {
+        "zh": "食品装篮",
+        "en": "Pack a food basket"
+      },
+      "category": "kitchen",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "收纳篮、食品",
+        "en": "Basket and food items"
+      },
+      "objective": {
+        "zh": "食品装篮",
+        "en": "Pack a food basket"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "收纳篮、食品",
+        "en": "Basket and food items"
+      },
+      "statusNote": {
+        "zh": "已有收纳篮和食品预览，保留物体的原始相对尺度。装篮布局与完整机器人放置过程仍待开发。",
+        "en": "The basket and food are previewed at their original relative scales. Packing layout and a complete robot placement sequence remain to be developed."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "pack_food_basket",
+        "kitchen"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/pack_food_basket.webp",
+        "alt": {
+          "zh": "食品装篮的任务场景预览",
+          "en": "Task-scene preview of pack a food basket"
+        },
+        "detail": "/robodojo-contact/tasks/pack_food_basket-detail.webp"
+      },
+      "sourceScene": "pack_food_basket",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/pack_food_basket.webp"
+        }
+      ]
+    },
+    {
+      "id": "connect_power_cables",
+      "title": {
+        "zh": "连接电源线",
+        "en": "Connect power cables"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "便携插排、匹配插头与线缆",
+        "en": "Portable power strip and compatible plugs and cables"
+      },
+      "objective": {
+        "zh": "连接电源线",
+        "en": "Connect power cables"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "便携插排、匹配插头与线缆",
+        "en": "Portable power strip and compatible plugs and cables"
+      },
+      "statusNote": {
+        "zh": "已有插排场景预览。检查重点是实际制式兼容的插头与线缆，并保留相邻插头的空间干涉。完整插接尚待开发。",
+        "en": "A power-strip scene is previewed. Review focuses on compatible plug standards and cables while retaining neighboring-plug interference; complete connection remains to be developed."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "connect_power_cables",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/connect_power_cables.webp",
+        "alt": {
+          "zh": "连接电源线的任务场景预览",
+          "en": "Task-scene preview of connect power cables"
+        },
+        "detail": "/robodojo-contact/tasks/connect_power_cables-detail.webp"
+      },
+      "sourceScene": "connect_power_cables",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/connect_power_cables.webp"
+        }
+      ]
+    },
+    {
+      "id": "insert_battery",
+      "title": {
+        "zh": "安装电池",
+        "en": "Insert a battery"
+      },
+      "category": "daily-living",
+      "batch": "daily-scenes",
+      "status": "not_started",
+      "description": {
+        "zh": "电池、电池盒",
+        "en": "Battery and battery case"
+      },
+      "objective": {
+        "zh": "安装电池",
+        "en": "Insert a battery"
+      },
+      "successCriteria": [],
+      "objects": {
+        "zh": "电池、电池盒",
+        "en": "Battery and battery case"
+      },
+      "statusNote": {
+        "zh": "已有电池与电池盒预览。需确认匹配端子、容纳空间、独立盖与锁止结构，不能用外包装代替可装填电池盒。",
+        "en": "The battery and case are previewed. Matching terminals, internal space, a separate cover, and a latch need review; packaging is not a functional battery holder."
+      },
+      "evidenceLevel": "preview-only",
+      "sourcePaths": [
+        "src/teleop/preview_catalog.json",
+        "docs/user/tasks/asset_review.md"
+      ],
+      "catalogOrigin": "preview",
+      "benchmarkScored": false,
+      "demo": false,
+      "tags": [
+        "insert_battery",
+        "daily-living"
+      ],
+      "media": {
+        "image": "/robodojo-contact/tasks/insert_battery.webp",
+        "alt": {
+          "zh": "安装电池的任务场景预览",
+          "en": "Task-scene preview of insert a battery"
+        },
+        "detail": "/robodojo-contact/tasks/insert_battery-detail.webp"
+      },
+      "sourceScene": "insert_battery",
+      "controlModes": [],
+      "novelty": "base",
+      "assets": [
+        {
+          "name": {
+            "zh": "场景画面",
+            "en": "Scene image"
+          },
+          "path": "/robodojo-contact/tasks/insert_battery.webp"
+        }
+      ]
+    }
+  ]
+}

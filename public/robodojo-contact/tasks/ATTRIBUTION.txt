@@ -1,0 +1,11 @@
+RoboDojo task media
+
+These files include native RoboDojo scene captures, recorded simulation views, and static views rendered from saved RoboDojo layouts and USD assets.
+Published WebP scene images are resized/encoded versions of those captures. Recording thumbnails use same-session native head-camera first frames; when the original per-camera recording is no longer available, the exact head-camera panel is cropped from the same first montage frame and encoded losslessly. Published MP4s preserve the recorded video stream; the head-camera hero is the full original camera view without cropping or time changes.
+
+Some scene objects originate from NVIDIA, SimReady Assets (nvidia/simready-assets), revision 7879e0e50423290300ac20ecd6e727325f680b60, licensed CC BY 4.0.
+Source: https://huggingface.co/datasets/nvidia/simready-assets
+License: https://creativecommons.org/licenses/by/4.0/
+Scene assembly, task-specific asset modifications, native rendering and simulation recordings are from the RoboDojo project. This attribution does not imply endorsement by NVIDIA.
+
+Task-specific source paths and capture hashes are retained in native-captures-provenance.json, layout-renders-provenance.json and video-provenance.json. Static images do not establish task completion; recorded mechanical demonstrations are not benchmark success-rate or tactile-policy evaluation claims.

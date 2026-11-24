@@ -1,0 +1,711 @@
+{
+  "source_project": "RoboDojo",
+  "note": "Authentic native scene captures; resized and encoded as WebP only. Static images do not establish successful task execution.",
+  "missing_assets": [
+    "screw_lightbulb"
+  ],
+  "captures": [
+    {
+      "id": "load_toaster",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/load_toaster/overview.png",
+      "source_sha256": "c019e144c85ae356a5a5f87a855b89e80d564294e8dcec9c9b4b8fb98ce6b918",
+      "file": "load_toaster.webp",
+      "bytes": 21680
+    },
+    {
+      "id": "load_toaster",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/load_toaster/detail.png",
+      "source_sha256": "7b1da88dd133b37f5b2b8be05ff027f071a230f3dd0ddae16a3f4cc9770a5767",
+      "file": "load_toaster-detail.webp",
+      "bytes": 27640
+    },
+    {
+      "id": "separate_cup",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/separate_cup/overview.png",
+      "source_sha256": "2bb01cfc6773646a88521dc15f236a3014aeed0488aaaa6463c7ad9e74b49e67",
+      "file": "separate_cup.webp",
+      "bytes": 21318
+    },
+    {
+      "id": "separate_cup",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/separate_cup/detail.png",
+      "source_sha256": "84ecae3908ca0d976ad5e19cf84aef1a93637fefc6746fad974be5a8c6fd9ba9",
+      "file": "separate_cup-detail.webp",
+      "bytes": 32740
+    },
+    {
+      "id": "cut_steak",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/cut_steak/overview.png",
+      "source_sha256": "2cb101f10b6717779a5b8d619bc5b81d6a62d9c4171c5299712a2883fb481501",
+      "file": "cut_steak.webp",
+      "bytes": 68240
+    },
+    {
+      "id": "cut_steak",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/cut_steak/detail.png",
+      "source_sha256": "cce1d4a6bad6f79055a6523becc464cecef75fa3e692a5400220806bb11517f7",
+      "file": "cut_steak-detail.webp",
+      "bytes": 83374
+    },
+    {
+      "id": "pour_tea",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/pour_tea/overview.png",
+      "source_sha256": "698b77e8da10da1a075774df1aae7ac3fb84181d7b18c539e18791f9ba1c93e3",
+      "file": "pour_tea.webp",
+      "bytes": 63752
+    },
+    {
+      "id": "pour_tea",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/pour_tea/detail.png",
+      "source_sha256": "5925500d3335402d5ed3bdc7edd95d3e05c2172c1ee0d7011903aa6764fa558a",
+      "file": "pour_tea-detail.webp",
+      "bytes": 80784
+    },
+    {
+      "id": "slice_cucumber",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/slice_cucumber/overview.png",
+      "source_sha256": "d24172be32e8769871ab1d6cf4fc50adea0431d5cb755f301ebb780b9c2c3651",
+      "file": "slice_cucumber.webp",
+      "bytes": 66736
+    },
+    {
+      "id": "slice_cucumber",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/slice_cucumber/detail.png",
+      "source_sha256": "bccd3da5c92c00a989a7a309f47aa12e95e89c329123e587e75f3435f263b4b5",
+      "file": "slice_cucumber-detail.webp",
+      "bytes": 84688
+    },
+    {
+      "id": "flip_fish_in_pan",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/flip_fish_in_pan/overview.png",
+      "source_sha256": "e16a275716017f2f0f210c3e1c5283e91f10eed2b19236ddf42dd5e09cac3dcc",
+      "file": "flip_fish_in_pan.webp",
+      "bytes": 64778
+    },
+    {
+      "id": "flip_fish_in_pan",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/flip_fish_in_pan/detail.png",
+      "source_sha256": "125713b14ccdea605eeb875037fc6b0f720a038601201c0a639a9037f79553c4",
+      "file": "flip_fish_in_pan-detail.webp",
+      "bytes": 87750
+    },
+    {
+      "id": "flip_fish_with_spatula",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/flip_fish_with_spatula/overview.png",
+      "source_sha256": "d0f071943773214a337125b7ba43bd5032576bb8f0e8f790629c6df1c9f3d892",
+      "file": "flip_fish_with_spatula.webp",
+      "bytes": 65200
+    },
+    {
+      "id": "flip_fish_with_spatula",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/flip_fish_with_spatula/detail.png",
+      "source_sha256": "e4706ee41c727ba53d4c046afd2075a04fd5109cc5e17a8a428b6f7bd23df973",
+      "file": "flip_fish_with_spatula-detail.webp",
+      "bytes": 94788
+    },
+    {
+      "id": "season_food",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/season_food/overview.png",
+      "source_sha256": "d254c1690b99056663ca6fccdfc0ff3101fb0b7125a04d708d895fe46324632d",
+      "file": "season_food.webp",
+      "bytes": 65058
+    },
+    {
+      "id": "season_food",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/season_food/detail.png",
+      "source_sha256": "5dc868f49232b496f253f36b5c3a153e6c8a4a978872f155c22f83a1f98fc9cb",
+      "file": "season_food-detail.webp",
+      "bytes": 82214
+    },
+    {
+      "id": "ladle_soup",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/ladle_soup/overview.png",
+      "source_sha256": "c6cba598c7c088660ace0c3fdecdc97216d39b053ff418e55072a597044790a4",
+      "file": "ladle_soup.webp",
+      "bytes": 64216
+    },
+    {
+      "id": "ladle_soup",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/ladle_soup/detail.png",
+      "source_sha256": "01704104f143ac0d32bd1b176ec2456787057ceee65fe68940035634e821c63c",
+      "file": "ladle_soup-detail.webp",
+      "bytes": 83298
+    },
+    {
+      "id": "carry_glass_tray",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/carry_glass_tray/overview.png",
+      "source_sha256": "8e22e2c214220f52c6cb0f6bf7fac8e01f514d7a0f79a93a4b6737ff204cc18e",
+      "file": "carry_glass_tray.webp",
+      "bytes": 66752
+    },
+    {
+      "id": "carry_glass_tray",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/carry_glass_tray/detail.png",
+      "source_sha256": "a0c2f130124cec8eb1d7efd5ae13c07cc888dee5ce8658d9261e3b68b2cf5d4b",
+      "file": "carry_glass_tray-detail.webp",
+      "bytes": 85706
+    },
+    {
+      "id": "roll_pin_trial",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/roll_pin_trial/overview.png",
+      "source_sha256": "611470df5858b2c89de86796307255279669a444358190404ad8d9cdca51f2e2",
+      "file": "roll_pin_trial.webp",
+      "bytes": 61972
+    },
+    {
+      "id": "roll_pin_trial",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/roll_pin_trial/detail.png",
+      "source_sha256": "fc92890057cfac7efd68aa12ca35be486ff1ba32ba2cf25fcbee961821380e93",
+      "file": "roll_pin_trial-detail.webp",
+      "bytes": 78482
+    },
+    {
+      "id": "pull_can_tab",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/pull_can_tab/overview.png",
+      "source_sha256": "bbe5bede639ced804c62460600843c1a8ea4166b1c4d0ec09f96bde1c3ab9019",
+      "file": "pull_can_tab.webp",
+      "bytes": 19854
+    },
+    {
+      "id": "pull_can_tab",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/pull_can_tab/detail.png",
+      "source_sha256": "0e3f9baa39e5a82e3acc0e4819da13c4d211b9d65bb442f124fe4b1edf6c1f0d",
+      "file": "pull_can_tab-detail.webp",
+      "bytes": 31364
+    },
+    {
+      "id": "flatten_towel",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/flatten_towel/overview.png",
+      "source_sha256": "ff23a0958bf35a709651b0bf269999af8b0148c83783bfe3728071b02b47ccc6",
+      "file": "flatten_towel.webp",
+      "bytes": 20434
+    },
+    {
+      "id": "flatten_towel",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/flatten_towel/detail.png",
+      "source_sha256": "6ad53b0f413073acb71fdae4c8d2d92853a71769691613607ec854dfdd711323",
+      "file": "flatten_towel-detail.webp",
+      "bytes": 27830
+    },
+    {
+      "id": "assemble_bracket",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/assemble_bracket/overview.png",
+      "source_sha256": "f8701ddcdbafe9b9a82fcb909bd7649081836e2883e96079649b01c58b1452c0",
+      "file": "assemble_bracket.webp",
+      "bytes": 19476
+    },
+    {
+      "id": "assemble_bracket",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/assemble_bracket/detail.png",
+      "source_sha256": "7f5233834319a12a2d4a9a36a8ea0c2ebd9c4688d57b02a4dff7f062ac77d064",
+      "file": "assemble_bracket-detail.webp",
+      "bytes": 14966
+    },
+    {
+      "id": "unfold_knife",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/unfold_knife/overview.png",
+      "source_sha256": "3ff9f518a8e9a3385ffda563dc7b3d72e81dcaca4798008a943bd64a7aaa5f36",
+      "file": "unfold_knife.webp",
+      "bytes": 65336
+    },
+    {
+      "id": "unfold_knife",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/unfold_knife/detail.png",
+      "source_sha256": "58bef562ab13d418583790d55dde1963c4f03c527688ee6dd2cf22480c778e98",
+      "file": "unfold_knife-detail.webp",
+      "bytes": 70598
+    },
+    {
+      "id": "extend_knife",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/extend_knife/overview.png",
+      "source_sha256": "41ae715172a21f1830b0be474083a3982e3a0478a984e6e0470ebbca49661b29",
+      "file": "extend_knife.webp",
+      "bytes": 58630
+    },
+    {
+      "id": "extend_knife",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/extend_knife/detail.png",
+      "source_sha256": "5c44ade18d70bdb0d6b6e8368885a4046bf4917cfca8d09e14e541f651049a62",
+      "file": "extend_knife-detail.webp",
+      "bytes": 74008
+    },
+    {
+      "id": "tighten_hex_bolt",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/tighten_hex_bolt/overview.png",
+      "source_sha256": "f768c2df83c698a13478894eee3f2031f8316524095c382260dac28fb7d69a92",
+      "file": "tighten_hex_bolt.webp",
+      "bytes": 58948
+    },
+    {
+      "id": "tighten_hex_bolt",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/tighten_hex_bolt/detail.png",
+      "source_sha256": "730ab5f5209b0f2fbb29a36623283b8a4ce7389ca0e91c37d346a8687194f35b",
+      "file": "tighten_hex_bolt-detail.webp",
+      "bytes": 70396
+    },
+    {
+      "id": "use_cutters",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/use_cutters/overview.png",
+      "source_sha256": "bfee8747a20dd278e0c4a12bc2644a832fcba1618a4576f496938bd228abf7e2",
+      "file": "use_cutters.webp",
+      "bytes": 60208
+    },
+    {
+      "id": "use_cutters",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/use_cutters/detail.png",
+      "source_sha256": "909b171b10c87647b04bf2f41b6f64245f02e2d43acac82d069270f0d42c1030",
+      "file": "use_cutters-detail.webp",
+      "bytes": 58362
+    },
+    {
+      "id": "use_long_nose_pliers",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/use_long_nose_pliers/overview.png",
+      "source_sha256": "9865cdfbcbfc70cfd0b239feb0b354ae3f6d7323a2d28ed859f3586a15fa735c",
+      "file": "use_long_nose_pliers.webp",
+      "bytes": 61132
+    },
+    {
+      "id": "use_long_nose_pliers",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/use_long_nose_pliers/detail.png",
+      "source_sha256": "12cd2ec0e8bfa4ecc266fd0086a42173b0b9aa296462bcb33f3133418209ae87",
+      "file": "use_long_nose_pliers-detail.webp",
+      "bytes": 58646
+    },
+    {
+      "id": "tighten_screw",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/tighten_screw/overview.png",
+      "source_sha256": "efe37965719cc413f6f402021346f2d1f88bf9034f113b96199002f922afce60",
+      "file": "tighten_screw.webp",
+      "bytes": 62008
+    },
+    {
+      "id": "tighten_screw",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/tighten_screw/detail.png",
+      "source_sha256": "7787e4a36678996bfe8eadc0edb6bfaff2efb4193efbb8905fc86d423d919d35",
+      "file": "tighten_screw-detail.webp",
+      "bytes": 74744
+    },
+    {
+      "id": "torque_bolt",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/torque_bolt/overview.png",
+      "source_sha256": "47fb772096e82847b002786beffa887a5c1a92cd12037d2939d64287ccb4ed1a",
+      "file": "torque_bolt.webp",
+      "bytes": 68112
+    },
+    {
+      "id": "torque_bolt",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/torque_bolt/detail.png",
+      "source_sha256": "57a4ca967792cbc5da87e30f0d5c07dcaee8300afa8901dd1da6ab090a1802c2",
+      "file": "torque_bolt-detail.webp",
+      "bytes": 76546
+    },
+    {
+      "id": "apply_tape",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/apply_tape/overview.png",
+      "source_sha256": "a91cf24b1f9db85c4ed0a23b5bf79082e26869abb63c44916f48bddb581e513e",
+      "file": "apply_tape.webp",
+      "bytes": 21356
+    },
+    {
+      "id": "apply_tape",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/apply_tape/detail.png",
+      "source_sha256": "587c26a8a4ad67ccf845bbea7ab1622911ea6a369c82d2a1c7fc5da91ef061a2",
+      "file": "apply_tape-detail.webp",
+      "bytes": 20520
+    },
+    {
+      "id": "use_scissors",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/use_scissors/overview.png",
+      "source_sha256": "8fe574afa3d9a0143cff29f4fe7efd1f382400cb13e193e957c2fc20fd20ed53",
+      "file": "use_scissors.webp",
+      "bytes": 62172
+    },
+    {
+      "id": "use_scissors",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/use_scissors/detail.png",
+      "source_sha256": "10caf543e5950924d682fda7287998f799f3a9285e6d4f06afce5492008813d8",
+      "file": "use_scissors-detail.webp",
+      "bytes": 32718
+    },
+    {
+      "id": "hang_glasses",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/hang_glasses/overview.png",
+      "source_sha256": "ddca1a595e39d791c5bdd75785d5942a9102e0a39c6756a616fbcd71619146ce",
+      "file": "hang_glasses.webp",
+      "bytes": 19406
+    },
+    {
+      "id": "hang_glasses",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/hang_glasses/detail.png",
+      "source_sha256": "e08b274938ff988d05f6ef689a560a22e1abae9b1c5442823cfd7cb2cb64a6bc",
+      "file": "hang_glasses-detail.webp",
+      "bytes": 15904
+    },
+    {
+      "id": "replace_mouse_battery",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/replace_mouse_battery/overview.png",
+      "source_sha256": "1807fa3997aec3183c341dc6ac12d68ac0c41fe6d1c44af0bc09954b83cc7080",
+      "file": "replace_mouse_battery.webp",
+      "bytes": 19608
+    },
+    {
+      "id": "replace_mouse_battery",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/replace_mouse_battery/detail.png",
+      "source_sha256": "4f8509923660aa7bafaaf1947cce2cb46a83e6861423356d6ac477a9cba4fae2",
+      "file": "replace_mouse_battery-detail.webp",
+      "bytes": 11394
+    },
+    {
+      "id": "connect_keyboard",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/connect_keyboard/overview.png",
+      "source_sha256": "c61ea98c46a50eb2f589b7826eef47299c17168b85bf4a7c01310390d6db2bab",
+      "file": "connect_keyboard.webp",
+      "bytes": 21326
+    },
+    {
+      "id": "connect_keyboard",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/connect_keyboard/detail.png",
+      "source_sha256": "4bef94010db332a94ac5c0cbf596d4381b879ea6e6cb8a2e983a0d557fbd92f4",
+      "file": "connect_keyboard-detail.webp",
+      "bytes": 24800
+    },
+    {
+      "id": "mount_monitor",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/mount_monitor/overview.png",
+      "source_sha256": "ab7a0dfc4fcd6f21c3142d09b682c285bedd7db7bfe22cc829ec7ca812c568f1",
+      "file": "mount_monitor.webp",
+      "bytes": 20758
+    },
+    {
+      "id": "mount_monitor",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/mount_monitor/detail.png",
+      "source_sha256": "7421c5654d0dea7821f329086651c94348e995e6ef6bbf24deb753357cd274b1",
+      "file": "mount_monitor-detail.webp",
+      "bytes": 21394
+    },
+    {
+      "id": "pull_cork",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/pull_cork/overview.png",
+      "source_sha256": "c5c606affd89fb47512e0add63d7f4d7cc4009b32892e2a61e3600f8a7c10af3",
+      "file": "pull_cork.webp",
+      "bytes": 19176
+    },
+    {
+      "id": "pull_cork",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/pull_cork/detail.png",
+      "source_sha256": "fce2be8791289d034e3b7c594a1d7ce486525c3ef66ecf1662fec5a1246690f4",
+      "file": "pull_cork-detail.webp",
+      "bytes": 10678
+    },
+    {
+      "id": "extract_magazine",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/extract_magazine/overview.png",
+      "source_sha256": "b685686c2320dfedbb51c1bf519343891bde12e34e812a71560a837d75d4b136",
+      "file": "extract_magazine.webp",
+      "bytes": 22344
+    },
+    {
+      "id": "extract_magazine",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/extract_magazine/detail.png",
+      "source_sha256": "2e657c6e382bf48e955cc7ea03711a96439dcc819a6ac16da5deaf0d1565518a",
+      "file": "extract_magazine-detail.webp",
+      "bytes": 50846
+    },
+    {
+      "id": "load_printer",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/load_printer/overview.png",
+      "source_sha256": "b693cfa0b3baf2875763aa7a9202f9e21572a301c33d216bf0172c3cba71b4cb",
+      "file": "load_printer.webp",
+      "bytes": 22532
+    },
+    {
+      "id": "load_printer",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/load_printer/detail.png",
+      "source_sha256": "033c39c9d8c3076d93ca592072902b837222e65246bb660bc2df33023687703a",
+      "file": "load_printer-detail.webp",
+      "bytes": 28038
+    },
+    {
+      "id": "load_tape_dispenser",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/load_tape_dispenser/overview.png",
+      "source_sha256": "2a914c884e2bb21db7edff7009729801083a96b91c0ea7f05f3856e300566e84",
+      "file": "load_tape_dispenser.webp",
+      "bytes": 21152
+    },
+    {
+      "id": "load_tape_dispenser",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/load_tape_dispenser/detail.png",
+      "source_sha256": "bdb526c40c8491d2f96d9afac7639af0f82fca40a6c3a7a7c226b78620dbb98c",
+      "file": "load_tape_dispenser-detail.webp",
+      "bytes": 16100
+    },
+    {
+      "id": "replace_paper_roll",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/replace_paper_roll/overview.png",
+      "source_sha256": "0ed8a09bb0a2363f7501d22be2cc59cce342def2fc0d4257d7e8bbe4547af02c",
+      "file": "replace_paper_roll.webp",
+      "bytes": 19544
+    },
+    {
+      "id": "replace_paper_roll",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/replace_paper_roll/detail.png",
+      "source_sha256": "a028a6a98ff0711357fa7841162670ec2d383772079d01d9cf8c758ae9733e79",
+      "file": "replace_paper_roll-detail.webp",
+      "bytes": 15478
+    },
+    {
+      "id": "turn_cube_face",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/turn_cube_face/overview.png",
+      "source_sha256": "230fca9d5b487cf014c5787a1f71f50c0aa55c29f286d511f58bdcf7d061a5f5",
+      "file": "turn_cube_face.webp",
+      "bytes": 20504
+    },
+    {
+      "id": "turn_cube_face",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/turn_cube_face/detail.png",
+      "source_sha256": "5058539408e309afe20e8edec9ba22774e35c19ba819e5033fc8d79a640277c4",
+      "file": "turn_cube_face-detail.webp",
+      "bytes": 29718
+    },
+    {
+      "id": "squeeze_sprayer",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/squeeze_sprayer/overview.png",
+      "source_sha256": "f346745f5dcff42bf5a7ba3b4ab4af1dbcdd2cf4a597eb9f00865518aaf50555",
+      "file": "squeeze_sprayer.webp",
+      "bytes": 61456
+    },
+    {
+      "id": "squeeze_sprayer",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/squeeze_sprayer/detail.png",
+      "source_sha256": "99aade5de7c9de3c087b610fc25d336517eac6a3dc436d107ddf01968de5308e",
+      "file": "squeeze_sprayer-detail.webp",
+      "bytes": 55454
+    },
+    {
+      "id": "move_syringe_plunger",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/move_syringe_plunger/overview.png",
+      "source_sha256": "c2c6d59f52cd88c607a3aece265ab398286e23420d105b2e3c225a920549bf4e",
+      "file": "move_syringe_plunger.webp",
+      "bytes": 64546
+    },
+    {
+      "id": "move_syringe_plunger",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/move_syringe_plunger/detail.png",
+      "source_sha256": "48f70547e16e374f3c96e5d127730697ae612f296450c0a0144f777fcc82c5f4",
+      "file": "move_syringe_plunger-detail.webp",
+      "bytes": 59536
+    },
+    {
+      "id": "pack_food_basket",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/pack_food_basket/overview.png",
+      "source_sha256": "f704011ff6384fc2bd879200329cf22446807c2a2d1acd966d4b2a5217701f79",
+      "file": "pack_food_basket.webp",
+      "bytes": 27730
+    },
+    {
+      "id": "pack_food_basket",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/pack_food_basket/detail.png",
+      "source_sha256": "bf3e5e299e13fb549b281ebba289a87c23bc6d3d944c6f52eb3829adf55e676a",
+      "file": "pack_food_basket-detail.webp",
+      "bytes": 56562
+    },
+    {
+      "id": "connect_power_cables",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/connect_power_cables/overview.png",
+      "source_sha256": "0b2bb26ff1d059ed522fc218fce4571f7bba5ac61329e76cc27d3a9712679720",
+      "file": "connect_power_cables.webp",
+      "bytes": 22200
+    },
+    {
+      "id": "connect_power_cables",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/connect_power_cables/detail.png",
+      "source_sha256": "4509d65b8e59da5e8a60017996c142b0ad699376f5d4878e5d9602676b4bd811",
+      "file": "connect_power_cables-detail.webp",
+      "bytes": 26046
+    },
+    {
+      "id": "insert_battery",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/insert_battery/overview.png",
+      "source_sha256": "843c6bca61ca0fa5b20ff4932f9d2f576be8e130c66a7bc4c776afddfc1c617e",
+      "file": "insert_battery.webp",
+      "bytes": 20208
+    },
+    {
+      "id": "insert_battery",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": ".cache/runs/scene_asset_review_20261109_revision2/scenes/insert_battery/detail.png",
+      "source_sha256": "75bee8f09d4fa257508f043b5fb3275850f011c56cb0f44e470d0d28898b01f5",
+      "file": "insert_battery-detail.webp",
+      "bytes": 15760
+    },
+    {
+      "id": "unfold_knife_compact_flipper",
+      "view": "overview",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/unfold_knife_compact_flipper/overview.png",
+      "source_sha256": "c5d21e72b06c5ef5016197e199039d497200e5213ffadcd375ecb0c421282d98",
+      "file": "unfold_knife_compact_flipper.webp",
+      "bytes": 61392
+    },
+    {
+      "id": "unfold_knife_compact_flipper",
+      "view": "detail",
+      "kind": "native_scene_capture",
+      "source_path": "outputs/tool_assets_20261119/unfold_knife_compact_flipper/detail.png",
+      "source_sha256": "7d1b40c9e7896ac20dc386602acfe4264ed6cad1cc637eecc5e2f28f6f2bd5a2",
+      "file": "unfold_knife_compact_flipper-detail.webp",
+      "bytes": 68746
+    }
+  ]
+}

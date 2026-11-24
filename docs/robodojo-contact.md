@@ -1,44 +1,27 @@
-# robodojo-contact 维护说明 / Maintenance
+# robodojo-contact
 
-本目录当前全部是页面演示内容。任务与状态是示例，图片和视频是原创概念示意，不代表真实机器人实验、轨迹或验收结果。
+这个双语目录展示 RoboDojo 接触操作项目中的场景、工具资产和仿真录像。公开入口是 [robodojo-contact](https://henryd0ng.github.io/robodojo-contact/)。
 
-This catalog currently contains interface demonstrations only. Tasks and statuses are examples; images and videos are original conceptual illustrations, not real robot experiments, trajectories, or acceptance results.
+## 更新任务
 
-## 编辑目录 / Edit the catalog
+在 `src/data/robodojo-contact-catalog.json` 中维护任务、双语文字、分类和批次。字段类型定义在 `src/data/robodojo-contact.ts`。沿用已有任务 ID，这样已分享的 `#task=...` 地址可以继续使用。站点只依赖仓库内已发布的目录和媒体，构建时无需安装 RoboDojo 或模拟器。
 
-编辑 `src/data/robodojo-contact.ts`：
+核对 RoboDojo 工作树中的任务清单、已保存场景和运行报告。工具资产可从 `docs/user/tasks/tool_asset_check.md` 查找，静态场景在 `src/teleop/preview_catalog.json`，交互任务在 `docs/user/teleoperation/simready_tasks.md`。完整动作的证据见相应录像和复核报告。将依据以仓库相对路径写入条目的 `sourcePaths`，在 `statusNote` 中写清本场景已经完成的部分。
 
-- `projectMeta`：项目标题、说明与演示声明。
-- `taskStatuses`、`taskCategories`、`taskBatches`：状态、分类与批次的稳定 ID 和双语文字。
-- `tasks`：任务条目。每项使用唯一 `id`，并引用已经定义的分类、批次与状态。
+- **演示已完成**表示一次完整的仿真操作已有可复核的运行记录和对应录像。内部状态 ID `accepted` 用于兼容已有筛选链接。目录没有公布基准成功率。
+- **开发中**用于正在实现或已有局部验证的交互。工具机构量测、夹爪接触以及启动录像可作为进展依据。
+- **未开始**用于以初始布局或候选资产为主的任务。只有候选模型的条目可说明接入进度，待场景注册后再补图。
 
-Edit `src/data/robodojo-contact.ts`. `projectMeta` contains the project text and demo notice; status, category, and batch arrays define stable IDs; `tasks` contains entries that reference those IDs. Every task needs a unique `id`.
+## 替换图片和视频
 
-任务的标题、描述、目标与检查项均采用 `{ zh, en }`。可按需填写 `setup`、`steps`、`preflight`、`assets` 和 `novelty`，但不要将示例提案写成已完成的工作。当前 `demo: true` 需要保留；只有完成真实内容替换与核实后，才能调整对应的标记与说明。
+媒体放在 `public/robodojo-contact/tasks/`。用 `media.image` 指向任务初态或录像封面，用可选的 `media.detail` 指向物体近景。每个已完成条目的 `media.videos` 至少有一段对应的完整录像，其他状态只显示静态图片。项目首页的主视角可使用同一次演示的单独机位。
 
-Titles, descriptions, objectives, and checks use `{ zh, en }`. Optional fields include `setup`, `steps`, `preflight`, `assets`, and `novelty`. Do not describe a proposal as completed work. Keep `demo: true` until a record has been replaced with verified real content, then update its labels and notices together.
+原生截图、录像及其他初始布局渲染的来源分别记录在素材目录中的 `native-captures-provenance.json`、`video-provenance.json` 和 `layout-renders-provenance.json`。静态布局渲染按保存的位姿和实际 USD 网格构图，使用中性桌面便于观察物体。更新素材时同步维护其来源记录。
 
-## 媒体 / Media
+## 检查与下载
 
-媒体放在 `public/robodojo-contact/`，数据中使用 `/robodojo-contact/文件名`。`media.image` 是图片；`media.videos` 支持多段视频，每段填写双语 `label`、`src`、可选 `poster` 和 `kind`。当前概念视频的 `kind` 只用于演示不同展示状态，不是验收结论。
+运行 `npm ci` 和 `npm run build`。构建会检查双语核心字段、唯一 ID、状态和批次引用、媒体路径，以及完成状态与录像是否对应。通过 `npm run dev` 可在浏览器里预览中英文界面。
 
-Store media in `public/robodojo-contact/` and reference it with `/robodojo-contact/filename`. `media.image` is an image; `media.videos` supports several clips with bilingual labels, source URLs, optional posters, and a kind. Kinds on the current conceptual videos demonstrate interface states, not acceptance outcomes.
+`/robodojo-contact/downloads/` 下提供任务目录 `tasks.json`、双语指南 `guide.md`、网站元数据检查报告 `validation.json` 和图集 `assets.zip`。图集包含任务目录、来源记录、初态图及近景图；录像通过各任务的媒体地址播放。
 
-`trajectoryCount` 当前省略。只有存在可核实的轨迹记录时才填写，不要将视频数量当作轨迹数量。
-
-`trajectoryCount` is intentionally absent. Add it only when verifiable trajectory records exist; video counts are not trajectory counts.
-
-## 下载与验证 / Downloads and validation
-
-静态下载端点位于 `src/pages/robodojo-contact/downloads/[file].ts`：
-
-- `/robodojo-contact/downloads/tasks.json`：完整目录。
-- `/robodojo-contact/downloads/guide.md`：由当前目录生成的中英文说明。
-- `/robodojo-contact/downloads/validation.json`：字段、ID 与引用关系检查。
-- `/robodojo-contact/downloads/assets.zip`：以上三份文件与两张原创 SVG 示意图。
-
-These static downloads are generated from the current catalog. The metadata report checks IDs, references, bilingual core fields, and explicit demo flags. It does not validate robot behavior, physical correctness, trajectories, or task success. The ZIP contains the catalog, guide, report, and two original SVG diagrams; it contains no executable robot environment.
-
-更新后运行 `npm run build`，检查下载内容及页面中英文显示。若今后加入真实任务，需要同步调整演示声明和元数据报告中针对演示条目的检查；真实实验的验证应由独立、可复现的流程提供。
-
-After updates, run `npm run build` and check the downloads and both page languages. If real tasks are added later, update demo notices and demo-specific metadata checks together. Real experiment validation requires a separate, reproducible process.
+部分场景使用 NVIDIA 的 SimReady 模型，经 RoboDojo 适配、布局和渲染。模型的来源版本和许可见 [SimReady Assets](https://huggingface.co/datasets/nvidia/simready-assets/tree/7879e0e50423290300ac20ecd6e727325f680b60) 与 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)。

@@ -1,6 +1,6 @@
 ---
 import RobodojoLayout from '../../../../layouts/RobodojoLayout.astro';
-import { projectMeta, tasks, taskBatches, taskCategories, taskStatuses } from '../../../../data/robodojo-contact';
+import { projectMeta, tasks, taskBatches, taskCategories, taskStatuses, type ContactTask } from '../../../../data/robodojo-contact';
 import type { Lang } from '../../../../data/site';
 
 export function getStaticPaths() {
@@ -9,85 +9,82 @@ export function getStaticPaths() {
 
 const lang = Astro.params.lang as Lang;
 const zh = lang === 'zh';
-const link = '/' + lang + '/projects/robodojo-contact/';
+const link = `/${lang}/projects/robodojo-contact/`;
 const tr = (cn: string, en: string) => zh ? cn : en;
 const counts = Object.fromEntries(taskStatuses.map(({ id }) => [id, tasks.filter(task => task.status === id).length]));
-const pending = counts.not_started;
-const videos = tasks.reduce((total, task) => total + (task.media?.videos?.length ?? 0), 0);
-const trajectories = tasks.reduce((total, task) => total + (task.trajectoryCount ?? 0), 0);
-const featured = tasks.find(task => task.media?.videos?.length);
-const heroClip = featured?.media?.videos?.[0];
-const mediaKind = {
-  accepted: tr('验收视频', 'Acceptance clip'),
-  diagnostic: tr('诊断片段', 'Diagnostic clip'),
-  development: tr('开发记录', 'Development clip'),
-};
-const clipNotice = {
-  accepted: tr('参考片段', 'Reference clip'),
-  diagnostic: tr('用于观察接触细节', 'Shows a close-up of the contact'),
-  development: tr('开发阶段记录', 'Development record'),
-};
+// Unfinished tasks expose their initial scene only, even if development clips exist in the data.
+const playableClips = (task: ContactTask) => task.status === 'accepted' ? task.media?.videos ?? [] : [];
+const videos = tasks.reduce((total, task) => total + playableClips(task).length, 0);
+const trajectories = tasks.reduce((total, task) => total + (task.status === 'accepted' ? task.trajectoryCount ?? 0 : 0), 0);
+const featured = tasks.find(task => task.id === projectMeta.heroTaskId && playableClips(task).length > 0)
+  ?? tasks.find(task => playableClips(task).length > 0);
+const heroClip = featured && (featured.id === projectMeta.heroTaskId ? projectMeta.heroVideo ?? playableClips(featured)[0] : playableClips(featured)[0]);
 const categoryNames = Object.fromEntries(taskCategories.map(category => [category.id, category.label[lang]]));
 const batchNames = Object.fromEntries(taskBatches.map(batch => [batch.id, batch.label[lang]]));
 const statusNames = Object.fromEntries(taskStatuses.map(status => [status.id, status.label[lang]]));
 const formattedTasks = tr('{count} 项任务', '{count} tasks');
+const mediaKind = {
+  accepted: tr('完成演示', 'Completed demonstration'),
+  diagnostic: tr('接触细节', 'Contact detail'),
+  development: tr('开发记录', 'Development record'),
+};
 ---
-<RobodojoLayout lang={lang} title={projectMeta.title} description={projectMeta.description[lang]} pending={pending}>
+<RobodojoLayout lang={lang} title={projectMeta.title} description={projectMeta.description[lang]} pending={counts.not_started}>
   <main id="top" data-rb-catalog>
     <section class="rb-wrap rb-hero">
-      <p class="rb-eyebrow">{tr('ROBOT MANIPULATION BENCHMARK', 'ROBOT MANIPULATION BENCHMARK')}</p>
-      <h1>{projectMeta.title}</h1>
-      <p class="rb-subtitle">{projectMeta.subtitle[lang]}</p>
+      <h1><span class="rb-project-name">{projectMeta.title}</span><span class="rb-project-subtitle">{projectMeta.subtitle[lang]}</span></h1>
       <p class="rb-lede">{projectMeta.description[lang]}</p>
-      {heroClip && (
+      {heroClip && featured && (
         <div class="rb-stage">
-          <video data-rb-hero muted loop playsinline controls preload="metadata" poster={projectMeta.heroPoster ?? heroClip.poster ?? featured?.media?.image} aria-label={tr('项目示意动画', 'Project schematic animation')}>
+          <video data-rb-hero muted loop playsinline controls preload="metadata" poster={heroClip.poster ?? featured.media?.image} aria-label={featured.title[lang]}>
             <source src={heroClip.src} type="video/mp4" />
           </video>
           <div class="rb-stage-overlay">
-            <div><span class="rb-stage-label">{tr('示意动画 · 非实验录像', 'SCHEMATIC · NOT EXPERIMENTAL FOOTAGE')}</span><strong>{heroClip.label[lang]}</strong></div>
-            <button class="rb-round" type="button" data-rb-hero-toggle data-play={tr('播放演示', 'Play animation')} data-pause={tr('暂停演示', 'Pause animation')} aria-label={tr('播放演示', 'Play animation')} aria-pressed="false">▶</button>
+            <div>
+              <span class="rb-stage-label">{featured.demo ? tr('示意视频', 'Illustrative video') : tr('完成演示 · 未评分', 'COMPLETED DEMONSTRATION · UNSCORED')}</span>
+              <strong>{featured.title[lang]}</strong>
+              <span class="rb-stage-description">{heroClip.label[lang]}</span>
+            </div>
+            <button class="rb-round" type="button" data-rb-hero-toggle data-play={tr('播放任务视频', 'Play task video')} data-pause={tr('暂停任务视频', 'Pause task video')} aria-label={tr('播放任务视频', 'Play task video')} aria-pressed="false">▶</button>
           </div>
-          <p class="rb-media-error" data-rb-hero-error hidden>{tr('视频无法加载。', 'The video could not load.')} <a href={heroClip.src}>{tr('打开源文件', 'Open the video file')}</a></p>
+          <p class="rb-media-error" data-rb-hero-error hidden>{tr('视频暂时无法加载。', 'The video could not load.')} <a href={heroClip.src}>{tr('打开源文件', 'Open video file')}</a></p>
         </div>
       )}
-      <div class="rb-metrics" aria-label={tr('演示目录统计', 'Demo catalog totals')}>
-        <div><strong>{tasks.length}</strong><span>{tr('示例任务', 'Example tasks')}</span></div>
-        <div><strong>{videos}</strong><span>{tr('示意视频', 'Schematic clips')}</span></div>
-        <div><strong>{trajectories}</strong><span>{tr('已登记参考轨迹', 'Registered trajectories')}</span></div>
+      <div class="rb-metrics" aria-label={tr('目录统计', 'Catalog totals')}>
+        <span><strong>{tasks.length}</strong> {tr('项操作任务', 'manipulation tasks')}</span>
+        <span><strong>{videos}</strong> {tr('段完成视频', 'task videos')}</span>
+        {trajectories > 0 && <span><strong>{trajectories}</strong> {tr('条参考轨迹', 'reference trajectories')}</span>}
       </div>
-      <p class="rb-demo-tag">{projectMeta.notice[lang]}</p>
     </section>
 
-    <section class="rb-wrap" aria-labelledby="batches-title">
+    <section class="rb-wrap rb-proposal" aria-labelledby="batches-title">
       <div class="rb-banner">
         <div>
-          <p class="rb-eyebrow">{tr('TASK BATCHES', 'TASK BATCHES')}</p>
-          <h2 id="batches-title">{tr('任务批次与规格', 'Task batches & specifications')}</h2>
-          <p>{tr('按场景批次进入任务集，查看初始摆放、执行步骤与验收条件。', 'Browse by scene batch, then explore the initial setup, task steps, and acceptance criteria.')}</p>
-          <div class="rb-batch-links">
-            {taskBatches.map(batch => <a class="rb-link" href={link + '#batch=' + batch.id}>{batch.label[lang]} ↗</a>)}
-            <a class="rb-link" href={link + '#not-started'}>{tr('未开始任务', 'Not started')} ↗</a>
-          </div>
+          <h2 id="batches-title">{tr('任务环境与规格', 'Task environments')}</h2>
+          <p>{tr('按批次查看场景的初始摆放、操作目标和已验证的进展。', 'Explore each batch’s initial layouts, manipulation goals, and recorded progress.')}</p>
         </div>
         <div class="rb-batch-links">
-          {taskBatches.map(batch => <a class="rb-cta" href={link + 'specs/' + batch.id + '/'}>{batch.label[lang]}{tr('规格', ' specs')} ↗</a>)}
+          <a class="rb-cta" href={link + '#not-started'}>{tr('查看未开始任务', 'View unstarted tasks')} <span>{counts.not_started}</span></a>
+          {taskBatches.map(batch => <a href={link + '#batch=' + batch.id}>{batch.label[lang]}</a>)}
+          <div class="rb-batch-specs">{taskBatches.map(batch => <a href={link + 'specs/' + batch.id + '/'}>{batch.label[lang]}{tr('规格', ' specifications')}</a>)}</div>
         </div>
       </div>
     </section>
 
     <section id="tasks" class="rb-wrap rb-catalog" aria-labelledby="tasks-title">
       <span id="not-started" aria-hidden="true"></span>
-      <div class="rb-section-head">
-        <div><p class="rb-eyebrow">{tr('BENCHMARK CATALOG', 'BENCHMARK CATALOG')}</p><h2 id="tasks-title">{tr('场景任务集', 'Task catalog')}</h2></div>
-        <p>{tr('按开发状态或接触类型筛选，打开卡片可查看视频和任务详情。', 'Filter by development status or contact type. Open any card to see its media and task details.')}</p>
-      </div>
-
+      <div class="rb-section-head"><h2 id="tasks-title">{tr('场景任务集', 'Task catalog')}</h2></div>
       <div class="rb-controls">
         <div class="rb-filters" role="group" aria-label={tr('任务状态', 'Task status')}>
           <button type="button" class="rb-filter" data-rb-filter="all" aria-pressed="true">{tr('全部', 'All')} <span>{tasks.length}</span></button>
           {taskStatuses.map(status => <button type="button" class="rb-filter" data-rb-filter={status.id} aria-pressed="false">{status.label[lang]} <span>{counts[status.id]}</span></button>)}
         </div>
+        <label class="rb-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <input type="search" data-rb-search placeholder={tr('搜索任务', 'Search tasks')} aria-label={tr('搜索任务', 'Search tasks')} />
+        </label>
+      </div>
+      <div class="rb-secondary-controls">
         <select class="rb-select" data-rb-category aria-label={tr('任务类别', 'Task category')}>
           <option value="">{tr('全部类别', 'All categories')}</option>
           {taskCategories.map(category => <option value={category.id}>{category.label[lang]}</option>)}
@@ -96,87 +93,81 @@ const formattedTasks = tr('{count} 项任务', '{count} tasks');
           <option value="">{tr('全部批次', 'All batches')}</option>
           {taskBatches.map(batch => <option value={batch.id}>{batch.label[lang]}</option>)}
         </select>
-        <label class="rb-search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-          <input type="search" data-rb-search placeholder={tr('搜索名称、类别或编号', 'Search name, category, or ID')} aria-label={tr('搜索任务', 'Search tasks')} />
-        </label>
+        <button type="button" data-rb-clear class="rb-clear" hidden>{tr('清除筛选', 'Clear filters')}</button>
       </div>
-
       <div class="rb-results">
         <span role="status" data-rb-count data-format={formattedTasks}>{formattedTasks.replace('{count}', String(tasks.length))}</span>
-        <button type="button" data-rb-clear class="rb-link" hidden>{tr('清除筛选', 'Clear filters')}</button>
-        <span>{tr('目录快照', 'Catalog snapshot')} · <time datetime={projectMeta.snapshotDate}>{projectMeta.snapshotDate}</time></span>
+        <span>{tr('展示快照', 'Catalog snapshot')} · <time datetime={projectMeta.snapshotDate}>{projectMeta.snapshotDate.replaceAll('-', '.')}</time></span>
       </div>
-
       <div class="rb-grid">
         {tasks.map(task => {
-          const clip = task.media?.videos?.[0];
-          const image = clip?.poster ?? task.media?.image;
+          const clips = playableClips(task);
+          const clip = clips[0];
+          const image = clip ? clip.poster ?? task.media?.image : task.media?.image;
+          const seconds = Math.round(clip?.durationSeconds ?? 0);
+          const duration = seconds ? Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0') : '';
           const specUrl = link + 'specs/' + task.batch + '/#' + task.id;
-          const search = [
-            task.id, task.title.zh, task.title.en, task.description.zh, task.description.en,
-            categoryNames[task.category], batchNames[task.batch], ...task.tags,
-          ].join(' ');
+          const search = [task.id, task.title.zh, task.title.en, task.description.zh, task.description.en, categoryNames[task.category], batchNames[task.batch], ...task.tags].join(' ');
           return (
             <article class="rb-card" data-rb-card data-id={task.id} data-status={task.status} data-category={task.category} data-batch={task.batch} data-search={search}>
-              <button class="rb-card-button" type="button" data-rb-open={task.id} aria-haspopup="dialog" aria-label={task.title[lang] + ' · ' + (clip ? tr('播放视频', 'Play video') : tr('查看详情', 'View details'))}>
+              <button class="rb-card-button" type="button" data-rb-open={task.id} aria-haspopup="dialog" aria-label={task.title[lang] + ' · ' + (clip ? tr('播放视频', 'Play video') : image ? tr('查看初始场景', 'View initial scene') : tr('查看任务进展', 'View progress'))}>
                 <div class="rb-thumb">
-                  {image
-                    ? <img src={image} alt="" loading="lazy" width="960" height="540" />
-                    : <div class="rb-media-placeholder"><span aria-hidden="true">⊹</span>{tr('任务规格', 'Task specification')}</div>
-                  }
-                  <span class="rb-chip">{clip ? task.demo ? tr('示意视频', 'Schematic clip') : mediaKind[clip.kind] : image ? tr('静态场景', 'Still scene') : tr('规格', 'Spec')}</span>
-                  <span class="rb-play" aria-hidden="true">{clip ? '▶' : '↗'}</span>
+                  {image ? <img src={image} alt="" loading="lazy" width="960" height="720" /> : <div class="rb-media-placeholder">{tr('初始场景待接入', 'Initial scene pending')}</div>}
+                  {!clip && image && <span class="rb-chip">{tr('静态初态', 'Initial scene')}</span>}
+                  {clip && <span class="rb-play" aria-hidden="true">▶</span>}
                 </div>
                 <div class="rb-card-body">
-                  <p class="rb-kicker">{categoryNames[task.category]}{task.demo && ' · ' + tr('示例', 'Example')}</p>
+                  <p class="rb-kicker">{categoryNames[task.category]}</p>
                   <h3>{task.title[lang]}</h3>
-                  <div class="rb-card-foot"><span class="rb-status" data-status={task.status}>{statusNames[task.status]}</span><span class="rb-card-id">{task.id}</span></div>
+                  <div class="rb-card-foot"><span class="rb-status" data-status={task.status}>{statusNames[task.status]}</span>{duration && <span class="rb-card-summary">{duration}</span>}</div>
                 </div>
               </button>
               <template data-rb-template={task.id}>
-                {clip ? (
-                  <div class="rb-detail-media">
-                    <video controls playsinline preload="metadata" poster={clip.poster ?? task.media?.image} data-rb-clip-video aria-label={task.title[lang] + ' · ' + tr('视频', 'Video')}></video>
-                    <p class="rb-media-error" data-rb-clip-error hidden>{tr('此视频无法在页面内加载。', 'This clip could not be loaded in the player.')} <a data-rb-source href={clip.src}>{tr('打开视频源文件', 'Open the video file')}</a></p>
-                  </div>
-                ) : image ? <div class="rb-detail-media"><img src={image} alt={task.media?.alt[lang] ?? task.title[lang]} width="960" height="540" /></div> : null}
+                <div class="rb-detail-media">
+                  {clip ? <>
+                    <video controls playsinline preload="metadata" poster={clip.poster ?? task.media?.image} data-rb-clip-video aria-label={task.title[lang]}></video>
+                    <p class="rb-media-error" data-rb-clip-error hidden>{tr('此视频暂时无法播放。', 'This video could not be played.')} <a data-rb-source href={clip.src}>{tr('打开视频源文件', 'Open video file')}</a></p>
+                  </> : image ? <img src={image} alt={task.media?.alt[lang] ?? task.title[lang]} width="960" height="720" /> : <p class="rb-media-placeholder">{tr('初始场景待接入', 'Initial scene pending')}</p>}
+                </div>
                 <div class="rb-detail-copy">
-                  <p class="rb-kicker">{categoryNames[task.category]} · {batchNames[task.batch]}</p>
+                  <span class="rb-status" data-status={task.status}>{statusNames[task.status]}</span>
                   <h2 id="rb-detail-title">{task.title[lang]}</h2>
                   <p>{task.description[lang]}</p>
-                  <div class="rb-detail-meta"><span class="rb-status" data-status={task.status}>{statusNames[task.status]}</span><span>{task.id}</span>{task.demo && <span>{tr('示例任务', 'Example task')}</span>}{task.trajectoryCount !== undefined && <span>{task.trajectoryCount} {tr('条参考轨迹', 'reference trajectories')}</span>}</div>
-                  {clip && <div class="rb-clips" role="group" aria-label={tr('切换视频', 'Switch clips')}>
-                    {task.media?.videos?.map((video, index) => <button type="button" data-rb-clip={video.src} data-poster={video.poster ?? task.media?.image} data-kind={task.demo ? undefined : mediaKind[video.kind]} data-notice={task.demo ? tr('示意动画 · 非实验录像', 'Schematic clip · Not experimental footage') : clipNotice[video.kind]} aria-pressed={index === 0}>{video.label[lang]}</button>)}
+                  {task.objects && <p class="rb-task-objects"><strong>{tr('任务物体', 'Task objects')}</strong> {task.objects[lang]}</p>}
+                  {clips.length > 0 && <div class="rb-clips" role="group" aria-label={tr('切换视频', 'Select video')}>
+                    {clips.map((video, index) => <button type="button" data-rb-clip={video.src} data-poster={video.poster ?? task.media?.image} data-kind={mediaKind[video.kind]} data-notice={task.demo ? tr('概念示意 · 非实验录像', 'Concept illustration · Not experiment footage') : ''} aria-pressed={index === 0}>{video.label[lang]}</button>)}
                   </div>}
-                  {clip && <p class="rb-kicker" aria-live="polite" data-rb-clip-note></p>}
-                  <a class="rb-spec-link" href={specUrl}>{tr('查看完整任务规格', 'Read task specification')} ↗</a>
-                  <button type="button" class="rb-link" data-rb-copy-link data-copied={tr('链接已复制', 'Link copied')} data-copy-error={tr('请复制地址栏中的链接', 'Copy the URL from the address bar')}>{tr('复制任务链接', 'Copy task link')}</button>
+                  <div class="rb-detail-meta"><span>{categoryNames[task.category]}</span><span>{batchNames[task.batch]}</span>{clip && task.trajectoryCount !== undefined && <span>{task.trajectoryCount} {tr('条参考轨迹', 'reference trajectories')}</span>}</div>
+                  <p class="rb-detail-notice">{task.statusNote?.[lang] ?? projectMeta.notice[lang]}</p>
+                  {clip && <p class="rb-clip-note" aria-live="polite" data-rb-clip-note></p>}
+                  <div class="rb-detail-actions">
+                    <a class="rb-spec-link" href={specUrl}>{tr('任务规格', 'Task specification')}</a>
+                    <button type="button" class="rb-clear" data-rb-copy-link data-copied={tr('链接已复制', 'Link copied')} data-copy-error={tr('请复制地址栏中的链接', 'Copy the URL from the address bar')}>{tr('复制任务链接', 'Copy task link')}</button>
+                  </div>
+                  <span class="rb-card-id">{task.id}</span>
                   <p class="rb-sr-only" role="status" data-rb-copy-status></p>
                 </div>
               </template>
-              <noscript><a href={specUrl}>{tr('查看任务规格', 'Read the task specification')}</a></noscript>
+              <noscript><a href={specUrl}>{tr('查看任务规格', 'Read task specification')}</a></noscript>
             </article>
           );
         })}
       </div>
-      <p class="rb-empty" data-rb-empty hidden>{tr('没有符合条件的任务。试试其他关键词或筛选项。', 'No tasks match these filters. Try different keywords or filters.')}</p>
-      <p class="rb-note">{tr('示例状态仅用于演示目录交互。静态场景不计入视频或参考轨迹；示意视频不代表真实实验或验收结果。', 'Example statuses demonstrate the catalog. Still scenes do not count as videos or trajectories. Schematic clips are not experimental or acceptance results.')}</p>
+      <p class="rb-empty" data-rb-empty hidden>{tr('没有符合条件的任务。试试其他关键词或筛选项。', 'No matching tasks. Try another search or filter.')}</p>
+      <p class="rb-note">{projectMeta.notice[lang]}</p>
     </section>
 
     <section id="about" class="rb-about">
       <div class="rb-wrap rb-about-inner">
-        <div><p class="rb-eyebrow">{tr('PROJECT OVERVIEW', 'PROJECT OVERVIEW')}</p><h2>{tr('项目介绍', 'About the project')}</h2></div>
+        <h2>{tr('项目介绍', 'About the project')}</h2>
         <div>
-          <p>{tr('robodojo-contact 面向接触丰富的机器人操作任务。这里把每个场景的初始条件、目标、参考媒体和验收条件放在一起，便于浏览和对照。', 'robodojo-contact is a home for contact-rich robot manipulation tasks. Each scene brings its setup, objective, reference media, and acceptance criteria into one place.')}</p>
-          <p>{tr('目录目前使用可替换的示例内容。后续可添加真实场景图、仿真或实机视频、参考轨迹及任务配置。', 'The catalog currently uses replaceable examples. Real scene previews, simulation or hardware footage, reference trajectories, and task configurations can be added as they become available.')}</p>
+          <p>{tr('每个任务将初始场景、操作目标与验收条件放在一起。浏览任务物体和初始布局，或打开已完成演示，查看动作过程与接触细节。', 'Each task brings its initial scene, manipulation objective, and success criteria together. Explore the objects and initial arrangement, or open a completed demonstration to inspect its motion and contact details.')}</p>
+          <p>{tr('开发进度和验证范围分别记录。机械演示完成、局部动力学验证和场景预览具有不同含义，具体证据见各任务详情与规格。', 'Development status and validation scope are recorded separately. A completed mechanical demonstration, local dynamics check, and scene preview each establish different evidence, described in the task details and specifications.')}</p>
           <div class="rb-downloads">
-            <a class="rb-link" href="/robodojo-contact/downloads/tasks.json" download>{tr('任务数据 JSON', 'Task data JSON')} ↓</a>
-            <a class="rb-link" href="/robodojo-contact/downloads/guide.md" download>{tr('规格指南', 'Specification guide')} ↓</a>
-            <a class="rb-link" href="/robodojo-contact/downloads/validation.json" download>{tr('目录校验', 'Catalog validation')} ↓</a>
-            <a class="rb-link" href="/robodojo-contact/downloads/assets.zip" download>{tr('示意资产包', 'Schematic asset pack')} ↓</a>
-            <a class="rb-link" href="/robodojo-contact/contact-board.svg" download>{tr('场景示意图', 'Scene illustration')} ↓</a>
-            {projectMeta.codeUrl && <a class="rb-link" href={projectMeta.codeUrl}>{tr('项目代码', 'Project code')} ↗</a>}
+            <a href="/robodojo-contact/downloads/tasks.json" download>{tr('任务数据', 'Task data')}</a>
+            <a href="/robodojo-contact/downloads/guide.md" download>{tr('规格指南', 'Specification guide')}</a>
+            <a href="/robodojo-contact/downloads/assets.zip" download>{tr('场景图集与目录', 'Scene images & catalog')}</a>
+            {projectMeta.codeUrl && <a href={projectMeta.codeUrl}>{tr('RoboDojo 框架', 'RoboDojo framework')}</a>}
           </div>
         </div>
       </div>
@@ -187,7 +178,6 @@ const formattedTasks = tr('{count} 项任务', '{count} tasks');
     </dialog>
   </main>
 </RobodojoLayout>
-
 <script>
   import '../../../../scripts/robodojo-catalog';
 </script>

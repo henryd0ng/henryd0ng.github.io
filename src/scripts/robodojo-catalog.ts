@@ -103,6 +103,7 @@ function mountCatalog(root: HTMLElement) {
     if (note) note.textContent = [button.dataset.kind, button.dataset.notice].filter(Boolean).join(' · ');
     video.poster = button.dataset.poster ?? '';
     video.src = button.dataset.rbClip;
+    video.load();
     for (const clip of detail.querySelectorAll('[data-rb-clip]')) {
       clip.setAttribute('aria-pressed', String(clip === button));
     }
@@ -113,6 +114,7 @@ function mountCatalog(root: HTMLElement) {
     const template = templates.get(id);
     if (!template) return;
     hero?.pause();
+    detail.querySelector<HTMLVideoElement>('video')?.pause();
     taskId = id;
     detail.replaceChildren(template.content.cloneNode(true));
     if (updateUrl) history.pushState({ rbTask: id }, '', '#task=' + encodeURIComponent(id));
@@ -130,7 +132,6 @@ function mountCatalog(root: HTMLElement) {
 
   filters.forEach(button => button.addEventListener('click', () => {
     status = button.dataset.rbFilter ?? 'all';
-    batch.value = '';
     updateFilterUrl();
   }));
   for (const input of [category, batch]) input.addEventListener('change', updateFilterUrl);

@@ -1,0 +1,244 @@
+{
+  "source_project": "RoboDojo",
+  "note": "Historical native simulation recordings. Mechanical demonstrations are not benchmark or physical-model acceptance claims.",
+  "clips": [
+    {
+      "id": "open_laptop",
+      "kind": "complete_mechanical_demonstration",
+      "source_path": "outputs/open_laptop/demo.mp4",
+      "source_sha256": "a198a29359e7c8bbd6ccd97a7d52f6d614fb7a75a4b2aa78914613a16d8bcac3",
+      "file": "open_laptop.mp4",
+      "poster": "open_laptop.webp",
+      "duration_seconds": 59.08,
+      "bytes": 3484703,
+      "stream": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1280,
+        "height": 720,
+        "pix_fmt": "yuv420p"
+      },
+      "transformation": "Video stream remuxed unchanged; audio and metadata omitted; faststart enabled. Card thumbnail uses the exact same-session native head-camera first frame, losslessly encoded as WebP; video playback remains full multiview.",
+      "poster_provenance": {
+        "source_path": ".cache/tactile/contact_rich_20261022/laptop_attempt08/native/RoboDojo/open_laptop/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/laptop_attempt08/episode_0000000_cam_head_fail.mp4",
+        "source_sha256": "4226a6469fba878164d5f8e9eccebc09b296ad56f6df37c7c8949391ed204f20",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "width": 640,
+        "height": 480,
+        "encoding": "lossless WebP",
+        "session_evidence_path": ".cache/runs/contact_rich/open_laptop_20261022_complete.json",
+        "transformation": "Original native camera first frame; no crop, resynthesis, retiming or upscaling."
+      }
+    },
+    {
+      "id": "insert_three_pin_plug",
+      "kind": "complete_mechanical_demonstration",
+      "source_path": "outputs/insert_three_pin_plug/demo.mp4",
+      "source_sha256": "d3e612bee0d159d86d9040bdde02fa410e873afeeeeb7531a7f4cbe5ec6fb271",
+      "file": "insert_three_pin_plug.mp4",
+      "poster": "insert_three_pin_plug.webp",
+      "duration_seconds": 30.04,
+      "bytes": 1287349,
+      "stream": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1280,
+        "height": 720,
+        "pix_fmt": "yuv420p"
+      },
+      "transformation": "Video stream remuxed unchanged; audio and metadata omitted; faststart enabled. Card thumbnail uses the exact same-session native head-camera first frame, losslessly encoded as WebP; video playback remains full multiview.",
+      "poster_provenance": {
+        "source_path": ".cache/tactile/three_pin_20261020/attempt04/native/RoboDojo/insert_three_pin_plug/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/attempt04/episode_0000000_cam_head_fail.mp4",
+        "source_sha256": "1f4c409c9defb313047bb273750d0dc4c622502890f8f46b9fd5b9034018247c",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "width": 640,
+        "height": 480,
+        "encoding": "lossless WebP",
+        "session_evidence_path": ".cache/runs/contact_rich/insert_three_pin_plug.json",
+        "transformation": "Original native camera first frame; no crop, resynthesis, retiming or upscaling."
+      }
+    },
+    {
+      "id": "retrieve_last_touched_object",
+      "kind": "complete_mechanical_demonstration",
+      "source_path": "outputs/retrieve_last_touched_object/demo.mp4",
+      "source_sha256": "25b2f74ac661bba53f53a651fc6de43c961ee9a3f4ae1dcc00fca84921b59bc0",
+      "file": "retrieve_last_touched_object.mp4",
+      "poster": "retrieve_last_touched_object.webp",
+      "duration_seconds": 42.84,
+      "bytes": 2238279,
+      "stream": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1280,
+        "height": 720,
+        "pix_fmt": "yuv420p"
+      },
+      "transformation": "Video stream remuxed unchanged; audio and metadata omitted; faststart enabled. Card thumbnail uses the exact same-session native head-camera first frame, losslessly encoded as WebP; video playback remains full multiview.",
+      "poster_provenance": {
+        "source_path": ".cache/tactile/contact_rich_20261021/hidden_attempt04/native/RoboDojo/retrieve_last_touched_object/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/hidden_attempt04/episode_0000000_cam_head_fail.mp4",
+        "source_sha256": "149b6955cf274bd24fdd218c358bb3ebfee41cdf33286994de131f6df7d0b71c",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "width": 640,
+        "height": 480,
+        "encoding": "lossless WebP",
+        "session_evidence_path": ".cache/runs/contact_rich/retrieve_last_touched_object.json",
+        "transformation": "Original native camera first frame; no crop, resynthesis, retiming or upscaling."
+      }
+    },
+    {
+      "id": "fill_cup_from_faucet",
+      "kind": "complete_mechanical_demonstration",
+      "source_path": "outputs/fill_cup_from_faucet/demo.mp4",
+      "source_sha256": "e2b3d6c902e9a6cc509549de78a98ad3c22ac263c357be3fa919101841127fd3",
+      "file": "fill_cup_from_faucet.mp4",
+      "poster": "fill_cup_from_faucet.webp",
+      "duration_seconds": 51.24,
+      "bytes": 2912344,
+      "stream": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1280,
+        "height": 720,
+        "pix_fmt": "yuv420p"
+      },
+      "transformation": "Video stream remuxed unchanged; audio and metadata omitted; faststart enabled. Card thumbnail uses the exact same-session native head-camera first frame, losslessly encoded as WebP; video playback remains full multiview.",
+      "poster_provenance": {
+        "source_path": ".cache/tactile/contact_rich_20261021/faucet_attempt06/native/RoboDojo/fill_cup_from_faucet/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/faucet_attempt06/episode_0000000_cam_head_fail.mp4",
+        "source_sha256": "5168deada488be771e7b1059dfeee115af4c7bc76b17cb441830539ab7b4a8c0",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "width": 640,
+        "height": 480,
+        "encoding": "lossless WebP",
+        "session_evidence_path": ".cache/runs/contact_rich/fill_cup_from_faucet.json",
+        "transformation": "Original native camera first frame; no crop, resynthesis, retiming or upscaling."
+      }
+    },
+    {
+      "id": "open_bottle_with_opener",
+      "kind": "complete_mechanical_demonstration",
+      "source_path": "outputs/open_bottle_with_opener/demo.mp4",
+      "source_sha256": "1539b5a9c718516a4ca28c85a0c2c659e508a576b3a0755dfcc8ea438d965039",
+      "file": "open_bottle_with_opener.mp4",
+      "poster": "open_bottle_with_opener.webp",
+      "duration_seconds": 14.72,
+      "bytes": 1035292,
+      "stream": {
+        "codec_name": "h264",
+        "profile": "High",
+        "width": 1280,
+        "height": 720,
+        "pix_fmt": "yuv420p"
+      },
+      "transformation": "Video stream remuxed unchanged; audio and metadata omitted; faststart enabled. Card thumbnail uses the exact same-session native head-camera first frame, losslessly encoded as WebP; video playback remains full multiview.",
+      "poster_provenance": {
+        "source_path": ".cache/tactile/contact_rich_20261023_evening/native_full13_release_preflight/native/RoboDojo/open_bottle_with_opener/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/native_full13_release_preflight/episode_0000000_cam_head_fail.mp4",
+        "source_sha256": "cea7a9959c0e25eb548d841795977d4799c1cf1be7ffeeaad18b5cfc7f785973",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "width": 640,
+        "height": 480,
+        "encoding": "lossless WebP",
+        "session_evidence_path": ".cache/runs/contact_rich/2026-10-24-bottle-opener-engineering-demo.json",
+        "transformation": "Original native camera first frame; no crop, resynthesis, retiming or upscaling."
+      }
+    }
+  ],
+  "initial_stills": [
+    {
+      "id": "deposit_coin",
+      "file": "deposit_coin.webp",
+      "kind": "initial_recorded_frame",
+      "source_path": "outputs/deposit_coin/franka_gsmini.mp4",
+      "source_sha256": "4a280e2917a739e0a3988ada5c87807ff618382d796ecc055a6e873a05480609",
+      "note": "Same-session first recorded native head-camera view only; source attempt not claimed as completed.",
+      "poster_provenance": {
+        "source_path": "outputs/deposit_coin/franka_gsmini.mp4",
+        "source_sha256": "4a280e2917a739e0a3988ada5c87807ff618382d796ecc055a6e873a05480609",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "source_frame_size": [
+          1280,
+          768
+        ],
+        "crop_xywh": [
+          16,
+          96,
+          404,
+          303
+        ],
+        "transformation": "Lossless pixel crop of head-camera panel from exact same recording first frame. No resize, resynthesis, retiming or substitution. Native temporary per-camera file is no longer available.",
+        "width": 404,
+        "height": 303,
+        "encoding": "lossless WebP"
+      }
+    },
+    {
+      "id": "insert_tubes",
+      "file": "insert_tubes.webp",
+      "kind": "initial_recorded_frame",
+      "source_path": "outputs/insert_test_tubes/bimanual.mp4",
+      "source_sha256": "ffb63c61151fe9b06692d0c3ef46fe0009efcf97c5fae30968fa906d9a9a350a",
+      "note": "Same-session first recorded native head-camera view only; source attempt not claimed as completed.",
+      "poster_provenance": {
+        "source_path": ".cache/tactile/bimanual_20261016/cooperative_contact_clip/insert_tubes/native/RoboDojo/insert_tubes/demo_policy/arx_x5/0_ckpt_name=cooperative_contact_clip,action_type=ee/bimanual-20261016-cooperative_contact_clip-insert_tubes/episode_0000000_cam_head_fail.mp4",
+        "source_sha256": "8d861b0e0d930e18c9a508528f5746739678bb9453edf0e9fef20c8938315ec0",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "session_evidence_path": ".cache/runs/contact_rich/insert_tubes_bimanual.json",
+        "transformation": "Same-session original native head-camera first frame; no crop, resynthesis or upscaling.",
+        "width": 640,
+        "height": 480,
+        "encoding": "lossless WebP"
+      }
+    },
+    {
+      "id": "plug_in_charger",
+      "file": "plug_in_charger.webp",
+      "kind": "initial_recorded_frame",
+      "source_path": "outputs/plug_in_charger/franka_gsmini.mp4",
+      "source_sha256": "c5437848bdc1da9efffc7360dc04f2a414afcfb20687464c3bef8a3d8e7e823c",
+      "note": "Same-session first recorded native head-camera view only; source attempt not claimed as completed.",
+      "poster_provenance": {
+        "source_path": "outputs/plug_in_charger/franka_gsmini.mp4",
+        "source_sha256": "c5437848bdc1da9efffc7360dc04f2a414afcfb20687464c3bef8a3d8e7e823c",
+        "frame_index": 0,
+        "camera": "cam_head",
+        "source_frame_size": [
+          1280,
+          768
+        ],
+        "crop_xywh": [
+          16,
+          96,
+          404,
+          303
+        ],
+        "transformation": "Lossless pixel crop of head-camera panel from exact same recording first frame. No resize, resynthesis, retiming or substitution. Native temporary per-camera file is no longer available.",
+        "width": 404,
+        "height": 303,
+        "encoding": "lossless WebP"
+      }
+    }
+  ],
+  "hero": {
+    "id": "open_laptop-head",
+    "task_id": "open_laptop",
+    "file": "open_laptop-head.mp4",
+    "poster": "open_laptop-head.webp",
+    "source_path": ".cache/tactile/contact_rich_20261022/laptop_attempt08/native/RoboDojo/open_laptop/demo_policy/arx_x5/0_ckpt_name=asset_interaction,action_type=ee/laptop_attempt08/episode_0000000_cam_head_fail.mp4",
+    "source_sha256": "4226a6469fba878164d5f8e9eccebc09b296ad56f6df37c7c8949391ed204f20",
+    "duration_seconds": 59.08,
+    "bytes": 1711175,
+    "width": 640,
+    "height": 480,
+    "kind": "complete_mechanical_demonstration",
+    "transformation": "Original head-camera video remuxed unchanged in full, no crop and no time change; first original frame used as poster.",
+    "evidence_path": ".cache/runs/contact_rich/open_laptop_20261022_complete.json",
+    "note": "Source filename carries the unscored benchmark pipeline fail suffix; completed mechanical opening is independently documented in the associated audit, not a benchmark score."
+  }
+}
