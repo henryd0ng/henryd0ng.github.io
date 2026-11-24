@@ -22,5 +22,5 @@ export { WIDE_DISPLAY_TEX };
 
 /** 从 Markdown 源码里数出独立公式块的数量，用来确认量到的确实是新页面。 */
 export function countDisplayBlocks(markdown) {
-  return (markdown.match(/^\$\$[\s\S]*?^\$\$/gm) ?? []).length;
+  return (markdown.match(/^([ \t]*)\$\$[ \t]*\r?\n[\s\S]*?^\1\$\$[ \t]*\r?$/gm) ?? []).length;
 }

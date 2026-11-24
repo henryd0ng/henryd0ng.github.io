@@ -48,9 +48,9 @@ npm run preview
 
 ## 编辑强化学习笔记
 
-按主题命名为 **RL-xxx**，例如 `RL-probability`、`RL-sampling`，URL 使用小写 `rl-xxx`。当前只完成第一讲 **RL-probability：概率、集中与马尔可夫动力学**，中文正文在 [RL-probability.zh.md](content/blog/RL-probability.zh.md)。按原讲章节覆盖定义、定理假设、核心公式、计算例子和知识联系；不以概览替代正文。集中不等式可以省略证明，但必须保留条件与结论，并明确哪些只是证明思路。
+第一讲 **RL-probability** 收录概率、集中不等式与马尔可夫动力学的定义、定理假设、推导和计算例子。正文见[中文版](content/blog/RL-probability.zh.md)和[英文版](content/blog/RL-probability.en.md)。
 
-[英文页](content/blog/RL-probability.en.md) 是明确标注的阅读导览，链接中文各章，不是完整译文。第二讲另行整理，不继续把旧版两讲概览当成完成稿。旧 `/zh/blog/reinforcement-learning/` 与 `/en/blog/reinforcement-learning/` 入口通过 [Astro 配置](astro.config.mjs) 跳转至新主题文章。
+第二讲 **Sampling** 从逆变换采样讲到扩散模型和 Flow Matching。正文见[中文版](content/blog/sampling.md)和[英文版](content/blog/sampling.en.md)。两讲各自的中英文版本共用文章 slug，分别为 `rl-probability` 和 `sampling`。旧 `/zh/blog/reinforcement-learning/` 与 `/en/blog/reinforcement-learning/` 入口通过 [Astro 配置](astro.config.mjs) 跳转至第一讲。
 
 开头保留简短 **TL;DR** 与可点击目录；八个正文章节各有两道 Recall，文末另有五组综合练习。题目始终可见，答案使用原生 `<details>` 默认收起，不加 `open`。在 HTML 容器、`summary` 和其中的 Markdown 之间留空行，确保公式与列表被解析。内容样式在 [global.css](src/styles/global.css) 中维护，无需客户端公式解析脚本。
 

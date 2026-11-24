@@ -126,17 +126,18 @@
       },
       "excerpt": {
         "zh": "从逆变换与接受-拒绝采样出发，串联蒙特卡洛积分、重要性采样、MCMC、Diffusion 与 Flow Matching，整理核心公式及它们之间的联系。",
-        "en": "A Chinese study note connecting classical sampling, Monte Carlo integration, importance sampling, MCMC, diffusion, and flow matching. This English page is a brief reading guide."
+        "en": "How can we estimate a return under a different policy, or generate a sample from noise? Follow the derivations from rejection sampling and importance weights through MCMC, diffusion models, and flow matching."
       },
       "readTime": 30,
       "demo": false,
       "draft": false,
       "body": {
         "zh": "",
-        "en": "This Chinese study note follows a path from inverse-transform and acceptance-rejection sampling to Monte Carlo integration, importance sampling, MCMC, diffusion, and flow matching. It emphasizes the reasoning behind each method and the connections between their probability and sampling views."
+        "en": ""
       },
       "bodyFiles": {
-        "zh": "sampling.md"
+        "zh": "sampling.md",
+        "en": "sampling.en.md"
       }
     },
     {
@@ -149,7 +150,7 @@
       },
       "excerpt": {
         "zh": "第一讲完整笔记：从概率与条件期望、LLSE/MMSE 投影，到集中不等式、马尔可夫链、统计推断与贝叶斯学习。按章保留定义、定理条件、计算例子和共轭模型，连接价值估计、探索与 belief 更新。",
-        "en": "A standalone English write-up of the whole lecture: conditional expectation as the object of value, projection and LLSE/MMSE, Monte Carlo, LLN/CLT and concentration, Markov chains with stationarity and mixing, statistical inference with conjugate models, and Bayesian learning up to Thompson Sampling and POMDP beliefs."
+        "en": "What does a value estimate average, and how much can we trust it? Worked examples connect conditional expectation, projection, concentration bounds, Markov chains, and Bayesian inference to value prediction, exploration, and belief updates."
       },
       "readTime": 80,
       "demo": false,

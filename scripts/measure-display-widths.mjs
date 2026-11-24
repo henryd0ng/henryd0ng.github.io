@@ -3,16 +3,19 @@
 //
 // 用法：先 `npm run dev`，再 `node scripts/measure-display-widths.mjs`。
 // 公式本身发生变化（改写、增删）时需要重新运行；脚本会对宽度接近阈值的公式给出提醒。
-// 默认同时量中英文两页：中文是完整文章，英文是它的独立长文版本。
+// 默认测量已发布「知识输出」文章的中英文 Markdown 正文。
 
-import { writeFileSync } from 'node:fs';
-import { globSync } from 'node:fs';
-import { readFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';
 import { buildRegistry, countDisplayBlocks } from './registry.mjs';
 
 const CHROME = '/home/rimlab/.cache/ms-playwright/chromium-1248/chrome-linux64/chrome';
 const BASE = process.env.SITE_URL ?? 'http://127.0.0.1:4321';
-const PAGES = process.env.PAGES ? process.env.PAGES.split(',') : ['/zh/blog/rl-probability/', '/en/blog/rl-probability/'];
+const { posts } = JSON.parse(readFileSync('src/data/site.json', 'utf8'));
+const sourceFiles = new Map(posts.filter(post => !post.draft && post.category === 'knowledge')
+  .flatMap(post => Object.entries(post.bodyFiles ?? {}).map(([lang, file]) => [
+    `/${lang}/blog/${post.slug}/`, `content/blog/${file}`,
+  ])));
+const PAGES = process.env.PAGES ? process.env.PAGES.split(',') : [...sourceFiles.keys()];
 const PORT = Number(process.env.CDP_PORT ?? 9333);
 /** 手机正文栏宽度：375 视口减去两侧内边距（343px），再留 1px 取整余量。 */
 const COLUMN = Number(process.env.COLUMN ?? 344);
@@ -61,6 +64,7 @@ const MEASURE = `(async () => {
     }
   \`;
   document.head.append(style);
+  document.querySelectorAll('.prose details').forEach(answer => { answer.open = true; });
   await document.fonts.ready;
   return [...document.querySelectorAll('.prose .math-block')].map((block) => ({
     tex: decodeURIComponent(block.dataset.tex ?? ''),
@@ -84,9 +88,9 @@ for (const path of PAGES) {
 cdp.close();
 
 // 与文章源文件对齐做一次计数校验，防止量到的是旧页面。
-const sources = globSync('content/blog/RL-probability*.md').flatMap((file) => countDisplayBlocks(readFileSync(file, 'utf8')));
-const expected = sources.reduce((sum, count) => sum + count, 0);
-if (expected !== measured.length) {
+const files = PAGES.map(path => sourceFiles.get(path)).filter(Boolean);
+const expected = files.reduce((sum, file) => sum + countDisplayBlocks(readFileSync(file, 'utf8')), 0);
+if (files.length === PAGES.length && expected !== measured.length) {
   console.warn(`注意：源文件里有 ${expected} 条独立公式，页面量到 ${measured.length} 条，确认页面已是最新。`);
 }
 
