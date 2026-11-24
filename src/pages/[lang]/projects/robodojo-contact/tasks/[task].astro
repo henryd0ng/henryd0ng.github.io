@@ -1,0 +1,148 @@
+---
+import RobodojoLayout from '../../../../../layouts/RobodojoLayout.astro';
+import { evidenceLabels, projectMeta, taskBatches, taskCategories, taskStatuses, tasks, type ContactTask } from '../../../../../data/robodojo-contact';
+import type { Lang } from '../../../../../data/site';
+
+export function getStaticPaths() {
+  return ['zh', 'en'].flatMap(lang => tasks.map(task => ({ params: { lang, task: task.id }, props: { task } })));
+}
+
+const lang = Astro.params.lang as Lang;
+const { task } = Astro.props as { task: ContactTask };
+const tr = (zh: string, en: string) => lang === 'zh' ? zh : en;
+const catalog = `/${lang}/projects/robodojo-contact/`;
+const batch = taskBatches.find(batch => batch.id === task.batch)!;
+const category = taskCategories.find(category => category.id === task.category)!;
+const status = taskStatuses.find(status => status.id === task.status)!;
+const prompt = task.prompt[lang];
+const media = task.media;
+const clips = task.status === 'accepted' ? media?.videos ?? [] : [];
+const sceneLabel = media?.imageKind === 'layout-render' ? tr('初始布局渲染', 'Initial layout render') : tr('初始场景', 'Initial scene');
+---
+<RobodojoLayout lang={lang} title={task.title[lang] + ' · ' + projectMeta.title} description={prompt}>
+  <main id="top" class="rb-wrap task-page">
+    <nav class="trail" aria-label={tr('所在位置', 'Breadcrumb')}>
+      <a href={catalog + '#tasks'}>{tr('场景任务集', 'Task catalog')}</a>
+      <span aria-hidden="true">/</span>
+      <a href={catalog + '#batch=' + batch.id}>{batch.label[lang]}</a>
+    </nav>
+
+    <div class="overview">
+      <div class="instruction">
+        <header>
+          <h1>{task.title[lang]}</h1>
+          <code class="task-id">{task.id}</code>
+          <div class="tags">
+            <span class="rb-status" data-status={task.status}>{status.label[lang]}</span>
+            <a href={catalog + '#category=' + category.id}>{category.label[lang]}</a>
+          </div>
+        </header>
+        <section class="prompt" aria-labelledby="prompt-label">
+          <div class="prompt-head">
+            <h2 id="prompt-label">{tr('任务指令', 'Task prompt')}</h2>
+            <button hidden type="button" data-copy="prompt" class="copy" data-done={tr('已复制', 'Copied')} data-error={tr('请手动复制', 'Select to copy')}>{tr('复制指令', 'Copy prompt')}</button>
+          </div>
+          <p id="task-prompt">{prompt}</p>
+        </section>
+      </div>
+
+      <div class="media">
+        {clips.length > 0 ? clips.map(clip => <figure>
+          <video src={clip.src} poster={clip.poster ?? media?.image} controls playsinline preload="metadata" aria-label={task.title[lang] + ' · ' + clip.label[lang]}>
+            <a href={clip.src}>{tr('打开录像', 'Open recording')}</a>
+          </video>
+          <figcaption>{clip.label[lang]}</figcaption>
+          <p hidden class="rb-media-error" data-video-error>{tr('录像加载失败。', 'The recording could not be loaded.')} <a href={clip.src}>{tr('打开视频文件', 'Open video file')}</a></p>
+        </figure>) : media?.image && <figure>
+          <img src={media.image} alt={media.alt[lang]} width="960" height="720" />
+          <figcaption>{sceneLabel}</figcaption>
+        </figure>}
+        {media?.detail && <details class="closeup">
+          <summary>{tr('物体近景', 'Object close-up')}</summary>
+          <img src={media.detail} alt={task.title[lang] + tr('的物体近景', ' · object close-up')} width="960" height="720" loading="lazy" />
+        </details>}
+      </div>
+    </div>
+
+    <section class="scene" aria-labelledby="scene-label">
+      <h2 id="scene-label">{tr('场景信息', 'Scene details')}</h2>
+      <dl>
+        <div><dt>{tr('机器人平台', 'Platform')}</dt><dd>{tr('ARX5 桌面双臂', 'Dual-arm ARX5 tabletop workstation')}</dd></div>
+        {task.objects && <div><dt>{tr('任务物体', 'Objects')}</dt><dd>{task.objects[lang]}</dd></div>}
+        {task.evidenceLevel && <div><dt>{tr('当前进展', 'Current evidence')}</dt><dd>{evidenceLabels[task.evidenceLevel][lang]}</dd></div>}
+      </dl>
+      <div class="actions">
+        <a href={catalog + 'specs/' + batch.id + '/#' + task.id}>{tr('查看完整任务规格', 'View task specification')} <span aria-hidden="true">→</span></a>
+        <button hidden type="button" data-copy="link" class="copy" data-done={tr('链接已复制', 'Link copied')} data-error={tr('请复制地址栏链接', 'Use the address bar')}>{tr('复制任务链接', 'Copy task link')}</button>
+      </div>
+    </section>
+    <span class="rb-sr-only" role="status" data-copy-status></span>
+  </main>
+</RobodojoLayout>
+
+<script>
+  import { copyText } from '../../../../../scripts/robodojo-copy';
+  const instruction = document.getElementById('task-prompt')!;
+  const announcement = document.querySelector<HTMLElement>('[data-copy-status]')!;
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy]')) {
+    button.hidden = false;
+    const original = button.textContent;
+    let reset: number;
+    button.addEventListener('click', async () => {
+      const text = button.dataset.copy === 'prompt' ? instruction.textContent!.trim() : location.origin + location.pathname;
+      const copied = await copyText(text);
+      announcement.textContent = button.textContent = (copied ? button.dataset.done : button.dataset.error)!;
+      clearTimeout(reset);
+      reset = window.setTimeout(() => { button.textContent = original; }, 2200);
+    });
+  }
+  for (const video of document.querySelectorAll('video')) {
+    const error = video.closest('figure')?.querySelector<HTMLElement>('[data-video-error]');
+    if (error) {
+      error.hidden = !video.error;
+      video.addEventListener('error', () => { error.hidden = false; });
+    }
+  }
+</script>
+
+<style>
+  .task-page { padding-block: 38px 66px; }
+  .trail { display: flex; flex-wrap: wrap; align-items: center; gap: 7px 12px; margin-bottom: 30px; font-size: 14px; }
+  .trail a { color: #596575; }
+  .trail span { color: #9199a4; }
+  .overview { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(24px, 4.2vw, 58px); align-items: start; }
+  h1 { margin: 0; font-size: clamp(32px, 3.8vw, 51px); line-height: 1.15; letter-spacing: -.045em; text-wrap: balance; }
+  .task-id { display: block; margin-top: 12px; color: #626b79; font: 14px/1.5 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+  .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 19px; }
+  .tags > * { padding: 3px 10px; border: 1px solid #e0e5eb; border-radius: 6px; color: #465466; background: #fafbfd; font-size: 13px; }
+  .tags .rb-status::before { width: 7px; height: 7px; }
+  .prompt { margin-top: 29px; padding: 18px 22px 21px; border: 1px solid #d6e3f5; border-left: 3px solid #4779bb; border-radius: 8px; background: #f5f8fd; }
+  .prompt-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+  .prompt h2 { color: #315b90; font-size: 15px; letter-spacing: 0; }
+  .prompt p { color: #222e3e; font-size: clamp(17px, 1.65vw, 20px); line-height: 1.65; overflow-wrap: anywhere; }
+  .copy { min-height: 32px; padding: 3px 10px; border: 1px solid #cbd7e6; border-radius: 5px; color: #40597a; background: #fff; font-size: 12px; }
+  .copy:hover { border-color: #829fc3; color: #1e54a2; }
+  figure { margin: 0; overflow: hidden; border: 1px solid #d8dfe6; border-radius: 12px; background: #f0f2f4; }
+  figure + figure { margin-top: 15px; }
+  figure > img, figure > video, .closeup img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
+  figure > video { background: #252c34; }
+  figcaption { padding: 9px 14px; color: #526070; background: #fafbfd; border-top: 1px solid #dce1e8; font-size: 13px; }
+  .closeup { margin-top: 12px; }
+  .closeup img { margin-top: 8px; border-radius: 8px; background: #f0f2f4; }
+  .closeup summary { color: #415f86; font-size: 14px; cursor: pointer; }
+  .scene { margin-top: 36px; padding-top: 25px; border-top: 1px solid var(--rb-line); }
+  .scene h2 { font-size: 24px; line-height: 1.35; }
+  .scene dl { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr) minmax(0, 1fr); gap: 16px 32px; margin: 19px 0 22px; }
+  .scene dt { margin-bottom: 2px; color: #626c79; font-size: 13px; }
+  .scene dd { margin: 0; font-size: 16px; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; font-size: 14px; }
+  @media (max-width: 760px) {
+    .task-page { padding-block: 26px 43px; }
+    .trail { margin-bottom: 19px; }
+    .overview { grid-template-columns: minmax(0, 1fr); gap: 23px; }
+    .prompt { margin-top: 20px; padding: 14px 16px 17px; }
+    .scene { margin-top: 25px; }
+    .scene dl { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .scene dl div { display: grid; grid-template-columns: 6em minmax(0, 1fr); gap: 12px; }
+  }
+</style>

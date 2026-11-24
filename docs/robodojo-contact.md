@@ -4,7 +4,9 @@
 
 ## 更新任务
 
-在 `src/data/robodojo-contact-catalog.json` 中维护任务、双语文字、分类和批次。字段类型定义在 `src/data/robodojo-contact.ts`。沿用已有任务 ID，这样已分享的 `#task=...` 地址可以继续使用。站点只依赖仓库内已发布的目录和媒体，构建时无需安装 RoboDojo 或模拟器。
+在 `src/data/robodojo-contact-catalog.json` 中维护任务、双语文字、分类和批次。每个任务的 `prompt.zh` 和 `prompt.en` 各用一两句指令写清操作对象、动作和期望终态。详情页、批次规格和下载都读取这两个字段。字段类型定义在 `src/data/robodojo-contact.ts`。
+
+详情页路径为 `/{zh|en}/projects/robodojo-contact/tasks/<任务 ID>/`。沿用已有任务 ID，旧版 `#task=...` 链接也会跳转到对应详情页。站点只依赖仓库内已发布的目录和媒体，构建时无需安装 RoboDojo 或模拟器。
 
 先用 RoboDojo 的场景注册表和保存的布局核对双臂平台，再核对主图或录像能对应到同一 ARX5 桌面场景。注册入口见 `src/teleop/scenes.py`，正式工具场景见 `docs/user/tasks/tool_asset_check.md`，SimReady 交互任务见 `docs/user/teleoperation/simready_tasks.md`。完整动作的证据见相应录像和复核报告。将依据以仓库相对路径写入条目的 `sourcePaths`，在 `statusNote` 中写清本场景已经完成的部分。
 

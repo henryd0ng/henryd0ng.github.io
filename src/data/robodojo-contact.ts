@@ -34,6 +34,7 @@ export type ContactTask = {
   status: TaskStatus;
   description: LocalizedText;
   objective: LocalizedText;
+  prompt: LocalizedText;
   successCriteria: LocalizedText[];
   objects?: LocalizedText;
   statusNote: LocalizedText;

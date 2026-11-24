@@ -151,6 +151,10 @@
         "zh": "双臂打开笔记本",
         "en": "Open a laptop with both arms"
       },
+      "prompt": {
+        "zh": "用右夹爪提起笔记本上盖的前缘，左夹爪压稳底座，将上盖完全打开。随后松开并撤回夹爪，让笔记本保持打开、底座平稳。",
+        "en": "Lift the front edge of the laptop lid with the right gripper while steadying the base with the left, until the lid is fully open. Release and withdraw both grippers, leaving the laptop open and stable."
+      },
       "successCriteria": [
         {
           "zh": "从合盖状态开始，支撑底座并将上盖打开到 105°–115°。",
@@ -172,7 +176,8 @@
       "evidenceLevel": "mechanical-demo",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/DojoTouch/tasks/open_laptop.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -222,6 +227,10 @@
         "zh": "开瓶器开盖",
         "en": "Open a bottle with an opener"
       },
+      "prompt": {
+        "zh": "用左夹爪拿稳瓶子，右夹爪拿起开瓶器并卡住瓶盖边缘。将瓶盖撬下，使它与瓶口完全分离。",
+        "en": "Hold the bottle securely with the left gripper and use the right gripper to engage the opener under the cap edge. Pry the cap completely off the bottle."
+      },
       "successCriteria": [
         {
           "zh": "检查瓶盖脱离瓶口，瓶身在工作面上稳定至少 1 秒。",
@@ -239,7 +248,8 @@
       "evidenceLevel": "mechanical-demo",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/DojoTouch/tasks/open_bottle_with_opener.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -289,6 +299,10 @@
         "zh": "三脚插头插接",
         "en": "Insert a three-pin plug"
       },
+      "prompt": {
+        "zh": "拿起三脚插头，对齐固定插排中间的插孔，推入直到完全入座。",
+        "en": "Pick up the three-pin plug, align it with the middle socket of the fixed power strip, and push it in until fully seated."
+      },
       "successCriteria": [
         {
           "zh": "抬起插头并插入指定插座。就位检查允许的端面间隙为 1.5 mm。",
@@ -310,7 +324,8 @@
       "evidenceLevel": "mechanical-demo",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/DojoTouch/tasks/insert_three_pin_plug.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -360,6 +375,10 @@
         "zh": "取回最后接触的物体",
         "en": "Retrieve the last-touched object"
       },
+      "prompt": {
+        "zh": "依次抓取盒内的各个物体，将先前抓取的物体放回盒内。最后只把最近一次接触的物体取出盒外。",
+        "en": "Grasp each object inside the box in turn, returning the earlier objects to the box. Finish by taking only the last object you touched out of the box."
+      },
       "successCriteria": [
         {
           "zh": "核对接触顺序，前一物体需放回到距原位 10 mm 以内。",
@@ -381,7 +400,8 @@
       "evidenceLevel": "mechanical-demo",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/DojoTouch/tasks/retrieve_last_touched_object.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -431,6 +451,10 @@
         "zh": "持杯接水",
         "en": "Fill a held cup from a faucet"
       },
+      "prompt": {
+        "zh": "左夹爪把杯子稳稳拿在水龙头下，右夹爪打开阀门接水。接水后关闭阀门，并继续拿稳装有水的杯子。",
+        "en": "Hold the cup under the faucet with the left gripper and open the valve with the right to collect water. Then close the valve while keeping the cup secure."
+      },
       "successCriteria": [
         {
           "zh": "打开阀门接水，再关闭阀门。解析水载荷模型记录的最大杯内体积为 327 mL。",
@@ -452,7 +476,8 @@
       "evidenceLevel": "mechanical-demo",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/DojoTouch/tasks/fill_cup_from_faucet.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -502,6 +527,10 @@
         "zh": "将试管对准试管架并插入孔位。",
         "en": "Align the test tubes with the rack and insert them into the holes."
       },
+      "prompt": {
+        "zh": "将三支试管逐一对准试管架的孔位并插入，松开夹爪，让它们竖直稳放在架内。",
+        "en": "Insert the three test tubes into the rack one by one. Release them so that all three remain upright and securely seated."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "试管、试管架",
@@ -514,7 +543,8 @@
       "evidenceLevel": "contact-recording",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/RoboDojo/tasks/insert_tubes.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -552,6 +582,10 @@
         "zh": "取出鼠标接收器",
         "en": "Extract a mouse receiver"
       },
+      "prompt": {
+        "zh": "拿起并翻转鼠标，按下底盖尾部，取下翘起的底盖。再将 USB 接收器从收纳槽中完整取出。",
+        "en": "Pick up and turn over the mouse, press the tail of the bottom cover, and remove the tilted cover. Then take the USB receiver completely out of its storage slot."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "鼠标、底盖、USB 接收器",
@@ -565,7 +599,8 @@
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
         "docs/agents/tactile/integration_history.md",
-        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_extract_mouse_receiver_0.json"
+        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_extract_mouse_receiver_0.json",
+        "task/DojoTouch/tasks/extract_mouse_receiver.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -604,6 +639,10 @@
         "zh": "沿线寻找 HDMI 插头",
         "en": "Trace an HDMI cable"
       },
+      "prompt": {
+        "zh": "从盒外伸入并抓住线缆主体，沿线找到一个 HDMI 插头。将插头取出盒外，对齐 HDMI 接口并插入到位。",
+        "en": "Reach into the box and grasp the cable body, then follow it to an HDMI plug. Retrieve the plug from the box and insert it fully into the HDMI port."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "HDMI 线缆、插头、盒与接口",
@@ -616,7 +655,8 @@
       "evidenceLevel": "experimental",
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
-        "docs/agents/tactile/integration_history.md"
+        "docs/agents/tactile/integration_history.md",
+        "task/DojoTouch/tasks/trace_hdmi_cable.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -654,6 +694,10 @@
         "zh": "锤子交接与重抓",
         "en": "Hammer handover and regrasp"
       },
+      "prompt": {
+        "zh": "左夹爪拿起锤子，交给右夹爪接稳后松开，再沿锤柄换一个位置重新抓住。最后右夹爪松开退离，由左夹爪独立稳握，全程保持锤子悬空。",
+        "en": "Pick up the hammer with the left gripper, hand it to the right, then release the left and regrasp a different position along the handle. Finish with the right gripper released and clear and the left holding the hammer alone, keeping it off the table throughout."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "SimReady 锤子、双臂",
@@ -667,7 +711,8 @@
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
         "docs/agents/task-assets/README.md",
-        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_hammer_handover_regrasp_0.json"
+        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_hammer_handover_regrasp_0.json",
+        "task/DojoTouch/tasks/hammer_handover_regrasp.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
@@ -692,24 +737,28 @@
     {
       "id": "tape_ring_threading",
       "title": {
-        "zh": "胶带环穿杆 · coarse",
-        "en": "Tape-ring threading · coarse"
+        "zh": "胶带环穿杆（大间隙）",
+        "en": "Tape-ring threading (wide clearance)"
       },
       "category": "contact-rich",
       "batch": "contact-demonstrations",
       "status": "in_progress",
       "description": {
-        "zh": "胶带环、coarse 杆",
-        "en": "Tape ring and coarse rod"
+        "zh": "胶带环、大间隙配合用杆",
+        "en": "Tape ring and rod (wide clearance)"
       },
       "objective": {
-        "zh": "胶带环穿杆 · coarse",
-        "en": "Tape-ring threading · coarse"
+        "zh": "胶带环穿杆（大间隙）",
+        "en": "Tape-ring threading (wide clearance)"
+      },
+      "prompt": {
+        "zh": "左夹爪拿起胶带环，右夹爪拿起大间隙版本的穿杆。对齐环孔并将杆穿过，直到杆端从另一侧露出，让环和杆保持悬空。",
+        "en": "Pick up the tape ring with the left gripper and the rod for the wider-clearance variant with the right. Align the rod with the bore and pass it through until the tip emerges on the other side, keeping both objects above the table."
       },
       "successCriteria": [],
       "objects": {
-        "zh": "胶带环、coarse 杆",
-        "en": "Tape ring and coarse rod"
+        "zh": "胶带环、大间隙配合用杆",
+        "en": "Tape ring and rod (wide clearance)"
       },
       "statusNote": {
         "zh": "v18 coarse 包仍为 experimental。coarse 指几何配合变体，完整任务验收尚待完成。",
@@ -719,20 +768,22 @@
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
         "docs/agents/task-assets/README.md",
-        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_0.json"
+        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_0.json",
+        "task/DojoTouch/tasks/tape_ring_threading.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
       "demo": false,
       "tags": [
         "tape_ring_threading",
-        "contact-rich"
+        "contact-rich",
+        "coarse"
       ],
       "media": {
         "image": "/robodojo-contact/tasks/tape_ring_threading-arx5.webp",
         "alt": {
-          "zh": "胶带环穿杆 · coarse的双 ARX5 桌面初始布局渲染图",
-          "en": "Dual-arm ARX5 starting layout for Tape-ring threading · coarse"
+          "zh": "胶带环与穿杆在双 ARX5 桌面上的初始布局（大间隙）",
+          "en": "Dual-arm ARX5 starting layout for tape-ring threading (wide clearance)"
         },
         "imageKind": "layout-render"
       },
@@ -745,24 +796,28 @@
     {
       "id": "tape_ring_threading_fine",
       "title": {
-        "zh": "胶带环穿杆 · fine",
-        "en": "Tape-ring threading · fine"
+        "zh": "胶带环穿杆（小间隙）",
+        "en": "Tape-ring threading (tight clearance)"
       },
       "category": "contact-rich",
       "batch": "contact-demonstrations",
       "status": "in_progress",
       "description": {
-        "zh": "胶带环、fine 杆",
-        "en": "Tape ring and fine rod"
+        "zh": "胶带环、小间隙配合用杆",
+        "en": "Tape ring and rod (tight clearance)"
       },
       "objective": {
-        "zh": "胶带环穿杆 · fine",
-        "en": "Tape-ring threading · fine"
+        "zh": "胶带环穿杆（小间隙）",
+        "en": "Tape-ring threading (tight clearance)"
+      },
+      "prompt": {
+        "zh": "左夹爪拿起胶带环，右夹爪拿起小间隙版本的穿杆。仔细对齐环孔并将杆穿过，直到杆端从另一侧露出，让环和杆保持悬空。",
+        "en": "Pick up the tape ring with the left gripper and the rod for the tighter-clearance variant with the right. Carefully align the rod with the bore and pass it through until the tip emerges on the other side, keeping both objects above the table."
       },
       "successCriteria": [],
       "objects": {
-        "zh": "胶带环、fine 杆",
-        "en": "Tape ring and fine rod"
+        "zh": "胶带环、小间隙配合用杆",
+        "en": "Tape ring and rod (tight clearance)"
       },
       "statusNote": {
         "zh": "v18 fine 为更小几何余量的变体，仍标记 experimental。不是触觉网格精度选项。",
@@ -772,20 +827,22 @@
       "sourcePaths": [
         "docs/user/tasks/catalog.md",
         "docs/agents/task-assets/README.md",
-        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_fine_0.json"
+        "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_fine_0.json",
+        "task/DojoTouch/tasks/tape_ring_threading.py"
       ],
       "catalogOrigin": "base",
       "benchmarkScored": false,
       "demo": false,
       "tags": [
         "tape_ring_threading_fine",
-        "contact-rich"
+        "contact-rich",
+        "fine"
       ],
       "media": {
         "image": "/robodojo-contact/tasks/tape_ring_threading_fine-arx5.webp",
         "alt": {
-          "zh": "胶带环穿杆 · fine的双 ARX5 桌面初始布局渲染图",
-          "en": "Dual-arm ARX5 starting layout for Tape-ring threading · fine"
+          "zh": "胶带环与穿杆在双 ARX5 桌面上的初始布局（小间隙）",
+          "en": "Dual-arm ARX5 starting layout for tape-ring threading (tight clearance)"
         },
         "imageKind": "layout-render"
       },
@@ -813,6 +870,10 @@
         "zh": "刀叉切牛排",
         "en": "Cut steak with a knife and fork"
       },
+      "prompt": {
+        "zh": "用刀叉从牛排上切下一块肉。",
+        "en": "Use the knife and fork to cut a piece off the steak."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "餐刀、叉、牛排、餐盘",
@@ -826,7 +887,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/cut_steak/native.json"
+        "outputs/tool_assets_20261119/cut_steak/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -875,6 +937,10 @@
         "zh": "倒茶",
         "en": "Pour tea"
       },
+      "prompt": {
+        "zh": "将茶壶中的液体倒入茶杯，再扶正茶壶停止倒水，并放回桌面。",
+        "en": "Pour liquid from the teapot into the cup, then return the teapot upright to stop the flow and place it on the table."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "茶壶、茶杯",
@@ -888,7 +954,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/pour_tea/native.json"
+        "outputs/tool_assets_20261119/pour_tea/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -937,6 +1004,10 @@
         "zh": "黄瓜切片",
         "en": "Slice a cucumber"
       },
+      "prompt": {
+        "zh": "将砧板上的黄瓜切下一片。",
+        "en": "Cut a slice off the cucumber on the cutting board."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "刀、黄瓜、砧板",
@@ -950,7 +1021,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/slice_cucumber/native.json"
+        "outputs/tool_assets_20261119/slice_cucumber/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -999,6 +1071,10 @@
         "zh": "颠锅翻鱼",
         "en": "Flip fish with a pan"
       },
+      "prompt": {
+        "zh": "颠动平底锅，让鱼翻面后落回锅内。",
+        "en": "Toss the fish with the frying pan so it flips over and lands back in the pan."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "平底锅、鱼",
@@ -1012,7 +1088,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/flip_fish_in_pan/native.json"
+        "outputs/tool_assets_20261119/flip_fish_in_pan/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1061,6 +1138,10 @@
         "zh": "锅铲翻鱼",
         "en": "Flip fish with a spatula"
       },
+      "prompt": {
+        "zh": "保持锅稳定，用锅铲将鱼翻面并放回锅内。",
+        "en": "Keep the pan steady and use the spatula to turn the fish over and return it to the pan."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "锅铲、平底锅、鱼",
@@ -1074,7 +1155,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/flip_fish_with_spatula/native.json"
+        "outputs/tool_assets_20261119/flip_fish_with_spatula/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1123,6 +1205,10 @@
         "zh": "撒调料",
         "en": "Season food"
       },
+      "prompt": {
+        "zh": "用调料瓶向食物表面撒入调料，再扶正瓶身停止出料。",
+        "en": "Shake seasoning onto the food, then return the shaker upright to stop dispensing."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "调料瓶、食物",
@@ -1136,7 +1222,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/season_food/native.json"
+        "outputs/tool_assets_20261119/season_food/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1185,6 +1272,10 @@
         "zh": "舀汤",
         "en": "Ladle soup"
       },
+      "prompt": {
+        "zh": "用汤勺把源碗中的汤舀入接收碗，再将勺口转回朝上。",
+        "en": "Ladle soup from the source bowl into the receiving bowl, then turn the ladle upright again."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "汤勺、源碗、接收碗",
@@ -1198,7 +1289,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/ladle_soup/native.json"
+        "outputs/tool_assets_20261119/ladle_soup/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1247,6 +1339,10 @@
         "zh": "搬运酒杯托盘",
         "en": "Carry a tray of glasses"
       },
+      "prompt": {
+        "zh": "搬起装有三只空酒杯的托盘，平移一小段后放回桌面。让三只杯子始终直立在托盘上。",
+        "en": "Lift the tray holding three empty glasses, move it a short distance, and set it back on the table. Keep all three glasses upright on the tray throughout."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "托盘、三只空酒杯",
@@ -1260,7 +1356,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/carry_glass_tray/native.json"
+        "outputs/tool_assets_20261119/carry_glass_tray/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1309,6 +1406,10 @@
         "zh": "擀面杖滚动工况",
         "en": "Rolling-pin interaction trial"
       },
+      "prompt": {
+        "zh": "让擀面杖贴着桌面向前滚动，再反向滚回。",
+        "en": "Roll the rolling pin forward and back while keeping it in contact with the tabletop."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "木质擀面杖、桌面",
@@ -1322,7 +1423,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/roll_pin_trial/native.json"
+        "outputs/tool_assets_20261119/roll_pin_trial/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1357,8 +1459,8 @@
     {
       "id": "unfold_knife",
       "title": {
-        "zh": "折叠刀 A 开合",
-        "en": "Open and close folding knife A"
+        "zh": "展开折叠刀 A",
+        "en": "Unfold folding knife A"
       },
       "category": "hand-tools",
       "batch": "tool-interaction",
@@ -1368,8 +1470,12 @@
         "en": "V006 folding knife A and left-side single-hook rack"
       },
       "objective": {
-        "zh": "折叠刀 A 开合",
-        "en": "Open and close folding knife A"
+        "zh": "展开折叠刀 A",
+        "en": "Unfold folding knife A"
+      },
+      "prompt": {
+        "zh": "在仿真中展示折叠刀 A 从当前状态变为展开状态。",
+        "en": "In simulation, demonstrate folding knife A transitioning from its current state to an unfolded state."
       },
       "successCriteria": [],
       "objects": {
@@ -1384,7 +1490,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/unfold_knife/native.json"
+        "outputs/tool_assets_20261119/unfold_knife/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1396,8 +1503,8 @@
       "media": {
         "image": "/robodojo-contact/tasks/unfold_knife.webp",
         "alt": {
-          "zh": "折叠刀 A 开合的任务场景预览",
-          "en": "Task-scene preview of open and close folding knife a"
+          "zh": "折叠刀 A 的桌面初始场景",
+          "en": "Tabletop setup with folding knife A"
         },
         "detail": "/robodojo-contact/tasks/unfold_knife-detail.webp"
       },
@@ -1433,6 +1540,10 @@
         "zh": "伸缩刀片",
         "en": "Extend and retract a utility blade"
       },
+      "prompt": {
+        "zh": "在仿真中展示伸缩刀片伸出并保持，再回到收回状态。",
+        "en": "In simulation, demonstrate the utility blade reaching and holding an extended state, then returning to a retracted state."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "ArtVIP 3 号伸缩刀、左侧单钩架",
@@ -1446,7 +1557,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/extend_knife/native.json"
+        "outputs/tool_assets_20261119/extend_knife/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1495,6 +1607,10 @@
         "zh": "内六角紧固",
         "en": "Tighten a hex-socket bolt"
       },
+      "prompt": {
+        "zh": "用 T 柄内六角工具将已旋入的螺栓拧紧至就座，再移开工具。",
+        "en": "Use the T-handle hex driver to tighten the bolt in the workpiece until seated, then remove the tool."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "T 柄内六角工具、螺栓、工件",
@@ -1508,7 +1624,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/tighten_hex_bolt/native.json"
+        "outputs/tool_assets_20261119/tighten_hex_bolt/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1557,6 +1674,10 @@
         "zh": "斜口钳开合",
         "en": "Open and close diagonal cutters"
       },
+      "prompt": {
+        "zh": "操作斜口钳的两根手柄，让钳口张开后再合拢。",
+        "en": "Move the two handles of the diagonal cutters to open and then close the jaws."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "斜口钳",
@@ -1570,7 +1691,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/use_cutters/native.json"
+        "outputs/tool_assets_20261119/use_cutters/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1619,6 +1741,10 @@
         "zh": "尖嘴钳开合",
         "en": "Open and close long-nose pliers"
       },
+      "prompt": {
+        "zh": "操作尖嘴钳的两根手柄，让两侧钳尖分开后再靠拢。",
+        "en": "Move the two handles of the long-nose pliers so the jaw tips separate and come together again."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "尖嘴钳",
@@ -1632,7 +1758,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/use_long_nose_pliers/native.json"
+        "outputs/tool_assets_20261119/use_long_nose_pliers/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1681,6 +1808,10 @@
         "zh": "十字螺钉紧固",
         "en": "Tighten a Phillips screw"
       },
+      "prompt": {
+        "zh": "用十字螺丝刀将已旋入的螺钉拧紧至就座，再移开螺丝刀。",
+        "en": "Use the Phillips screwdriver to tighten the screw in the workpiece until seated, then remove the screwdriver."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "十字螺丝刀、螺钉、工件",
@@ -1694,7 +1825,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/tighten_screw/native.json"
+        "outputs/tool_assets_20261119/tighten_screw/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1743,6 +1875,10 @@
         "zh": "限扭扳手紧固",
         "en": "Tighten with a torque wrench"
       },
+      "prompt": {
+        "zh": "用限扭扳手和套筒拧紧螺栓，扳手脱扣后停止施力，再移开套筒。",
+        "en": "Tighten the bolt with the torque wrench and socket. Stop applying force when the wrench releases at its torque limit, then remove the socket."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "限扭扳手、套筒、螺栓",
@@ -1756,7 +1892,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/torque_bolt/native.json"
+        "outputs/tool_assets_20261119/torque_bolt/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1805,6 +1942,10 @@
         "zh": "剪刀开合",
         "en": "Open and close scissors"
       },
+      "prompt": {
+        "zh": "从挂架取下剪刀，操作两个手柄让剪刀张开后再合拢。",
+        "en": "Take the scissors off the rack and move the handles to open and then close the blades."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "剪刀、单钩架",
@@ -1818,7 +1959,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/use_scissors/native.json"
+        "outputs/tool_assets_20261119/use_scissors/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1867,6 +2009,10 @@
         "zh": "喷壶扳机操作",
         "en": "Operate a spray trigger"
       },
+      "prompt": {
+        "zh": "持稳喷壶，完整按压扳机喷水，再松开让扳机回弹并停止出水。",
+        "en": "Hold the spray bottle steady, fully press the trigger to spray water, then release it so the trigger returns and the flow stops."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "喷壶、扳机",
@@ -1880,7 +2026,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/squeeze_sprayer/native.json"
+        "outputs/tool_assets_20261119/squeeze_sprayer/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1929,6 +2076,10 @@
         "zh": "抽推注射器柱塞",
         "en": "Move a syringe plunger"
       },
+      "prompt": {
+        "zh": "持稳空针筒，将柱塞沿筒身轴线拉出一段，再沿同一轴线推回。",
+        "en": "Hold the empty syringe barrel steady, pull the plunger partway out along its axis, then push it back in."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "针筒、柱塞",
@@ -1942,7 +2093,8 @@
       "sourcePaths": [
         "src/teleop/preview_catalog.json",
         "docs/user/tasks/tool_asset_check.md",
-        "outputs/tool_assets_20261119/move_syringe_plunger/native.json"
+        "outputs/tool_assets_20261119/move_syringe_plunger/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "preview",
       "benchmarkScored": false,
@@ -1977,8 +2129,8 @@
     {
       "id": "unfold_knife_compact_flipper",
       "title": {
-        "zh": "折叠刀 B 开合",
-        "en": "Open and close folding knife B"
+        "zh": "展开折叠刀 B",
+        "en": "Unfold folding knife B"
       },
       "category": "hand-tools",
       "batch": "tool-interaction",
@@ -1988,8 +2140,12 @@
         "en": "V006 compact-flipper knife B and left-side single-hook rack"
       },
       "objective": {
-        "zh": "折叠刀 B 开合",
-        "en": "Open and close folding knife B"
+        "zh": "展开折叠刀 B",
+        "en": "Unfold folding knife B"
+      },
+      "prompt": {
+        "zh": "在仿真中展示 compact-flipper 折叠刀 B 从当前状态变为展开状态。",
+        "en": "In simulation, demonstrate compact-flipper folding knife B transitioning from its current state to an unfolded state."
       },
       "successCriteria": [],
       "objects": {
@@ -2003,7 +2159,8 @@
       "evidenceLevel": "runtime-ready",
       "sourcePaths": [
         "src/teleop/tool_trials_prepare.py",
-        "outputs/tool_assets_20261119/unfold_knife_compact_flipper/native.json"
+        "outputs/tool_assets_20261119/unfold_knife_compact_flipper/native.json",
+        "docs/user/tasks/tool_use_prompts.md"
       ],
       "catalogOrigin": "variant",
       "benchmarkScored": false,
@@ -2015,8 +2172,8 @@
       "media": {
         "image": "/robodojo-contact/tasks/unfold_knife_compact_flipper.webp",
         "alt": {
-          "zh": "折叠刀 B 开合的任务场景预览",
-          "en": "Task-scene preview of open and close folding knife b"
+          "zh": "折叠刀 B 的桌面初始场景",
+          "en": "Tabletop setup with folding knife B"
         },
         "detail": "/robodojo-contact/tasks/unfold_knife_compact_flipper-detail.webp"
       },
@@ -2042,6 +2199,10 @@
       "objective": {
         "zh": "用扳手与六角轴接合，将轴转动 60°。",
         "en": "Engage a wrench with the hex shaft and turn the shaft 60 degrees."
+      },
+      "prompt": {
+        "zh": "拿起扳手，将工作端套住六角轴并保持啮合，把轴转动 60°后停止。",
+        "en": "Pick up the wrench and fit its working end onto the hex shaft. Keep it engaged while turning the shaft 60 degrees, then stop."
       },
       "successCriteria": [],
       "objects": {
@@ -2095,6 +2256,10 @@
         "zh": "将螺丝刀与槽轴接合，将轴转动 60°。",
         "en": "Engage the screwdriver with the slotted shaft and turn the shaft 60 degrees."
       },
+      "prompt": {
+        "zh": "拿起一字螺丝刀，将刀头嵌入轴顶端的槽内，带动槽轴转动 60°后停止。",
+        "en": "Pick up the slotted screwdriver and engage its tip in the slot at the top of the shaft. Turn the shaft 60 degrees, then stop."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "一字螺丝刀、开槽轴",
@@ -2146,6 +2311,10 @@
       "objective": {
         "zh": "对齐套筒与六角柱，完成规定的入座。有效插入长度为 8 mm。",
         "en": "Align the socket with the hex peg and seat it, with an effective insertion length of 8 mm."
+      },
+      "prompt": {
+        "zh": "拿起套筒，将六角孔与六角柱对齐，向下套入直到完全入座。",
+        "en": "Pick up the socket, align its hexagonal bore with the hex peg, and lower it over the peg until fully seated."
       },
       "successCriteria": [],
       "objects": {
@@ -2199,6 +2368,10 @@
         "zh": "从支撑间隙插入锅铲并抬起木块。",
         "en": "Insert the spatula into the support gap and lift the wooden block."
       },
+      "prompt": {
+        "zh": "拿起锅铲，从支撑间隙将铲面伸到木块下方。抬起锅铲，让木块离开支撑并稳稳留在铲面上。",
+        "en": "Pick up the spatula and slide its blade beneath the wooden block through the support gap. Lift the block clear of its support and keep it balanced on the blade."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "锅铲、木块、支撑条",
@@ -2250,6 +2423,10 @@
       "objective": {
         "zh": "用勺从源盒舀取至少三颗珠子并转移至接收盒。",
         "en": "Scoop at least three beads from the source container into the receiving container."
+      },
+      "prompt": {
+        "zh": "用勺从源容器舀取珠子并倒入接收盒，直到至少三颗珠子留在接收盒内。",
+        "en": "Use the spoon to transfer beads from the source container into the receiving bin, leaving at least three beads inside."
       },
       "successCriteria": [],
       "objects": {
@@ -2303,6 +2480,10 @@
         "zh": "让擀面杖在固定垫板上滚动 8 cm。",
         "en": "Roll the pin across the fixed mat by 8 cm."
       },
+      "prompt": {
+        "zh": "让擀面杖贴着垫板滚动前进 8 cm，保持杖体随前进持续转动。",
+        "en": "Roll the rolling pin forward by 8 cm across the mat, keeping it in contact with the mat and rotating as it travels."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "SimReady 擀面杖、固定垫板",
@@ -2354,6 +2535,10 @@
       "objective": {
         "zh": "将杯把挂上细挂钩，松手后保持悬挂。",
         "en": "Place the mug handle on the narrow hook and leave the mug hanging after release."
+      },
+      "prompt": {
+        "zh": "拿起马克杯，将杯把套上挂钩，再松开夹爪，让杯子独立悬挂。",
+        "en": "Pick up the mug, thread its handle onto the hook, and release it so that it hangs on its own."
       },
       "successCriteria": [],
       "objects": {
@@ -2407,6 +2592,10 @@
         "zh": "抬起带载托盘并搬到标记区域，同时保留托盘内的载荷。",
         "en": "Lift the loaded tray and carry it to the marked area without losing its load."
       },
+      "prompt": {
+        "zh": "抬起装有方块的托盘，搬到标记区域上方并稳稳托住，全程让方块留在托盘内。",
+        "en": "Lift the tray with the block inside and carry it above the marked area. Hold it steady there, keeping the block in the tray throughout the move."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "托盘、松放方块、目标区",
@@ -2459,6 +2648,10 @@
         "zh": "倾斜托盘，使松放的方块滑入接收盒。",
         "en": "Tilt the tray so that its loose block slides into the receiving bin."
       },
+      "prompt": {
+        "zh": "拿起托盘并朝接收盒倾斜，让方块滑出并落入接收盒，最终留在盒内。",
+        "en": "Pick up the tray and tilt it toward the receiving bin so that the block slides out and comes to rest inside the bin."
+      },
       "successCriteria": [],
       "objects": {
         "zh": "托盘、方块、接收盒",
@@ -2510,6 +2703,10 @@
       "objective": {
         "zh": "用锅铲将木块推入标记区域。",
         "en": "Push the wooden block into the marked area using the spatula."
+      },
+      "prompt": {
+        "zh": "拿起锅铲，用铲面推动桌上的木块，让它在标记区域内停稳。",
+        "en": "Pick up the spatula and use its blade to push the wooden block across the tabletop, stopping with the block inside the marked area."
       },
       "successCriteria": [],
       "objects": {

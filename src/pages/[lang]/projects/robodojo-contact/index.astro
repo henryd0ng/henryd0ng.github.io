@@ -23,11 +23,6 @@ const categoryNames = Object.fromEntries(taskCategories.map(category => [categor
 const batchNames = Object.fromEntries(taskBatches.map(batch => [batch.id, batch.label[lang]]));
 const statusNames = Object.fromEntries(taskStatuses.map(status => [status.id, status.label[lang]]));
 const formattedTasks = tr('{count} 项任务', '{count} tasks');
-const mediaKind = {
-  accepted: tr('完成演示', 'Completed demonstration'),
-  diagnostic: tr('接触细节', 'Contact detail'),
-  development: tr('开发记录', 'Development record'),
-};
 ---
 <RobodojoLayout lang={lang} title={projectMeta.title} description={projectMeta.description[lang]} inProgress={counts.in_progress}>
   <main id="top" data-rb-catalog>
@@ -106,11 +101,11 @@ const mediaKind = {
           const image = clip ? clip.poster ?? task.media?.image : task.media?.image;
           const seconds = Math.round(clip?.durationSeconds ?? 0);
           const duration = seconds ? Math.floor(seconds / 60) + ':' + String(seconds % 60).padStart(2, '0') : '';
-          const specUrl = link + 'specs/' + task.batch + '/#' + task.id;
-          const search = [task.id, task.title.zh, task.title.en, task.description.zh, task.description.en, categoryNames[task.category], batchNames[task.batch], ...task.tags].join(' ');
+          const taskUrl = link + 'tasks/' + task.id + '/';
+          const search = [task.id, task.title.zh, task.title.en, task.description.zh, task.description.en, task.prompt.zh, task.prompt.en, categoryNames[task.category], batchNames[task.batch], ...task.tags].join(' ');
           return (
-            <article class="rb-card" data-rb-card data-id={task.id} data-status={task.status} data-category={task.category} data-batch={task.batch} data-search={search}>
-              <button class="rb-card-button" type="button" data-rb-open={task.id} aria-haspopup="dialog" aria-label={task.title[lang] + ' · ' + (clip ? tr('播放视频', 'Play video') : image ? tr('查看初始场景', 'View initial scene') : tr('查看任务进展', 'View progress'))}>
+            <article id={'task=' + task.id} class="rb-card" data-rb-card data-id={task.id} data-status={task.status} data-category={task.category} data-batch={task.batch} data-search={search}>
+              <a class="rb-card-button" href={taskUrl} data-rb-task-link={task.id} aria-label={task.title[lang] + ' · ' + tr('查看任务详情', 'View task details')}>
                 <div class="rb-thumb">
                   {image ? <img src={image} alt="" loading="lazy" width="960" height="720" /> : <div class="rb-media-placeholder">{tr('初始场景待接入', 'Initial scene pending')}</div>}
                   {!clip && image && <span class="rb-chip">{task.media?.imageKind === 'layout-render' ? tr('初始布局渲染', 'Layout render') : tr('静态初态', 'Initial scene')}</span>}
@@ -121,34 +116,7 @@ const mediaKind = {
                   <h3>{task.title[lang]}</h3>
                   <div class="rb-card-foot"><span class="rb-status" data-status={task.status}>{statusNames[task.status]}</span>{duration && <span class="rb-card-summary">{duration}</span>}</div>
                 </div>
-              </button>
-              <template data-rb-template={task.id}>
-                <div class="rb-detail-media">
-                  {clip ? <>
-                    <video controls playsinline preload="metadata" poster={clip.poster ?? task.media?.image} data-rb-clip-video aria-label={task.title[lang]}></video>
-                    <p class="rb-media-error" data-rb-clip-error hidden>{tr('此视频暂时无法播放。', 'This video could not be played.')} <a data-rb-source href={clip.src}>{tr('打开视频源文件', 'Open video file')}</a></p>
-                  </> : image ? <img src={image} alt={task.media?.alt[lang] ?? task.title[lang]} width="960" height="720" /> : <p class="rb-media-placeholder">{tr('初始场景待接入', 'Initial scene pending')}</p>}
-                </div>
-                <div class="rb-detail-copy">
-                  <span class="rb-status" data-status={task.status}>{statusNames[task.status]}</span>
-                  <h2 id="rb-detail-title">{task.title[lang]}</h2>
-                  <p>{task.description[lang]}</p>
-                  {task.objects && <p class="rb-task-objects"><strong>{tr('任务物体', 'Task objects')}</strong> {task.objects[lang]}</p>}
-                  {clips.length > 0 && <div class="rb-clips" role="group" aria-label={tr('切换视频', 'Select video')}>
-                    {clips.map((video, index) => <button type="button" data-rb-clip={video.src} data-poster={video.poster ?? task.media?.image} data-kind={mediaKind[video.kind]} data-notice={task.demo ? tr('概念示意 · 非实验录像', 'Concept illustration · Not experiment footage') : ''} aria-pressed={index === 0}>{video.label[lang]}</button>)}
-                  </div>}
-                  <div class="rb-detail-meta">{task.media?.imageKind === 'layout-render' && <span>{tr('初始布局渲染', 'Initial layout render')}</span>}<span>{categoryNames[task.category]}</span><span>{batchNames[task.batch]}</span>{clip && task.trajectoryCount !== undefined && <span>{task.trajectoryCount} {tr('条参考轨迹', 'reference trajectories')}</span>}</div>
-                  <p class="rb-detail-notice">{task.statusNote?.[lang] ?? projectMeta.notice[lang]}</p>
-                  {clip && <p class="rb-clip-note" aria-live="polite" data-rb-clip-note></p>}
-                  <div class="rb-detail-actions">
-                    <a class="rb-spec-link" href={specUrl}>{tr('任务规格', 'Task specification')}</a>
-                    <button type="button" class="rb-clear" data-rb-copy-link data-copied={tr('链接已复制', 'Link copied')} data-copy-error={tr('请复制地址栏中的链接', 'Copy the URL from the address bar')}>{tr('复制任务链接', 'Copy task link')}</button>
-                  </div>
-                  <span class="rb-card-id">{task.id}</span>
-                  <p class="rb-sr-only" role="status" data-rb-copy-status></p>
-                </div>
-              </template>
-              <noscript><a href={specUrl}>{tr('查看任务规格', 'Read task specification')}</a></noscript>
+              </a>
             </article>
           );
         })}
@@ -172,10 +140,6 @@ const mediaKind = {
         </div>
       </div>
     </section>
-    <dialog class="rb-dialog" data-rb-dialog aria-labelledby="rb-detail-title">
-      <button class="rb-close" type="button" data-rb-close aria-label={tr('关闭任务详情', 'Close task details')}>×</button>
-      <div data-rb-detail></div>
-    </dialog>
   </main>
 </RobodojoLayout>
 <script>

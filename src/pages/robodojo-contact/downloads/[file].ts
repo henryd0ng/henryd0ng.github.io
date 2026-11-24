@@ -45,6 +45,7 @@ function metadataValidation() {
   const incompleteText = tasks.filter(task =>
     !task.title.zh.trim() || !task.title.en.trim() ||
     !task.description.zh.trim() || !task.description.en.trim() ||
+    !task.prompt?.zh?.trim() || !task.prompt?.en?.trim() ||
     !task.objective.zh.trim() || !task.objective.en.trim() ||
     !task.statusNote.zh.trim() || !task.statusNote.en.trim()
   ).map(task => task.id);
@@ -110,10 +111,10 @@ function guide() {
   for (const batch of taskBatches) {
     lines.push(`## ${batch.label.zh} / ${batch.label.en}`, '');
     for (const task of tasks.filter(task => task.batch === batch.id)) {
-      const url = 'https://henryd0ng.github.io/robodojo-contact/#task=' + task.id;
-      lines.push(`### [${task.title.zh} / ${task.title.en}](${url})`, '',
+      const path = '/projects/robodojo-contact/tasks/' + task.id + '/';
+      lines.push(`### [${task.title.zh}](https://henryd0ng.github.io/zh${path}) / [${task.title.en}](https://henryd0ng.github.io/en${path})`, '',
         `\`${task.id}\` · ${taskStatuses.find(status => status.id === task.status)?.label.zh}`, '',
-        task.objective.zh, '', task.objective.en, '', task.statusNote.zh, '', task.statusNote.en, '');
+        '**任务指令 / Task prompt**', '', task.prompt.zh, '', task.prompt.en, '', task.statusNote.zh, '', task.statusNote.en, '');
       for (const observation of task.successCriteria) lines.push('- ' + observation.zh + ' ' + observation.en);
       if (task.successCriteria.length) lines.push('');
     }

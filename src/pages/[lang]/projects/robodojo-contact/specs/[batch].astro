@@ -61,9 +61,9 @@ const format = tr('{count} 项规格', '{count} specifications');
             <h2>{task.title[lang]}</h2>
             <p>{task.description[lang]}</p>
             <p><strong>{statusNames[task.status]}</strong> · {task.statusNote[lang]}</p>
+            <section class="rb-spec-block"><h3>{tr('任务指令', 'Task prompt')}</h3><p>{task.prompt[lang]}</p></section>
             {image && <img src={image} alt={task.media?.alt[lang] ?? task.title[lang]} loading="lazy" width="960" height="720" />}
             {task.media?.detail && <details class="rb-spec-block"><summary>{tr('查看物体近景', 'Object close-up')}</summary><img src={task.media.detail} alt={task.title[lang] + tr(' · 物体近景', ' · object close-up')} loading="lazy" width="960" height="720" /></details>}
-            <section class="rb-spec-block"><h3>{tr('任务目标', 'Objective')}</h3><p>{task.objective[lang]}</p></section>
             {task.assets?.length && <details class="rb-spec-block" data-rb-spec-assets>
               <summary>{tr('道具与资产路径', 'Props & asset paths')}</summary>
               <ul>{task.assets.map(asset => <li>{asset.name[lang]}{asset.path && <> · <code>{asset.path}</code></>}</li>)}</ul>
@@ -78,7 +78,7 @@ const format = tr('{count} 项规格', '{count} specifications');
             </details>}
           </div>
           <div class="rb-spec-actions">
-            <a class="rb-link" href={link + '#task=' + task.id}>{task.status === 'accepted' ? tr('播放任务录像', 'Play demonstration') : tr('查看场景', 'View scene')}</a>
+            <a class="rb-link" data-rb-task-link href={link + 'tasks/' + task.id + '/'}>{tr('查看任务详情', 'View task details')}</a>
             <button class="rb-link" type="button" data-rb-spec-share data-copied={tr('链接已复制', 'Link copied')} data-error={tr('复制失败，请复制地址栏链接', 'Copy failed. Use the address bar.')}>{tr('复制任务链接', 'Copy task link')}</button>
             <button class="rb-link" type="button" data-rb-spec-copy data-copied={tr('规格已复制', 'Spec copied')} data-error={tr('复制失败，请手动选中文本', 'Copy failed. Select the text manually.')}>{tr('复制任务规格', 'Copy specification')}</button>
             <p class="rb-sr-only" role="status" data-rb-spec-copy-status></p>
@@ -136,10 +136,8 @@ const format = tr('{count} 项规格', '{count} specifications');
       const button = event.target.closest<HTMLButtonElement>('[data-rb-spec-share], [data-rb-spec-copy]');
       const card = button?.closest<HTMLElement>('[data-rb-spec-card]');
       if (!button || !card) return;
-      const direct = new URL(location.href);
-      direct.hash = card.id;
       const section = card.querySelector<HTMLElement>('[data-rb-spec-text]');
-      let text = direct.href;
+      let text = card.querySelector<HTMLAnchorElement>('[data-rb-task-link]')!.href;
       if (button.hasAttribute('data-rb-spec-copy') && section) {
         const disclosures = [...section.querySelectorAll('details:not([open])')] as HTMLDetailsElement[];
         disclosures.forEach(item => { item.open = true; });

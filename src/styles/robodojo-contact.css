@@ -15,7 +15,6 @@
 html { scroll-behavior: smooth; scroll-padding-top: 105px; }
 body { margin: 0; background: var(--rb-bg); color: var(--rb-ink); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
 .rb-page [hidden] { display: none !important; }
-body:has(.rb-dialog[open]) { overflow: hidden; }
 a { color: var(--rb-blue); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 button, input, select { font: inherit; }
@@ -99,6 +98,7 @@ h1, h2, h3 { font-weight: 650; letter-spacing: -.035em; }
 .rb-card-button { display: block; width: 100%; height: 100%; padding: 0; border: 0; border-radius: 18px; background: transparent; text-align: left; }
 .rb-thumb { position: relative; overflow: hidden; width: 100%; aspect-ratio: 4 / 3; border-radius: 18px; background: #eceef0; }
 .rb-thumb > img { width: 100%; height: 100%; object-fit: contain; transition: transform .4s; }
+.rb-card-button:hover { text-decoration: none; }
 .rb-card-button:hover .rb-thumb > img { transform: scale(1.025); }
 .rb-card-button:hover h3 { color: var(--rb-blue); }
 .rb-media-placeholder { display: grid; place-items: center; width: 100%; height: 100%; min-height: 190px; padding: 20px; color: #8a929f; background: #f0f2f5; font-size: 14px; }
@@ -112,7 +112,6 @@ h1, h2, h3 { font-weight: 650; letter-spacing: -.035em; }
 .rb-status::before { content: ''; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: #aab0ba; }
 .rb-status[data-status='accepted']::before { background: #4b8968; }
 .rb-status[data-status='in_progress']::before { background: #b98d4c; }
-.rb-card-id { display: block; margin-top: 16px; color: #9298a1; font-family: ui-monospace, 'SFMono-Regular', monospace; font-size: 12px; overflow-wrap: anywhere; }
 .rb-empty { padding: 65px 20px; color: var(--rb-muted); font-size: 16px; text-align: center; }
 .rb-note { margin-top: 38px; padding-top: 20px; border-top: 1px solid var(--rb-line); color: #8c929b; font-size: 13px; line-height: 1.9; }
 
@@ -128,28 +127,8 @@ h1, h2, h3 { font-weight: 650; letter-spacing: -.035em; }
 .rb-footer > .rb-credit { width: 100%; font-size: 12px; }
 .rb-credit a { color: #737b88; }
 
-.rb-dialog { position: fixed; width: min(850px, calc(100% - 32px)); max-width: none; max-height: 90dvh; margin: auto; padding: 0; overflow: auto; overscroll-behavior: contain; border: 0; border-radius: 23px; color: var(--rb-ink); background: white; box-shadow: 0 22px 100px #00000035; }
-.rb-dialog::backdrop { background: #07101f9c; backdrop-filter: blur(8px); }
-.rb-close { position: absolute; top: 15px; right: 15px; z-index: 3; display: grid; place-items: center; width: 37px; height: 37px; padding: 0; border: 0; border-radius: 50%; color: #444e5d; background: #fffffff0; font-size: 25px; line-height: 1; }
-.rb-close:hover { background: white; }
-.rb-detail-media { position: relative; background: #c5c9c4; }
-.rb-detail-media img, .rb-detail-media video { width: 100%; height: auto; max-height: 58dvh; object-fit: contain; }
-.rb-detail-copy { padding: 28px 34px 32px; }
-.rb-detail-copy h2 { margin: 9px 0 12px; color: #252d38; font-size: 30px; line-height: 1.25; letter-spacing: -.035em; }
-.rb-detail-copy > p { margin-bottom: 17px; color: #747c87; font-size: 15px; line-height: 1.85; }
-.rb-detail-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 0; color: #8c939e; font-size: 13px; }
-.rb-detail-meta > span + span { margin-left: 12px; padding-left: 12px; border-left: 1px solid #dfe2e7; }
-.rb-clips { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0; }
-.rb-clips button { padding: 8px 12px; border: 1px solid var(--rb-line); border-radius: 999px; color: #646d7b; background: white; font-size: 13px; line-height: 1.5; }
-.rb-clips button[aria-pressed='true'] { border-color: #242b35; color: white; background: #242b35; }
-.rb-detail-copy > .rb-detail-notice { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--rb-line); color: #8b929e; font-size: 13px; }
-.rb-detail-copy > .rb-clip-note { margin: 10px 0 0; color: #8b929e; font-size: 12px; }
-.rb-task-objects strong { color: #596372; font-weight: 600; }
-.rb-detail-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 28px; margin-top: 18px; }
-.rb-spec-link { color: var(--rb-blue); font-size: 14px; }
 .rb-media-error { padding: 16px 24px; color: #84613c; background: #fff4e6; font-size: 14px; line-height: 1.6; }
 .rb-stage > .rb-media-error { position: absolute; top: 12px; right: 12px; left: 12px; border-radius: 10px; }
-.rb-dialog a { overflow-wrap: anywhere; }
 .rb-spec { padding: 68px 0 85px; }
 .rb-spec > h1, .rb-spec h1 { max-width: 900px; margin-bottom: 18px; font-size: clamp(36px, 4.7vw, 58px); line-height: 1.1; letter-spacing: -.05em; }
 .rb-spec > p { max-width: 840px; color: var(--rb-muted); font-size: 15px; line-height: 1.8; }
@@ -266,12 +245,6 @@ h1, h2, h3 { font-weight: 650; letter-spacing: -.035em; }
   .rb-about p { font-size: 15px; line-height: 1.9; }
   .rb-footer { padding-top: 28px; padding-bottom: 28px; }
   .rb-footer > span { order: 3; width: 100%; }
-  .rb-dialog { border-radius: 18px; }
-  .rb-detail-copy { padding: 23px; }
-  .rb-detail-copy h2 { font-size: 25px; }
-  .rb-detail-copy > p { font-size: 14px; }
-  .rb-detail-meta { font-size: 12px; }
-  .rb-detail-actions { gap: 8px 20px; }
   .rb-spec { padding: 45px 0 55px; }
   .rb-spec h1 { font-size: 36px; }
   .rb-spec > p { font-size: 15px; }

@@ -1,13 +1,11 @@
-import { copyText } from './robodojo-copy';
-
 const catalog = document.querySelector<HTMLElement>('[data-rb-catalog]');
 if (catalog) mountCatalog(catalog);
 
 function mountCatalog(root: HTMLElement) {
   const filters = [...root.querySelectorAll<HTMLButtonElement>('[data-rb-filter]')];
   const cards = [...root.querySelectorAll<HTMLElement>('[data-rb-card]')];
-  const templates = new Map(
-    [...root.querySelectorAll<HTMLTemplateElement>('[data-rb-template]')].map(template => [template.dataset.rbTemplate, template]),
+  const taskLinks = new Map(
+    [...root.querySelectorAll<HTMLAnchorElement>('[data-rb-task-link]')].map(link => [link.dataset.rbTaskLink, link.href]),
   );
   const category = root.querySelector<HTMLSelectElement>('[data-rb-category]')!;
   const batch = root.querySelector<HTMLSelectElement>('[data-rb-batch]')!;
@@ -15,18 +13,11 @@ function mountCatalog(root: HTMLElement) {
   const count = root.querySelector<HTMLElement>('[data-rb-count]')!;
   const empty = root.querySelector<HTMLElement>('[data-rb-empty]')!;
   const clear = root.querySelector<HTMLButtonElement>('[data-rb-clear]')!;
-  const dialog = root.querySelector<HTMLDialogElement>('[data-rb-dialog]')!;
-  const detail = dialog.querySelector<HTMLElement>('[data-rb-detail]')!;
-  const close = dialog.querySelector<HTMLButtonElement>('[data-rb-close]')!;
   const statusHashes: Record<string, string> = {
     accepted: '#accepted', in_progress: '#in-progress', not_started: '#not-started', all: '#tasks',
   };
   const validStatuses = new Set(filters.map(button => button.dataset.rbFilter));
   let status = 'all';
-  let taskId: string | null = null;
-  let opener: HTMLButtonElement | null = null;
-  let returnHash = '#tasks';
-  let leaveUrlInPlace = false;
 
   function render() {
     const terms = search.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -68,16 +59,10 @@ function mountCatalog(root: HTMLElement) {
     const hash = location.hash;
     const params = new URLSearchParams(hash.slice(1));
     const selectedTask = params.get('task');
-    if (selectedTask && templates.has(selectedTask)) {
-      if (taskId !== selectedTask || !dialog.open) {
-        returnHash = filterHash();
-        showTask(selectedTask, false);
-      }
+    const taskUrl = selectedTask ? taskLinks.get(selectedTask) : undefined;
+    if (taskUrl) {
+      location.replace(taskUrl);
       return;
-    }
-    if (dialog.open) {
-      leaveUrlInPlace = true;
-      dialog.close();
     }
     const named = Object.keys(statusHashes).find(key => statusHashes[key] === hash);
     const selected = named ?? params.get('status') ?? 'all';
@@ -91,45 +76,6 @@ function mountCatalog(root: HTMLElement) {
     }
   }
 
-  function playClip(button: HTMLButtonElement) {
-    const video = detail.querySelector<HTMLVideoElement>('[data-rb-clip-video]');
-    const error = detail.querySelector<HTMLElement>('[data-rb-clip-error]');
-    const source = detail.querySelector<HTMLAnchorElement>('[data-rb-source]');
-    if (!video || !button.dataset.rbClip) return;
-    video.pause();
-    if (error) error.hidden = true;
-    if (source) source.href = button.dataset.rbClip;
-    const note = detail.querySelector('[data-rb-clip-note]');
-    if (note) note.textContent = [button.dataset.kind, button.dataset.notice].filter(Boolean).join(' · ');
-    video.poster = button.dataset.poster ?? '';
-    video.src = button.dataset.rbClip;
-    video.load();
-    for (const clip of detail.querySelectorAll('[data-rb-clip]')) {
-      clip.setAttribute('aria-pressed', String(clip === button));
-    }
-    video.play().catch(() => { /* The native controls are available if autoplay is blocked. */ });
-  }
-
-  function showTask(id: string, updateUrl: boolean) {
-    const template = templates.get(id);
-    if (!template) return;
-    hero?.pause();
-    detail.querySelector<HTMLVideoElement>('video')?.pause();
-    taskId = id;
-    detail.replaceChildren(template.content.cloneNode(true));
-    if (updateUrl) history.pushState({ rbTask: id }, '', '#task=' + encodeURIComponent(id));
-    if (!dialog.open) dialog.showModal();
-    dialog.scrollTop = 0;
-    close.focus({ preventScroll: true });
-    const video = detail.querySelector<HTMLVideoElement>('[data-rb-clip-video]');
-    video?.addEventListener('error', () => {
-      const error = detail.querySelector<HTMLElement>('[data-rb-clip-error]');
-      if (error) error.hidden = false;
-    });
-    const first = detail.querySelector<HTMLButtonElement>('[data-rb-clip]');
-    if (first) playClip(first);
-  }
-
   filters.forEach(button => button.addEventListener('click', () => {
     status = button.dataset.rbFilter ?? 'all';
     updateFilterUrl();
@@ -141,50 +87,6 @@ function mountCatalog(root: HTMLElement) {
     category.value = batch.value = search.value = '';
     updateFilterUrl();
     search.focus();
-  });
-
-  root.addEventListener('click', event => {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
-    const button = target.closest<HTMLButtonElement>('[data-rb-open]');
-    if (!button?.dataset.rbOpen) return;
-    opener = button;
-    returnHash = filterHash();
-    showTask(button.dataset.rbOpen, true);
-  });
-  close.addEventListener('click', () => dialog.close());
-  dialog.addEventListener('click', event => {
-    if (event.target !== dialog) return;
-    const rect = dialog.getBoundingClientRect();
-    if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
-  });
-  dialog.addEventListener('close', () => {
-    detail.querySelector<HTMLVideoElement>('video')?.pause();
-    detail.replaceChildren();
-    taskId = null;
-    if (!leaveUrlInPlace) {
-      if (history.state?.rbTask) history.back();
-      else history.replaceState(null, '', returnHash);
-    }
-    leaveUrlInPlace = false;
-    opener?.focus({ preventScroll: true });
-    opener = null;
-    resumeHero();
-  });
-  detail.addEventListener('click', async event => {
-    if (!(event.target instanceof Element)) return;
-    const clip = event.target.closest<HTMLButtonElement>('[data-rb-clip]');
-    if (clip) playClip(clip);
-    const copy = event.target.closest<HTMLButtonElement>('[data-rb-copy-link]');
-    if (copy) {
-      const direct = new URL(location.href);
-      direct.hash = 'task=' + encodeURIComponent(taskId ?? '');
-      const ok = await copyText(direct.href);
-      const message = ok ? copy.dataset.copied : copy.dataset.copyError;
-      copy.textContent = message ?? '';
-      const live = detail.querySelector('[data-rb-copy-status]');
-      if (live) live.textContent = message ?? '';
-    }
   });
 
   // An already-selected anchor does not fire hashchange; reapply it on click.
@@ -203,7 +105,7 @@ function mountCatalog(root: HTMLElement) {
   let heroVisible = false;
 
   function resumeHero() {
-    if (hero && heroVisible && !manualPause && !dialog.open && !document.hidden) {
+    if (hero && heroVisible && !manualPause && !document.hidden) {
       hero.play().catch(() => { /* User can play it with the toggle. */ });
     }
   }
