@@ -1,83 +1,303 @@
 {
   "source_project": "RoboDojo",
-  "render": "Static object views use the saved scene poses and USD visual meshes with a studio camera, neutral tabletop and lighting. The HDMI still is a native head-camera capture.",
+  "render": "Fourteen initial-layout images reproduce installed dual-ARX5 scene geometry and saved starting poses in an offline CPU renderer. They are not Isaac camera captures and establish no task success or new dynamics verification. The HDMI still remains an archived native head-camera capture.",
   "entries": [
     {
       "id": "carry_tray",
-      "file": "carry_tray.webp",
+      "file": "carry_tray-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_carry_tray_0.json",
       "layout_sha256": "b59281c1c05736ba451ffaffad9811a08ad2babe3fce6e01b7f3f268ff050b7b",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_tray_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/p0_payload_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_target_zone_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_tray_task_v1/00000/object.usd": "9a42e65cf1ae2c9a12180e2203031a9942d48f9fec7cb5d3432b2bfb6101e2fa",
+        "Assets/Object/DojoTouch/Rigid/p0_payload_v1/00000/object.usd": "6948701b082cbd7f0c90687fead9996ed70b20ca942511f4f798822ec1092786",
+        "Assets/Object/DojoTouch/Geometry/p0_target_zone_v1/00000/object.usd": "8559660408ad5ecadd4f8b61139d82ca65faeee46368428892a703d2e6b7fd1c"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "b433057ad12a5b09b6a03190adcd203e72f11329d4e9c8ec93db20a2433e68d2",
+      "source_render_sha256": "9baeeecfd945af515c71835476547e158cbfb4d492188c7f019e28a4ae0105f2",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "extract_mouse_receiver",
-      "file": "extract_mouse_receiver.webp",
+      "file": "extract_mouse_receiver-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_extract_mouse_receiver_0.json",
       "layout_sha256": "06800daeed0f0f20d06b5f863ad923e43159d28667bc43beffa88a25b60f1dae",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/contact_mouse_teleop/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/mouse_bottom_cover_teleop/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/mouse_usb_receiver_teleop/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/contact_mouse_teleop/00000/object.usd": "05f10132805eb5bc7395351b4f5ad2d358e48498abe16d7e98292d1855193a78",
+        "Assets/Object/DojoTouch/Rigid/mouse_bottom_cover_teleop/00000/object.usd": "fcd49741c2a69b889d2578599c1c3d88c60afc4de764c54d974644076f6630d2",
+        "Assets/Object/DojoTouch/Rigid/mouse_usb_receiver_teleop/00000/object.usd": "1f679273ca5a3745d092c2d3247bcd864537cd54d9432891190fe99ad55c118e"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "d0b9ead811a867e5f74463b39373552d1be7963d317274d30d6918e052641628",
+      "source_render_sha256": "9ec5a35c9b38b66d0b654d58218f730098d6195c7203e77ec90b66796f11f840",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "hammer_handover_regrasp",
-      "file": "hammer_handover_regrasp.webp",
+      "file": "hammer_handover_regrasp-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_hammer_handover_regrasp_0.json",
       "layout_sha256": "3b305a88a1b21d62b20d32218a6d5e37425affa73a8cffece96ae6192f80e2b0",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_hammer_teleop_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_hammer_teleop_v1/00000/object.usd": "dd770eec8fad4820e6260f8f4059351bb752c47bd0da5d2ef0e0cbb75c41d8d3"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "da00107a45dab105fbd95bd52b67bd7949b7c993b9d9f0878781f11d25b3c932",
+      "source_render_sha256": "ba7511f8d04ed8bb8ee4dfc00c3bea3add4aea79b11d68cd3b7a3828c4232512",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "hang_mug",
-      "file": "hang_mug.webp",
+      "file": "hang_mug-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_hang_mug_0.json",
       "layout_sha256": "396d627d4edb1b081f03c5e71c13682ffb87183b69cf2312b80bb5e1b3ab9fb6",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_mug_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_hook_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_mug_task_v1/00000/object.usd": "b65c82227e009ad7ce86be6a8d1f0497aa95f2a461e027cc5c9968641f825416",
+        "Assets/Object/DojoTouch/Geometry/p0_hook_v1/00000/object.usd": "6714746cfefd85a42808d493dd53db51a549ba410dec7f80ef5dd3040e2c7bd9"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "0d752e36ac2105d63aafd139b4dfacda9d1500088f6e82cf912a62937791c041",
+      "source_render_sha256": "5ee3ca0bb31fdaca0d5337f01e9a4f919b729c4b46c2f95cb6aecb3a31029586",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "lift_block",
-      "file": "lift_block.webp",
+      "file": "lift_block-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_lift_block_0.json",
       "layout_sha256": "a726d3b91b2f4582e6e7fa729a9b170118d5f0540009a01b0e240fa638e027ea",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_wood_block_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/simready_spatula_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_support_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_wood_block_task_v1/00000/object.usd": "998ae7c3f26e4ba98901be97e99e037068a0e3a0c6e083c40e404df849a6862f",
+        "Assets/Object/DojoTouch/Rigid/simready_spatula_task_v1/00000/object.usd": "a6981cb01cb0039578c091034719e8ee294fbf881cd2e1958aa1e5f08326e3f6",
+        "Assets/Object/DojoTouch/Geometry/p0_support_v1/00000/object.usd": "8f5dfc5fd98cf672af939f2d9bb58ccc039c3ac12353285f351dac888ff6db70"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "93f8af13194c84e4eaa6dfbdaece14bb88ed42c381c41a368c83c182a8d61311",
+      "source_render_sha256": "965bba18a9f72ad9f02ced1005fe9915098565d83d5ee97e45c2e00a3221ae2a",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "push_block",
-      "file": "push_block.webp",
+      "file": "push_block-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_push_block_0.json",
       "layout_sha256": "d7276035971a0f6171f44bb9801ea01a8c41db6a4ad87730c64199da8e8af59f",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_spatula_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/simready_wood_block_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_target_zone_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_spatula_task_v1/00000/object.usd": "a6981cb01cb0039578c091034719e8ee294fbf881cd2e1958aa1e5f08326e3f6",
+        "Assets/Object/DojoTouch/Rigid/simready_wood_block_task_v1/00000/object.usd": "998ae7c3f26e4ba98901be97e99e037068a0e3a0c6e083c40e404df849a6862f",
+        "Assets/Object/DojoTouch/Geometry/p0_target_zone_v1/00000/object.usd": "8559660408ad5ecadd4f8b61139d82ca65faeee46368428892a703d2e6b7fd1c"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "eff372912306ced6bebbe3901675a741d747d680cdcae97ee73aa036cb8536fd",
+      "source_render_sha256": "67ae891fa8c196a82fd81dd679bcde16ab93cc0493763ad38118dffa44b71e24",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "roll_pin",
-      "file": "roll_pin.webp",
+      "file": "roll_pin-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_roll_pin_0.json",
       "layout_sha256": "32937cde3d8d815f705fcbe67dd3bf0a236c3ce42706e001ff89a5ff434209f6",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_rolling_pin_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_rolling_mat_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_rolling_pin_task_v1/00000/object.usd": "ba0fae5d824b4ab31da685ddd1c69034d118236c381c7ffa1f3ce9e5434600db",
+        "Assets/Object/DojoTouch/Geometry/p0_rolling_mat_v1/00000/object.usd": "b033e9ed92b6a2ec65e0602a320c7630954c2c53adf77545942a5ecdd90bb6f1"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "4e70cf460ddfa50fc3bf2cfb52cdefc3253fb95b77d3a7740b513b82930a39d6",
+      "source_render_sha256": "79ad49786df37919b6d67f701261c052c896ca7df0f27d87429109d7336421ef",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "scoop_beads",
-      "file": "scoop_beads.webp",
+      "file": "scoop_beads-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_scoop_beads_0.json",
       "layout_sha256": "5783fe0595e0501fe4162af695db15d3dcf73d338441803e2c782b1ad0ab27b6",
       "assets": [
@@ -85,48 +305,206 @@
         "Assets/Object/DojoTouch/Rigid/p0_bead_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_bowl_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_catch_bin_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_spoon_task_v1/00000/object.usd": "72f9d675709a5696ecc84be7cb9d90d794c4c6f978f1d80b5e10c5673e8a3330",
+        "Assets/Object/DojoTouch/Rigid/p0_bead_v1/00000/object.usd": "e6320b7a21e7bf30256f175e43267048a996556c5bec19c28754994bf05ef233",
+        "Assets/Object/DojoTouch/Geometry/p0_bowl_v1/00000/object.usd": "e14085eafbddaf6d6ae614fc979e7b7d9424e19e9fe3427cabe1201b3efe0615",
+        "Assets/Object/DojoTouch/Geometry/p0_catch_bin_v1/00000/object.usd": "7daaaa18d0fd081669b0f4675394df8834ea86bf8782057d1304fa63c9401ba2"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "0f3d3beb6ad6d9003cacfd1049d258a0c267e33b229bc34f0fab864e7aeaea2b",
+      "source_render_sha256": "f6d38bf46b7daec77445707e7162769d59d60ad574dd561d7792560afb01b57e",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "seat_socket",
-      "file": "seat_socket.webp",
+      "file": "seat_socket-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_seat_socket_0.json",
       "layout_sha256": "b6da41f9b65e42f649ab1ea8c1622102ca788e0515bc6cd0784f38ea931fa31c",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_socket_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_peg_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_socket_task_v1/00000/object.usd": "069a3b0b27a56ff19bc84dfced285a28ccaa7b2031f109d00b20f22a7698d42e",
+        "Assets/Object/DojoTouch/Geometry/p0_peg_v1/00000/object.usd": "3423a706fafd7752f44d0d103ddd4211a52a391162820b0d81cc42e6fd14b516"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "eeb9c6aff6ba5a61d08708bc3fd399a55af387879f9a45d5c5d286b2815cd4ca",
+      "source_render_sha256": "6cf5e4a893ae42f26f185fa03bed704073e296f0bf67c63ad178cabc020173fb",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "tape_ring_threading",
-      "file": "tape_ring_threading.webp",
+      "file": "tape_ring_threading-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_0.json",
       "layout_sha256": "3fc79c19fec246e53ec1c0340304272c107c5d97edc2fbff82443d4da0af76ec",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_tape_ring_teleop_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/simready_ring_rod_coarse_teleop_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_tape_ring_teleop_v1/00000/object.usd": "325fd4f4bb40620a8613bc2c0d418ba27e39c58f36686094ca30c279cd293adf",
+        "Assets/Object/DojoTouch/Rigid/simready_ring_rod_coarse_teleop_v1/00000/object.usd": "664612578ab361f2129569434762df233c79f89b17e27239ed0563a824fa42b9"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "05c7cf8d2d279bbd946d9a28b1e53f1e040f5dfea3dd12e3fc7fb4398420c90c",
+      "source_render_sha256": "64057e5f1ad4747948feaa921b837ddf7a2ce185356e4c56b786f7343b57f19c",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "tape_ring_threading_fine",
-      "file": "tape_ring_threading_fine.webp",
+      "file": "tape_ring_threading_fine-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tape_ring_threading_fine_0.json",
       "layout_sha256": "08de75eea5f30c8dff64eaaf758b5e0da596254962f186f1d81ecd614452a916",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_tape_ring_teleop_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/simready_ring_rod_fine_teleop_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_tape_ring_teleop_v1/00000/object.usd": "325fd4f4bb40620a8613bc2c0d418ba27e39c58f36686094ca30c279cd293adf",
+        "Assets/Object/DojoTouch/Rigid/simready_ring_rod_fine_teleop_v1/00000/object.usd": "7a219243108f012330aec31223d282e32db66bcb1ecaf0a3117cc844bd43039a"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "96ece7f97dc0858f27395da733bf135cbb527c533449a2b3d74574f59e0d9eed",
+      "source_render_sha256": "d72c9eab759c82e0ef18ce1e2daba87e6125d00082ba449e78670b1f9fbb822b",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "tilt_tray",
-      "file": "tilt_tray.webp",
+      "file": "tilt_tray-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_tilt_tray_0.json",
       "layout_sha256": "ae6bc3e27e1c5325bdaa846015b07eb5e2200f8fc30da0f084566a8db279c9ce",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_tray_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/p0_payload_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Geometry/p0_catch_bin_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_tray_task_v1/00000/object.usd": "9a42e65cf1ae2c9a12180e2203031a9942d48f9fec7cb5d3432b2bfb6101e2fa",
+        "Assets/Object/DojoTouch/Rigid/p0_payload_v1/00000/object.usd": "6948701b082cbd7f0c90687fead9996ed70b20ca942511f4f798822ec1092786",
+        "Assets/Object/DojoTouch/Geometry/p0_catch_bin_v1/00000/object.usd": "7daaaa18d0fd081669b0f4675394df8834ea86bf8782057d1304fa63c9401ba2"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "4381db56c852748a1a0c65c977e99b00e3212669418686093e63f82c20435d44",
+      "source_render_sha256": "1e86f2d32bdc7d7799fdc124a43e6151aae84e0cd284f75a2c46c261077376d1",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "trace_hdmi_cable",
@@ -137,23 +515,164 @@
     },
     {
       "id": "turn_screwdriver",
-      "file": "turn_screwdriver.webp",
+      "file": "turn_screwdriver-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_turn_screwdriver_0.json",
       "layout_sha256": "a439c9ab5ca9b2b173d6bb02f47b1ba681b88e58e85a9865cd8e67b9738d9d91",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_screwdriver_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/p0_slotted_rotor_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_screwdriver_task_v1/00000/object.usd": "3ef60b779d2e3c68bc314299cbc9a18c9d55d04185a8fdbf5a46d8c7125baf0f",
+        "Assets/Object/DojoTouch/Rigid/p0_slotted_rotor_v1/00000/object.usd": "b1de96169d879704a28986b955b241d2fc6431e386f7ec256ba67eb6d63378ff"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "c8c47443b6fb523f6becf07bb4b5463a34e497e7257fa19c95f18d1e28105913",
+      "source_render_sha256": "2dff2cc5b8b91dbe27e3c09d4c948337fb7fa83a3d4661813ecd64e33687b818",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     },
     {
       "id": "turn_wrench",
-      "file": "turn_wrench.webp",
+      "file": "turn_wrench-arx5.webp",
       "layout": "Assets/Eval_Layout/RoboDojo/arx_x5_teleop/0/teleop_turn_wrench_0.json",
       "layout_sha256": "b5001ec9cb1748c6717d1c15892112cf8251b1e4d0d196bed875fb94c1ccee4b",
       "assets": [
         "Assets/Object/DojoTouch/Rigid/simready_wrench_task_v1/00000/object.usd",
         "Assets/Object/DojoTouch/Rigid/p0_hex_rotor_v1/00000/object.usd"
-      ]
+      ],
+      "asset_sha256": {
+        "Assets/Object/DojoTouch/Rigid/simready_wrench_task_v1/00000/object.usd": "faa59148c54b6e11ee5d28bbb94054266ee0123ac4dad960b1cb9e257e78cbfe",
+        "Assets/Object/DojoTouch/Rigid/p0_hex_rotor_v1/00000/object.usd": "fd0730b238a2ed8cc341b838bf1aa3226f91e0d6bba940c2ca5fe14f1ca479f0"
+      },
+      "kind": "configured_initial_layout_render",
+      "renderer": "Blender 5.2.2 / Cycles CPU",
+      "physics_stepped": false,
+      "simulation_capture": false,
+      "dimensions": [
+        960,
+        720
+      ],
+      "image_sha256": "7e0f1b23ec47fc95fd50f5701869a7db1611bc1b9dddc33f3498ced045688b85",
+      "source_render_sha256": "0cfd48bcca4712d547d5d37d766d8124af2c017b8c06d4fe2e7fd8eed010e99f",
+      "camera": {
+        "eye_m": [
+          0.07999999821186066,
+          0.8500000238418579,
+          1.5700000524520874
+        ],
+        "target_m": [
+          0.0,
+          -0.1899999976158142,
+          0.8600000143051147
+        ],
+        "projection": "perspective",
+        "focal_length_mm": 33,
+        "sensor_width_mm": 36
+      },
+      "object_transforms": "Unchanged default_pos, default_ori and scale from this saved scene layout. Geometry, rigid objects and the configured camera stand are referenced from their actual installed USDs.",
+      "robot_setup": "dual_x5.yml, ARX.usd source zero-angle arm FK, joint7=joint8=0.044m native default opening; no pose chosen for illustration."
     }
-  ]
+  ],
+  "shared_setup": {
+    "robot_asset": "Assets/Robots/x5/ARX.usd",
+    "robot_asset_sha256": "5723a835bf5627a935a8dabb3a44447725bd1465243ce791e221b3e990121d63",
+    "robot_config": "env_cfg/robot/dual_x5.yml",
+    "robot_config_sha256": "4eefaccc75c5f83443b7bb85ef1de68ee7a3772e27af2b04a5e8d8769ab9baa1",
+    "joint_defaults_source": "env/robot_manager/robot_config/x5.py",
+    "joint_defaults_source_sha256": "13d35630f833d1b0a1e3df0bea05f843e88aae1248b59af8aadfefa9cad29bbb",
+    "base_positions_m": [
+      [
+        -0.3,
+        -0.45,
+        0.765
+      ],
+      [
+        0.3,
+        -0.45,
+        0.765
+      ]
+    ],
+    "base_orientations_wxyz": [
+      [
+        0.707,
+        0,
+        0,
+        0.707
+      ],
+      [
+        0.707,
+        0,
+        0,
+        0.707
+      ]
+    ],
+    "normalization": "Quaternions normalized for rendering",
+    "arm_joint_angles_rad": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "finger_joint_positions_m": [
+      0.044,
+      0.044
+    ],
+    "table": "Runtime Table uses a cube with the exact saved Table dimensions, pose and orientation; its actual Mahogany_Planks_BaseColor source texture is translated for Cycles.",
+    "table_constructor_source": "env/scene_manager/objects/table.py",
+    "table_material_source": "Assets/Material/material_0122/Mahogany_Planks.mdl",
+    "room_asset": "Assets/Room/Simple_Room_nolight/simple_room_nolight.usd",
+    "room_asset_sha256": "699c27f4a28af012a8e6fb7e5daaab9f87e0a6fcb6fa874912e73a70fe48e88d",
+    "room_transforms": "Unchanged saved Room scale and pose",
+    "environment_source": "Assets/Background/brown_photostudio_02_4k.hdr",
+    "rendering_adjustments": [
+      "Presentation camera frames both real robot arms and the task objects from the far side of the tabletop.",
+      "Original room MDL base-color textures, brightness and roughness inputs are translated to Cycles shaders. MDL appearance is approximate; object geometry is unchanged.",
+      "Imported source room area-light energy is scaled by 0.001 for usable Cycles exposure; original HDR environment is retained.",
+      "Some source robot/camera materials reference unavailable external textures or out-of-scope USD targets. Geometry is present; those material appearances are not fully reproduced.",
+      "No task objects or robot meshes are invented, no source layouts are edited, and no native GPU simulation is launched."
+    ],
+    "fk_check": {
+      "evidence": ".cache/runs/teleop/verification_20261108_dojotouch/turn_wrench/policy/view.json",
+      "calculated_link6_world_xyz_m": [
+        [
+          -0.29949959790402153,
+          -0.3523000001736068,
+          0.9215000116825104
+        ],
+        [
+          0.30050040209597845,
+          -0.3523000001736068,
+          0.9215000116825104
+        ]
+      ],
+      "maximum_position_difference_from_archived_native_initial_state_m": 2.9478639038028143e-05,
+      "difference_reason": "Native float precision and quaternion normalization."
+    },
+    "renderer_script_sha256": "8effac1465ef1daf577a36cebc4beded399c6ee7026bb3c6a646bfe8e694a6f4"
+  }
 }

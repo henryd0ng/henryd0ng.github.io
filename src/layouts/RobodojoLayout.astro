@@ -2,8 +2,8 @@
 import '../styles/robodojo-contact.css';
 import type { Lang } from '../data/site';
 
-interface Props { lang: Lang; title: string; description: string; pending?: number }
-const { lang, title, description, pending } = Astro.props;
+interface Props { lang: Lang; title: string; description: string; inProgress?: number }
+const { lang, title, description, inProgress } = Astro.props;
 const zh = lang === 'zh';
 const prefix = `/${lang}/projects/robodojo-contact/`;
 const counterpart = Astro.url.pathname.replace(/^\/(zh|en)\//, zh ? '/en/' : '/zh/');
@@ -27,7 +27,7 @@ const counterpart = Astro.url.pathname.replace(/^\/(zh|en)\//, zh ? '/en/' : '/z
       <a class="rb-brand" href={prefix}>robodojo-contact<span aria-hidden="true">.</span></a>
       <div class="rb-nav-links">
         <a href={prefix + '#about'}>{zh ? '项目介绍' : 'Overview'}</a>
-        <a class="rb-pending-link" href={prefix + '#not-started'}>{zh ? '未开始' : 'Not started'}{pending !== undefined ? ` (${pending})` : ''}</a>
+        <a class="rb-pending-link" href={prefix + '#in-progress'}>{zh ? '开发中' : 'In progress'}{inProgress !== undefined ? ` (${inProgress})` : ''}</a>
       </div>
       <div class="rb-nav-actions">
         <a class="rb-lang" href={counterpart} data-rb-language lang={zh ? 'en' : 'zh-CN'} aria-label={zh ? '切换到英文' : 'Switch to Chinese'}>{zh ? 'EN' : '中文'}</a>

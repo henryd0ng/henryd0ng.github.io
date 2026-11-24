@@ -150,34 +150,6 @@
   ],
   "initial_stills": [
     {
-      "id": "deposit_coin",
-      "file": "deposit_coin.webp",
-      "kind": "initial_recorded_frame",
-      "source_path": "outputs/deposit_coin/franka_gsmini.mp4",
-      "source_sha256": "4a280e2917a739e0a3988ada5c87807ff618382d796ecc055a6e873a05480609",
-      "note": "Same-session first recorded native head-camera view only; source attempt not claimed as completed.",
-      "poster_provenance": {
-        "source_path": "outputs/deposit_coin/franka_gsmini.mp4",
-        "source_sha256": "4a280e2917a739e0a3988ada5c87807ff618382d796ecc055a6e873a05480609",
-        "frame_index": 0,
-        "camera": "cam_head",
-        "source_frame_size": [
-          1280,
-          768
-        ],
-        "crop_xywh": [
-          16,
-          96,
-          404,
-          303
-        ],
-        "transformation": "Lossless pixel crop of head-camera panel from exact same recording first frame. No resize, resynthesis, retiming or substitution. Native temporary per-camera file is no longer available.",
-        "width": 404,
-        "height": 303,
-        "encoding": "lossless WebP"
-      }
-    },
-    {
       "id": "insert_tubes",
       "file": "insert_tubes.webp",
       "kind": "initial_recorded_frame",
@@ -193,34 +165,6 @@
         "transformation": "Same-session original native head-camera first frame; no crop, resynthesis or upscaling.",
         "width": 640,
         "height": 480,
-        "encoding": "lossless WebP"
-      }
-    },
-    {
-      "id": "plug_in_charger",
-      "file": "plug_in_charger.webp",
-      "kind": "initial_recorded_frame",
-      "source_path": "outputs/plug_in_charger/franka_gsmini.mp4",
-      "source_sha256": "c5437848bdc1da9efffc7360dc04f2a414afcfb20687464c3bef8a3d8e7e823c",
-      "note": "Same-session first recorded native head-camera view only; source attempt not claimed as completed.",
-      "poster_provenance": {
-        "source_path": "outputs/plug_in_charger/franka_gsmini.mp4",
-        "source_sha256": "c5437848bdc1da9efffc7360dc04f2a414afcfb20687464c3bef8a3d8e7e823c",
-        "frame_index": 0,
-        "camera": "cam_head",
-        "source_frame_size": [
-          1280,
-          768
-        ],
-        "crop_xywh": [
-          16,
-          96,
-          404,
-          303
-        ],
-        "transformation": "Lossless pixel crop of head-camera panel from exact same recording first frame. No resize, resynthesis, retiming or substitution. Native temporary per-camera file is no longer available.",
-        "width": 404,
-        "height": 303,
         "encoding": "lossless WebP"
       }
     }

@@ -21,6 +21,7 @@ export type TaskVideo = {
 export type TaskMedia = {
   image?: string;
   detail?: string;
+  imageKind?: 'layout-render' | 'simulation-frame';
   alt: LocalizedText;
   videos?: TaskVideo[];
 };

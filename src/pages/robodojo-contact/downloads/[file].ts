@@ -21,7 +21,7 @@ function catalog() {
   return {
     schemaVersion: 2,
     project: projectMeta,
-    dataScope: 'RoboDojo contact manipulation scenes and recorded simulation demonstrations',
+    dataScope: 'Dual-arm ARX5 tabletop manipulation scenes and recorded simulation demonstrations',
     benchmarkScoresReported: false,
     statuses: taskStatuses,
     categories: taskCategories,
@@ -50,8 +50,7 @@ function metadataValidation() {
   ).map(task => task.id);
   const missingMedia = tasks.filter(task => {
     const files = [task.media?.image, task.media?.detail, ...(task.media?.videos ?? []).flatMap(clip => [clip.src, clip.poster])];
-    const imageExpected = task.evidenceLevel !== 'awaiting-integration';
-    return (imageExpected && !task.media?.image) || files.some(file => file && !existsSync(publicFile(file)));
+    return !task.media?.image || files.some(file => file && !existsSync(publicFile(file)));
   }).map(task => task.id);
   const wrongVideoState = tasks.filter(task =>
     (task.status === 'accepted') !== Boolean(task.media?.videos?.length)

@@ -29,7 +29,7 @@ const mediaKind = {
   development: tr('开发记录', 'Development record'),
 };
 ---
-<RobodojoLayout lang={lang} title={projectMeta.title} description={projectMeta.description[lang]} pending={counts.not_started}>
+<RobodojoLayout lang={lang} title={projectMeta.title} description={projectMeta.description[lang]} inProgress={counts.in_progress}>
   <main id="top" data-rb-catalog>
     <section class="rb-wrap rb-hero">
       <h1><span class="rb-project-name">{projectMeta.title}</span><span class="rb-project-subtitle">{projectMeta.subtitle[lang]}</span></h1>
@@ -64,7 +64,7 @@ const mediaKind = {
           <p>{tr('按批次查看场景的初始摆放、操作目标和已验证的进展。', 'Explore each batch’s initial layouts, manipulation goals, and recorded progress.')}</p>
         </div>
         <div class="rb-batch-links">
-          <a class="rb-cta" href={link + '#not-started'}>{tr('查看未开始任务', 'View unstarted tasks')} <span>{counts.not_started}</span></a>
+          <a class="rb-cta" href={link + '#in-progress'}>{tr('查看开发中任务', 'View tasks in development')} <span>{counts.in_progress}</span></a>
           {taskBatches.map(batch => <a href={link + '#batch=' + batch.id}>{batch.label[lang]}</a>)}
           <div class="rb-batch-specs">{taskBatches.map(batch => <a href={link + 'specs/' + batch.id + '/'}>{batch.label[lang]}{tr('规格', ' specifications')}</a>)}</div>
         </div>
@@ -77,7 +77,7 @@ const mediaKind = {
       <div class="rb-controls">
         <div class="rb-filters" role="group" aria-label={tr('任务状态', 'Task status')}>
           <button type="button" class="rb-filter" data-rb-filter="all" aria-pressed="true">{tr('全部', 'All')} <span>{tasks.length}</span></button>
-          {taskStatuses.map(status => <button type="button" class="rb-filter" data-rb-filter={status.id} aria-pressed="false">{status.label[lang]} <span>{counts[status.id]}</span></button>)}
+          {taskStatuses.map(status => <button type="button" class="rb-filter" data-rb-filter={status.id} hidden={counts[status.id] === 0} aria-pressed="false">{status.label[lang]} <span>{counts[status.id]}</span></button>)}
         </div>
         <label class="rb-search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -113,7 +113,7 @@ const mediaKind = {
               <button class="rb-card-button" type="button" data-rb-open={task.id} aria-haspopup="dialog" aria-label={task.title[lang] + ' · ' + (clip ? tr('播放视频', 'Play video') : image ? tr('查看初始场景', 'View initial scene') : tr('查看任务进展', 'View progress'))}>
                 <div class="rb-thumb">
                   {image ? <img src={image} alt="" loading="lazy" width="960" height="720" /> : <div class="rb-media-placeholder">{tr('初始场景待接入', 'Initial scene pending')}</div>}
-                  {!clip && image && <span class="rb-chip">{tr('静态初态', 'Initial scene')}</span>}
+                  {!clip && image && <span class="rb-chip">{task.media?.imageKind === 'layout-render' ? tr('初始布局渲染', 'Layout render') : tr('静态初态', 'Initial scene')}</span>}
                   {clip && <span class="rb-play" aria-hidden="true">▶</span>}
                 </div>
                 <div class="rb-card-body">
@@ -137,7 +137,7 @@ const mediaKind = {
                   {clips.length > 0 && <div class="rb-clips" role="group" aria-label={tr('切换视频', 'Select video')}>
                     {clips.map((video, index) => <button type="button" data-rb-clip={video.src} data-poster={video.poster ?? task.media?.image} data-kind={mediaKind[video.kind]} data-notice={task.demo ? tr('概念示意 · 非实验录像', 'Concept illustration · Not experiment footage') : ''} aria-pressed={index === 0}>{video.label[lang]}</button>)}
                   </div>}
-                  <div class="rb-detail-meta"><span>{categoryNames[task.category]}</span><span>{batchNames[task.batch]}</span>{clip && task.trajectoryCount !== undefined && <span>{task.trajectoryCount} {tr('条参考轨迹', 'reference trajectories')}</span>}</div>
+                  <div class="rb-detail-meta">{task.media?.imageKind === 'layout-render' && <span>{tr('初始布局渲染', 'Initial layout render')}</span>}<span>{categoryNames[task.category]}</span><span>{batchNames[task.batch]}</span>{clip && task.trajectoryCount !== undefined && <span>{task.trajectoryCount} {tr('条参考轨迹', 'reference trajectories')}</span>}</div>
                   <p class="rb-detail-notice">{task.statusNote?.[lang] ?? projectMeta.notice[lang]}</p>
                   {clip && <p class="rb-clip-note" aria-live="polite" data-rb-clip-note></p>}
                   <div class="rb-detail-actions">
@@ -161,7 +161,7 @@ const mediaKind = {
       <div class="rb-wrap rb-about-inner">
         <h2>{tr('项目介绍', 'About the project')}</h2>
         <div>
-          <p>{tr('每个任务将初始场景、操作目标与验收条件放在一起。浏览任务物体和初始布局，或打开已完成演示，查看动作过程与接触细节。', 'Each task brings its initial scene, manipulation objective, and success criteria together. Explore the objects and initial arrangement, or open a completed demonstration to inspect its motion and contact details.')}</p>
+          <p>{tr('工作台上装有两台 ARX5。部分任务由一只机械臂执行，打开笔记本、持杯接水等任务由两臂分工。', 'The workstation has two ARX5 arms. Some tasks use one arm. Others, including opening a laptop and filling a cup, give each arm a distinct role.')}</p>
           <p>{tr('开发进度和验证范围分别记录。机械演示完成、局部动力学验证和场景预览具有不同含义，具体证据见各任务详情与规格。', 'Development status and validation scope are recorded separately. A completed mechanical demonstration, local dynamics check, and scene preview each establish different evidence, described in the task details and specifications.')}</p>
           <div class="rb-downloads">
             <a href="/robodojo-contact/downloads/tasks.json" download>{tr('任务数据', 'Task data')}</a>
